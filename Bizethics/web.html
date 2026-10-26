@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Care for the Carers: supporting the mothers behind every sick child</title>
+<meta name="description" content="Mothers of children with cancer hold the whole system of care together, yet few people look after them. Say thank you to the carers in your life.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --blush:#fff0f5; --petal:#ffd6e5; --rose:#e8457c; --berry:#5a1832; --peach:#ffc5a8; --white:#fff; --green:#1f9d63; }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Nunito", system-ui, sans-serif; background: var(--blush); color: var(--berry); line-height: 1.7; font-size: 1.05rem; }
+  h1, h2, h3 { font-family: "Fredoka", "Nunito", sans-serif; font-weight: 600; line-height: 1.15; }
+  a { color: var(--rose); }
+  :focus-visible { outline: 3px solid var(--berry); outline-offset: 3px; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 72px 0; }
+  h2 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); margin-bottom: 20px; color: var(--rose); }
+
+  nav { background: var(--white); border-bottom: 3px solid var(--petal); position: sticky; top: 0; z-index: 5; }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 12px; padding-bottom: 12px; flex-wrap: wrap; }
+  nav b { font-family: "Fredoka", sans-serif; font-size: 1.3rem; color: var(--rose); }
+  nav ul { list-style: none; padding: 0; display: flex; gap: 20px; flex-wrap: wrap; }
+  nav a { text-decoration: none; font-weight: 800; color: var(--berry); }
+  nav a:hover { color: var(--rose); }
+
+  .hero { background: var(--petal); padding: 88px 0 96px; border-radius: 0 0 48px 48px; }
+  .hero h1 { font-size: clamp(2.6rem, 9vw, 5.5rem); color: var(--rose); max-width: 12ch; }
+  .hero p { max-width: 52ch; margin-top: 20px; font-size: 1.2rem; }
+  .actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 32px; }
+  .btn { display: inline-block; padding: 14px 32px; background: var(--rose); color: var(--white); text-decoration: none; border-radius: 999px; border: 0; font: inherit; font-weight: 800; cursor: pointer; }
+  .btn:hover { background: var(--berry); }
+  .btn.alt { background: var(--white); color: var(--rose); border: 3px solid var(--rose); padding: 11px 29px; }
+  .btn.alt:hover { background: var(--rose); color: var(--white); }
+  .btn:active { transform: scale(.96); }
+  #hugCount { font-weight: 800; }
+
+  .heart { position: fixed; z-index: 50; pointer-events: none; color: var(--rose); font-size: 1.6rem; animation: rise 1.1s ease-out forwards; }
+  @keyframes rise { to { transform: translate(var(--dx), -140px) scale(.4); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .heart { display: none; } html { scroll-behavior: auto; } }
+
+  /* About / story */
+  .story p { max-width: 62ch; margin-bottom: 16px; }
+  .story h3 { font-size: 1.5rem; margin: 44px 0 12px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 28px 0; }
+  .stats div { background: var(--white); border-radius: 28px 28px 28px 6px; padding: 24px; transition: transform .2s; }
+  .stats div:hover { transform: rotate(-1.5deg) translateY(-4px); }
+  .stats b { display: block; font-family: "Fredoka", sans-serif; font-size: 2.4rem; color: var(--rose); line-height: 1.1; }
+  .pull { border-left: 6px solid var(--rose); background: var(--petal); border-radius: 0 28px 28px 0; padding: 24px 28px; margin: 24px 0; max-width: 62ch; }
+  .pull p { font-family: "Fredoka", sans-serif; font-size: 1.3rem; line-height: 1.4; margin: 0; max-width: none; }
+  .cta-card { background: var(--white); border: 3px dashed var(--rose); border-radius: 28px; padding: 28px; margin-top: 24px; max-width: 62ch; }
+  .cta-card p:last-of-type { margin-bottom: 0; }
+
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .gallery figure { background: linear-gradient(135deg, var(--petal), var(--peach)); border-radius: 28px; overflow: hidden; aspect-ratio: 4/3; position: relative; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; cursor: zoom-in; }
+  .gallery figure:hover img { transform: scale(1.06); }
+  .gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 16px; background: rgba(90,24,50,.65); color: var(--white); font-size: .95rem; pointer-events: none; }
+
+  .lb { position: fixed; inset: 0; background: rgba(90,24,50,.88); display: none; align-items: center; justify-content: center; z-index: 100; padding: 24px; cursor: zoom-out; }
+  .lb.open { display: flex; }
+  .lb img { max-width: 100%; max-height: 90vh; border-radius: 20px; }
+
+  .wishform { background: var(--white); border-radius: 28px; padding: 24px; display: grid; gap: 12px; max-width: 560px; }
+  .wishform input, .wishform textarea { font: inherit; padding: 12px 16px; border: 3px solid var(--petal); border-radius: 18px; color: var(--berry); background: var(--blush); width: 100%; }
+  .wishform input:focus, .wishform textarea:focus { border-color: var(--rose); outline: none; }
+  .wishform textarea { resize: vertical; min-height: 90px; }
+  .wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; margin-top: 36px; }
+  .note { padding: 18px 18px 14px; border-radius: 6px 6px 28px 6px; box-shadow: 0 5px 0 rgba(90,24,50,.12); transform: rotate(var(--r)); transition: transform .2s; word-wrap: break-word; }
+  .note:hover { transform: rotate(0) scale(1.04); }
+  .note small { display: block; margin-top: 10px; font-weight: 800; }
+  .quote { background: var(--petal); border-radius: 28px; padding: 24px; margin-top: 32px; max-width: 560px; }
+  #quoteText { font-family: "Fredoka", sans-serif; font-size: 1.3rem; min-height: 3.2em; margin-bottom: 12px; }
+
+  .donate { background: var(--white); border-radius: 48px; padding: 48px 32px; }
+  .donate .box { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+  .chip { padding: 8px 18px; border-radius: 999px; border: 3px solid var(--petal); background: var(--white); color: var(--berry); font: inherit; font-weight: 800; cursor: pointer; }
+  .chip:hover { border-color: var(--rose); }
+  .chip.on { background: var(--rose); border-color: var(--rose); color: var(--white); }
+  #impact { margin-top: 12px; min-height: 3.4em; font-weight: 600; }
+  .acct { background: var(--blush); border: 3px dashed var(--rose); border-radius: 28px; padding: 24px; margin-top: 16px; }
+  .acct dt { font-size: .9rem; font-weight: 800; }
+  .acct dd { font-size: 1.15rem; margin-bottom: 10px; }
+  .acct dd.num { font-family: "Fredoka", sans-serif; font-size: 1.8rem; color: var(--rose); letter-spacing: .04em; }
+  .qr { width: 200px; border-radius: 20px; border: 3px solid var(--petal); }
+  @media (max-width: 640px) { .donate .box { grid-template-columns: 1fr; } }
+
+  .goal { background: var(--white); border-radius: 28px; padding: 20px 24px; margin-bottom: 16px; }
+  .track { height: 22px; background: var(--petal); border-radius: 999px; overflow: hidden; margin-top: 8px; }
+  #bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--rose), var(--peach)); border-radius: 999px; transition: width 1.2s ease-out; }
+  .sum { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .sum div { background: var(--white); border-radius: 28px; padding: 20px 24px; }
+  .sum span { display: block; font-size: .9rem; font-weight: 800; }
+  .sum b { font-family: "Fredoka", sans-serif; font-size: 1.7rem; }
+  .sum .in b { color: var(--green); }
+  .sum .out b { color: var(--rose); }
+  .tablebox { background: var(--white); border-radius: 28px; padding: 8px 24px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 480px; }
+  th, td { text-align: left; padding: 12px 8px; border-bottom: 2px solid var(--petal); }
+  th { font-size: .9rem; }
+  th.amt, td.amt { text-align: right; }
+  td.amt { font-weight: 800; white-space: nowrap; }
+  td.in { color: var(--green); }
+  td.out { color: var(--rose); }
+
+  .social { display: flex; gap: 16px; flex-wrap: wrap; }
+  .social a { padding: 14px 28px; background: var(--white); border: 3px solid var(--petal); border-radius: 999px; font-weight: 800; text-decoration: none; color: var(--berry); transition: transform .2s; }
+  .social a:hover { background: var(--rose); border-color: var(--rose); color: var(--white); transform: translateY(-4px) rotate(-2deg); }
+
+  .video { aspect-ratio: 16/9; border-radius: 28px; overflow: hidden; background: var(--petal); }
+  .video iframe { width: 100%; height: 100%; border: 0; display: block; }
+  footer { background: var(--berry); color: var(--blush); text-align: center; padding: 32px 24px; margin-top: 72px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <b>Care for the Carers</b>
+    <ul>
+      <li><a href="#about">Our story</a></li>
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#wishes">Say thank you</a></li>
+      <li><a href="#donate">Donate</a></li>
+      <li><a href="#statement">Statement</a></li>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Moms take care of us. Let’s take care of them.</h1>
+    <p>At the National Cancer Hospital (Bệnh viện K Tân Triều), mothers hold the care of sick children together while their own needs come last. This project is about seeing them, and saying thank you.</p>
+    <div class="actions">
+      <a class="btn" href="#wishes">Say thank you</a>
+      <button class="btn alt" id="hug" type="button">Send a hug ♥</button>
+      <span id="hugCount"></span>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="story">
+  <div class="wrap">
+    <h2>Our story</h2>
+
+    <h3>The group we noticed</h3>
+    <p>When we looked into the ethical problems around children treated at the National Cancer Hospital (Bệnh viện K), we noticed a group that is essential but mostly overlooked: the carers of sick children, most often their mothers. They are the link that holds the whole system of care together. They stay in the ward for months, give up their income, and put their own needs last.</p>
+    <p>Yet public attention and charity focus almost entirely on the child, and so overlook another vulnerable group: the mothers.</p>
+
+    <div class="stats">
+      <div><b>138</b>studies reviewed in the Standards of Psychosocial Care for Parents of Children with Cancer</div>
+      <div><b>Diagnosis</b>is when parents’ distress peaks</div>
+      <div><b>Months</b>mothers stay in the ward, giving up their income</div>
+    </div>
+
+    <h3>What the research says</h3>
+    <p>This is not only our impression. The Standards of Psychosocial Care for Parents of Children with Cancer make a strong recommendation that parents receive early and ongoing mental-health support. The authors reviewed 138 studies. They found that parents’ distress peaks around diagnosis, and that a distressed parent can affect how the child copes (Kearney et al., 2015).</p>
+    <p>Caring for the carer is therefore not a side project. It is one of the most direct ways to care for the child.</p>
+
+    <h3>The people we met</h3>
+    <p>While contacting different stakeholders for support, we met Ms. X and Ms. Y. These two independent women started a volunteer group for patients and parents of children with cancer after a family member of their own had cancer. Having gone through the same story with them, we were delighted to work with them, gain access to the ward, and listen to what the families actually needed.</p>
+
+    <h3>Why it felt so close to home</h3>
+    <div class="pull">
+      <p>After listening to the mothers’ stories, we kept coming back to one thought: they reminded us of our own mothers. Everything these mothers sacrificed, our own mothers sacrifice too: time, youth, passion, her life. It is everywhere, in everyone, yet no one sees it.</p>
+    </div>
+    <p>This widened our view beyond the group we first set out to help.</p>
+
+    <h3>Care for the Carers</h3>
+    <p>We also realised that lasting change will not come from one visit or one donation, but from a shift in how everyone treats the carers in their own lives. That is why we added a small, repeatable action anyone can take: “Care for the Carers”, saying thank you this 20/10 to the women who have taken care of us.</p>
+    <p>In this project, we tell the stories of the mothers who most need help, through their own eyes in the hospital. We then apply what we learnt from them to design a more systematic change that encourages everyone to recognise and care for the carers in their own lives, in the hope of creating a domino effect that encourages everyone to care for carers of every kind.</p>
+    <div class="cta-card">
+      <p><strong>Your turn.</strong> Think of the woman who took care of you. It takes one minute to say thank you.</p>
+      <a class="btn" href="#wishes" style="margin-top: 16px;">Pin a thank-you</a>
+    </div>
+  </div>
+</section>
+
+<section id="photos">
+  <div class="wrap">
+    <h2>Moments from our project</h2>
+    <!-- Ảnh nằm trong thư mục "images": photo1.jpg, photo2.jpg, photo3.jpg. Muốn có chú thích, thêm <figcaption>...</figcaption> sau thẻ <img> -->
+    <div class="gallery">
+      <figure><img src="images/photo1.jpg" alt="Photo from our project" onerror="this.remove()"></figure>
+      <figure><img src="images/photo2.jpg" alt="Photo from our project" onerror="this.remove()"></figure>
+      <figure><img src="images/photo3.jpg" alt="Photo from our project" onerror="this.remove()"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="wishes">
+  <div class="wrap">
+    <h2>Care for the Carers: pin a thank-you</h2>
+    <p style="margin-bottom: 24px; max-width: 56ch;">Think of the woman who has taken care of you: your mom, grandmother, sister, aunt or a friend. Write her a short thank-you and pin it to our wall.</p>
+    <div class="wishform">
+      <input id="wName" type="text" maxlength="24" placeholder="Your name (optional)" aria-label="Your name">
+      <textarea id="wText" maxlength="140" placeholder="Dear Mom, thank you for..." aria-label="Your thank-you"></textarea>
+      <button class="btn" id="wBtn" type="button">Pin it ♥</button>
+    </div>
+    <div class="wall" id="wall"></div>
+
+    <div class="quote">
+      <div id="quoteText">Why do carers deserve a thank-you?</div>
+      <button class="btn alt" id="quoteBtn" type="button">Surprise me</button>
+    </div>
+  </div>
+</section>
+
+<section id="donate">
+  <div class="wrap donate">
+    <div class="box">
+      <div>
+        <h2>Help us care for the carers</h2>
+        <p>Every donation helps us keep supporting the mothers of children in treatment. Please add your name in the transfer note if you would like a thank-you message.</p>
+        
+        <div class="chips" id="chips">
+          <button class="chip" type="button" data-amt="50,000" data-text="a warm meal for a mother in the ward.">50,000</button>
+          <button class="chip" type="button" data-amt="100,000" data-text="daily essentials for a mother for a week.">100,000</button>
+          <button class="chip" type="button" data-amt="200,000" data-text="small comforts for several mothers.">200,000</button>
+          <button class="chip" type="button" data-amt="500,000" data-text="a care package for a whole family.">500,000</button>
+        </div>
+        <p id="impact">Tap an amount to see what it can do.</p>
+        <dl class="acct">
+          <dt>Bank</dt><dd>Your Bank Name</dd>
+          <dt>Account holder</dt><dd>NGUYEN VAN A</dd>
+          <dt>Account number</dt><dd class="num" id="acct">0123456789</dd>
+        </dl>
+        <button class="btn" id="copy" type="button">Copy account number</button>
+      </div>
+      
+      <img class="qr" src="images/qr.png" alt="QR code for donations" onerror="this.remove()">
+    </div>
+  </div>
+</section>
+
+<section id="statement">
+  <div class="wrap">
+    <h2>Where the money goes</h2>
+    <p style="margin-bottom: 24px;">We list every donation received and every expense, so you can see exactly how your support is used.</p>
+    <div class="goal">
+      <strong id="goalText"></strong>
+      <div class="track"><div id="bar"></div></div>
+    </div>
+    <div class="sum">
+      <div class="in"><span>Total received</span><b id="totalIn">0</b></div>
+      <div class="out"><span>Total spent</span><b id="totalOut">0</b></div>
+      <div><span>Remaining</span><b id="balance">0</b></div>
+    </div>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Date</th><th>Description</th><th class="amt">Amount (VND)</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="video">
+  <div class="wrap">
+    <h2>Meet the team</h2>
+    <div class="video">
+      
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Care for the Carers team video" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="wrap">
+    <h2>Say hi to us</h2>
+    <p style="margin-bottom: 24px;">Follow along and share the thank-you with the carers in your life.</p>
+    
+    <div class="social">
+      <a href="https://www.threads.com/@dearm0m___?xmt=AQG04RvTUE1UEmttTiscVIee2t9sTj5icMl1IoDCkXUpfE8" target="_blank" rel="noopener">Threads</a>
+      <a href="https://www.instagram.com/dearm0m___/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@dearm0m___?fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAafg11mD12dhVJ9uT3EhNjr3ufzcEZuEaGsdpc_GfztZ3JC1G10YS2GTT2I4hw_aem_os5w2HNYPnUmmOeqrgshLQ" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+</section>
+
+<div class="lb" id="lb" aria-hidden="true"><img id="lbImg" alt=""></div>
+
+<footer>Made with love for every carer. © 2026 Care for the Carers</footer>
+
+<script>
+  
+  // type: "in" = tiền nhận, "out" = tiền chi
+  var GOAL = 5000000; // mục tiêu quyên góp (VND)
+  var entries = [
+    { date: "01/12/2026", text: "Donation from Anonymous", type: "in",  amount: 500000 },
+    { date: "02/12/2026", text: "Donation from Lan",       type: "in",  amount: 200000 },
+    { date: "05/12/2026", text: "Meals for mothers",       type: "out", amount: 450000 },
+    { date: "06/12/2026", text: "Daily essentials",        type: "out", amount: 150000 }
+  ];
+
+  function fmt(n) { return n.toLocaleString("en-US"); }
+  var totalIn = 0, totalOut = 0, html = "";
+  entries.forEach(function (e) {
+    if (e.type === "in") totalIn += e.amount; else totalOut += e.amount;
+    html += "<tr><td>" + e.date + "</td><td>" + e.text + '</td><td class="amt ' + e.type + '">' +
+            (e.type === "in" ? "+" : "-") + fmt(e.amount) + "</td></tr>";
+  });
+  document.getElementById("rows").innerHTML = html;
+  document.getElementById("totalIn").textContent = fmt(totalIn);
+  document.getElementById("totalOut").textContent = fmt(totalOut);
+  document.getElementById("balance").textContent = fmt(totalIn - totalOut);
+  document.getElementById("goalText").textContent =
+    fmt(totalIn) + " of " + fmt(GOAL) + " VND raised (" + Math.min(100, Math.round(totalIn / GOAL * 100)) + "%)";
+  setTimeout(function () {
+    document.getElementById("bar").style.width = Math.min(100, totalIn / GOAL * 100) + "%";
+  }, 300);
+
+  // ===== COPY SỐ TÀI KHOẢN =====
+  document.getElementById("copy").addEventListener("click", function () {
+    var btn = this;
+    navigator.clipboard.writeText(document.getElementById("acct").textContent).then(function () {
+      btn.textContent = "Copied!";
+      setTimeout(function () { btn.textContent = "Copy account number"; }, 2000);
+    });
+  });
+
+  // ===== CHỌN SỐ TIỀN =====
+  var chips = document.querySelectorAll(".chip");
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      chips.forEach(function (x) { x.classList.remove("on"); });
+      c.classList.add("on");
+      document.getElementById("impact").textContent = c.dataset.amt + " VND can give " + c.dataset.text;
+    });
+  });
+
+  // ===== GỬI CÁI ÔM =====
+  var hugs = 0;
+  try { hugs = parseInt(localStorage.getItem("hugs"), 10) || 0; } catch (e) {}
+  var hugLabel = document.getElementById("hugCount");
+  function showHugs() { hugLabel.textContent = hugs ? "You’ve sent " + hugs + (hugs === 1 ? " hug" : " hugs") : ""; }
+  showHugs();
+  document.getElementById("hug").addEventListener("click", function () {
+    hugs++;
+    try { localStorage.setItem("hugs", hugs); } catch (e) {}
+    showHugs();
+    var r = this.getBoundingClientRect();
+    for (var i = 0; i < 8; i++) {
+      var h = document.createElement("span");
+      h.className = "heart";
+      h.textContent = "♥";
+      h.style.left = (r.left + r.width / 2 + (Math.random() * 60 - 30)) + "px";
+      h.style.top = (r.top + 10) + "px";
+      h.style.setProperty("--dx", (Math.random() * 120 - 60) + "px");
+      h.style.animationDelay = (i * 60) + "ms";
+      h.addEventListener("animationend", function () { this.remove(); });
+      document.body.appendChild(h);
+    }
+  });
+
+  // ===== BẢNG LỜI CẢM ƠN =====
+  var colors = ["#ffd6e5", "#ffe9a8", "#d9f2e6", "#e6dcff", "#ffc5a8"];
+  // Ba lời cảm ơn mẫu, bạn có thể sửa hoặc xóa
+  var wishes = [
+    { name: "Lan", text: "Thank you for every meal you cooked when you were tired." },
+    { name: "Minh", text: "Mom, I promise to call you more often." },
+    { name: "Anonymous", text: "To all the carers: you are enough, and you are loved." }
+  ];
+  try {
+    var saved = JSON.parse(localStorage.getItem("wishes"));
+    if (saved && saved.length) wishes = saved;
+  } catch (e) {}
+
+  function renderWall() {
+    var wall = document.getElementById("wall");
+    wall.innerHTML = "";
+    wishes.forEach(function (w, i) {
+      var n = document.createElement("div");
+      n.className = "note";
+      n.style.background = colors[i % colors.length];
+      n.style.setProperty("--r", (((i * 37) % 7) - 3) + "deg");
+      var p = document.createElement("div");
+      p.textContent = w.text;
+      var s = document.createElement("small");
+      s.textContent = "— " + w.name;
+      n.appendChild(p);
+      n.appendChild(s);
+      wall.appendChild(n);
+    });
+  }
+  renderWall();
+
+  document.getElementById("wBtn").addEventListener("click", function () {
+    var text = document.getElementById("wText").value.trim();
+    if (!text) { document.getElementById("wText").focus(); return; }
+    var name = document.getElementById("wName").value.trim() || "Anonymous";
+    wishes.unshift({ name: name, text: text });
+    wishes = wishes.slice(0, 30);
+    try { localStorage.setItem("wishes", JSON.stringify(wishes)); } catch (e) {}
+    document.getElementById("wText").value = "";
+    renderWall();
+  });
+
+  // ===== THẺ "SURPRISE ME" =====
+  var quotes = [
+    "Carers often say “I’m fine” so everyone else can be.",
+    "A mom’s love is the first home we ever know.",
+    "Moms say “I’m not hungry” so you can have the last piece.",
+    "Behind every brave child is a carer who kept saying “you can do it”.",
+    "Carers remember the small things: your favorite dish, your bad days, your birthday.",
+    "A thank-you costs nothing, yet it can be what a tired carer remembers all year."
+  ];
+  var lastQ = -1;
+  document.getElementById("quoteBtn").addEventListener("click", function () {
+    var i;
+    do { i = Math.floor(Math.random() * quotes.length); } while (i === lastQ);
+    lastQ = i;
+    document.getElementById("quoteText").textContent = quotes[i];
+  });
+
+  // ===== PHÓNG TO ẢNH =====
+  var lb = document.getElementById("lb");
+  document.querySelectorAll(".gallery img").forEach(function (img) {
+    img.addEventListener("click", function () {
+      document.getElementById("lbImg").src = img.src;
+      document.getElementById("lbImg").alt = img.alt;
+      lb.classList.add("open");
+    });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("open"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("open"); });
+</script>
+</body>
+</html>
