@@ -1,0 +1,140 @@
+// Shared behaviour for every page: menu, hugs, photo viewer, scroll reveal, money helpers.
+var Site = (function () {
+  function fmt(n) { return n.toLocaleString("en-US"); }
+
+  function money() {
+    var totalIn = 0, totalOut = 0;
+    SITE.entries.forEach(function (e) { if (e.type === "in") totalIn += e.amount; else totalOut += e.amount; });
+    return { totalIn: totalIn, totalOut: totalOut, pct: Math.min(100, totalIn / SITE.goal * 100) };
+  }
+
+  // Count a number up from 0 when it scrolls into view
+  function countUp(el, to, suffix) {
+    suffix = suffix || "";
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) { el.textContent = fmt(to) + suffix; return; }
+    el.textContent = "0" + suffix;
+    var io = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      io.disconnect();
+      var start = performance.now(), dur = 1200;
+      (function tick(t) {
+        var p = Math.min(1, (t - start) / dur), eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(Math.round(to * eased)) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      })(start);
+    });
+    io.observe(el);
+  }
+
+  function hearts(x, y, n) {
+    for (var i = 0; i < (n || 8); i++) {
+      var h = document.createElement("span");
+      h.className = "heart";
+      h.textContent = "♥";
+      h.style.left = (x + (Math.random() * 60 - 30)) + "px";
+      h.style.top = y + "px";
+      h.style.setProperty("--dx", (Math.random() * 120 - 60) + "px");
+      h.style.animationDelay = (i * 60) + "ms";
+      h.addEventListener("animationend", function () { this.remove(); });
+      document.body.appendChild(h);
+    }
+  }
+
+  function timeAgo(iso) {
+    var days = Math.round((Date.now() - new Date(iso + "T12:00:00").getTime()) / 864e5);
+    if (days <= 0) return "today";
+    if (days === 1) return "yesterday";
+    if (days < 30) return days + " days ago";
+    return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  }
+
+  function longDate(iso) {
+    return new Date(iso + "T12:00:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; });
+  }
+
+  function authors(p) {
+    var a = p.authors || [];
+    return a.length > 1 ? a.slice(0, -1).join(", ") + " & " + a[a.length - 1] : (a[0] || "The team");
+  }
+  function postUrl(p) { return "blog.html?post=" + encodeURIComponent(p.slug); }
+  function sortedPosts() { return SITE.posts.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; }); }
+
+  // A Journal card, used on the home page and the Journal page
+  function journalCard(p, lead) {
+    return '<a class="jcard' + (lead ? " lead" : "") + '" href="' + postUrl(p) + '">' +
+      (p.image ? '<img src="' + esc(p.image) + '" alt="" loading="lazy" onerror="this.remove()">' : "") +
+      '<div class="txt"><span class="kicker-pill">' + esc(p.kicker) + (p.draft ? ' <span class="draft-tag">Draft</span>' : "") + '</span>' +
+      '<h3>' + esc(p.title) + '</h3><p>' + esc(p.standfirst) + '</p>' +
+      '<span class="by">By ' + esc(authors(p)) + '</span></div></a>';
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Mark the current tab
+    var page = location.pathname.split("/").pop() || "web.html";
+    document.querySelectorAll("nav ul a").forEach(function (a) {
+      if (a.getAttribute("href") === page) a.setAttribute("aria-current", "page");
+    });
+
+    // Journal dropdown: one link per post, in the same order as the Journal page
+    document.querySelectorAll("nav [data-journal]").forEach(function (ul) {
+      ul.innerHTML = SITE.posts.map(function (p) {
+        return '<li><a href="' + postUrl(p) + '"><small>' + esc(p.kicker) + '</small>' + esc(p.title) + '</a></li>';
+      }).join("");
+    });
+
+    // Mobile menu
+    var nav = document.querySelector("nav"), menuBtn = document.querySelector(".menu-btn");
+    if (menuBtn) menuBtn.addEventListener("click", function () {
+      var open = nav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", open);
+    });
+
+    // Send a hug
+    var hugBtn = document.getElementById("hug"), hugLabel = document.getElementById("hugCount");
+    if (hugBtn) {
+      var hugs = 0;
+      try { hugs = parseInt(localStorage.getItem("hugs"), 10) || 0; } catch (e) {}
+      var showHugs = function () { if (hugLabel) hugLabel.textContent = hugs ? "You’ve sent " + hugs + (hugs === 1 ? " hug" : " hugs") : ""; };
+      showHugs();
+      hugBtn.addEventListener("click", function () {
+        hugs++;
+        try { localStorage.setItem("hugs", hugs); } catch (e) {}
+        showHugs();
+        var r = this.getBoundingClientRect();
+        hearts(r.left + r.width / 2, r.top + 10);
+      });
+    }
+
+    // Photo viewer for gallery, moving strip and any [data-zoom] image
+    var lb = document.getElementById("lb");
+    if (lb) {
+      document.addEventListener("click", function (e) {
+        var img = e.target.closest(".gallery img, .marquee img, [data-zoom]");
+        if (!img) return;
+        if (img.tagName !== "IMG") img = img.querySelector("img");
+        document.getElementById("lbImg").src = img.src;
+        document.getElementById("lbImg").alt = img.alt;
+        lb.classList.add("open");
+      });
+      lb.addEventListener("click", function () { lb.classList.remove("open"); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("open"); });
+    }
+
+    // Fade sections in as they scroll into view
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+      }, { threshold: .12 });
+      document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+    }
+  });
+
+  return { fmt: fmt, money: money, countUp: countUp, hearts: hearts, timeAgo: timeAgo, longDate: longDate, esc: esc, journalCard: journalCard, authors: authors, sortedPosts: sortedPosts };
+})();

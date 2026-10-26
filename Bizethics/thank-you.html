@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Say thank you · Care for the Carers</title>
+<meta name="description" content="Make a little face, write a letter to your mom, and pin it to our wall of thank-yous.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="webbiz.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="web.html">Care for the Carers</a>
+    <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
+    <ul>
+      <li><a href="web.html">Home</a></li>
+      <li><a href="story.html">Our story</a></li>
+      <li><a href="thank-you.html">Say thank you</a></li>
+      <li class="has-sub"><a href="blog.html">Journal<span class="caret" aria-hidden="true">&#9662;</span></a><ul class="sub" data-journal></ul></li>
+      <li><a href="donate.html">Donate</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head ty-head">
+  <div class="wrap">
+    <h1>A wall of faces, each with a letter to Mom</h1>
+    <p>Make a little face that looks like you, write the thing you have always wanted to tell your mom, and pin it to the wall. Tap any face to read their letter.</p>
+    <div class="actions">
+      <button class="btn big" id="addBtn" type="button">Add your own note ♥</button>
+      <span class="count-pill" id="countPill"></span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="wallbox">
+      <div class="wall" id="wall" aria-label="Wall of thank-you letters"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap first">
+    <button class="letter-img" type="button" id="openLetter" aria-label="Open Thảo Linh’s letter to her mom">
+      <img src="images/letter-to-mom.webp" alt="Thảo Linh’s handwritten-style letter to her mom for 20/10, decorated with flowers and family photos">
+      <span>Thảo Linh’s letter to her mom, 20/10 · tap to read</span>
+    </button>
+    <div>
+      <span class="eyebrow">We went first</span>
+      <h2>Why don’t we say it?</h2>
+      <p>In many Vietnamese families, love is cooked, not spoken. It is the fruit cut and left on your desk, the “ăn cơm chưa?” on the phone, the jacket she makes you take. So saying “con thương mẹ” out loud can feel strange, even a little embarrassing.</p>
+      <p>That does not make saying it wrong. It only means we have not practised it. The words do not replace what she does; they tell her that we finally see it.</p>
+      <p>For 20/10, our team lead Thảo Linh wrote this letter to her mom. Even after years of being praised for her writing, it was one of the very few times her mom had read something she wrote. Her mom cried.</p>
+      <p class="soft-quote">“I miss you more than I remember you.”<br><small style="font-family: Nunito, sans-serif; font-size: .9rem; color: var(--berry);">Ocean Vuong, quoted in the letter</small></p>
+      <p>"This was the first time I ever dared to tell my mom how much I love her" Thao Linh</p>
+      <button class="btn" type="button" id="firstBtn">Write yours</button>
+    </div>
+  </div>
+</section>
+
+<section class="research">
+  <div class="wrap">
+    <span class="eyebrow">Research</span>
+    <h2>Children see “mom”, not the person</h2>
+    <p class="lede">This is the insight our campaign targets. Behind every face on this wall is a child who stopped for a minute to look at their mother as a person, and at her care as real work.</p>
+
+    <div class="cards">
+      <div class="card"><b>“Since when did her name not belong to herself anymore?”</b>There is a name for this process: matrescence, the process of becoming a mother, first proposed by medical anthropologist Dana Raphael and developed by Aurelie Athan as “a deep identity change, not just postpartum depression”.<cite>Raphael, 1970; Athan &amp; Bastidas, 2021</cite></div>
+      <div class="card"><b>Two in three mothers felt they had lost part of themselves</b>In a survey of 2,000 British mothers, two-thirds said they felt they have lost part of their identity.<cite>PRNewswire, 2023</cite></div>
+      <div class="card"><b>“Mẹ nuôi con biển hồ lai láng, con nuôi mẹ kể tháng kể ngày”</b>A mother raises her child with an ocean-like abundance; the child raises the mother counting months and counting days. A custom formed through generations, in which receiving care back is only an option for the child.<cite>Vietnamese proverb</cite></div>
+    </div>
+
+    <h3 style="font-size: 1.5rem; margin: 36px 0 12px;">From our wall so far</h3>
+    <div class="kpis" id="wallStats"></div>
+
+    <div class="ours" style="margin-top: 24px;">
+      <b style="font-family: Fredoka, sans-serif; font-size: 1.25rem; color: var(--rose);">Our findings</b><span class="draft-tag">Draft</span>
+      <p>We are asking the people who write two questions, before and after:</p>
+      <ul>
+        <li>Did you know your mother’s care work is unpaid labour?</li>
+        <li>When did you last thank her, or take over one of her tasks?</li>
+      </ul>
+      <p style="margin-top: 10px;">Results and the comments that show a shift in how people see their mothers will be added here.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lb" id="lb" aria-hidden="true"><img id="lbImg" alt=""></div>
+
+<!-- Thảo Linh's letter, with the real chat clipped to it and the text beside it -->
+<dialog class="viewer" id="letterViewer" aria-labelledby="viewerTitle">
+  <div class="viewer-bar">
+    <h2 id="viewerTitle">Thảo Linh’s letter to her mom</h2>
+    <div class="seg" role="tablist" aria-label="Show">
+      <button type="button" role="tab" data-pane="img" aria-selected="true">The letter</button>
+      <button type="button" role="tab" data-pane="text" aria-selected="false">Read the text</button>
+    </div>
+    <button class="dlg-close" type="button" data-close aria-label="Close">×</button>
+  </div>
+  <div class="viewer-body" data-show="img">
+    <div class="pane pane-img">
+      <div class="clipboard">
+        <button class="letter-full" type="button" data-full="images/letter-to-mom.webp" aria-label="Thảo Linh’s letter to her mom, full size">
+          <img src="images/letter-to-mom.webp" alt="Thảo Linh’s letter to her mom for 20/10">
+        </button>
+        <div class="chats">
+          <figure class="clipped c1">
+            <span class="clip" aria-hidden="true"></span>
+            <button type="button" data-full="images/letter-chat-photo.png" aria-label="Family chat: a photo of Mom at home with the message “tr dữ luôn mẹ khóc luôn”, 21:00">
+              <img src="images/letter-chat-photo.png" alt="Family chat: a photo of Mom at home with the message “tr dữ luôn mẹ khóc luôn”, 21:00">
+            </button>
+            <figcaption>The family chat, that evening</figcaption>
+          </figure>
+          <figure class="clipped c2">
+            <span class="clip" aria-hidden="true"></span>
+            <button type="button" data-full="images/letter-chat-messages.png" aria-label="Mom’s replies to the letter, Wednesday 21/10/2026">
+              <img src="images/letter-chat-messages.png" alt="Mom’s replies to the letter, Wednesday 21/10/2026">
+            </button>
+            <figcaption>Mom’s reply, 21/10/2026</figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="viewer-hint">Tap the letter or a chat to see it full size.</p>
+    </div>
+    <div class="pane pane-text">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="vi" aria-pressed="true">Tiếng Việt</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
+      <div class="letter-text" id="letterText" lang="vi"></div>
+      <p class="viewer-hint">Family members’ names are hidden. The English version is our translation.</p>
+    </div>
+  </div>
+  <div class="zoom" id="viewerZoom" hidden><img alt=""><span>Tap to go back</span></div>
+</dialog>
+
+<!-- Reading someone's letter -->
+<dialog class="letter" id="letterDlg" aria-labelledby="letterFrom">
+  <button class="dlg-close" type="button" data-close aria-label="Close">×</button>
+  <div class="inner">
+    <div id="letterFace"></div>
+    <div class="dear">Dear Mom,</div>
+    <div class="body" id="letterBody"></div>
+    <div class="from" id="letterFrom"></div>
+    <div class="row">
+      <button class="btn alt" type="button" id="loveBtn">Send love ♥</button>
+      <button class="btn" type="button" id="writeToo">Write yours too</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Making a face and writing a letter -->
+<dialog class="builder" id="builderDlg" aria-labelledby="builderTitle">
+  <button class="dlg-close" type="button" data-close aria-label="Close">×</button>
+  <div class="grid">
+    <div class="left">
+      <div id="preview"></div>
+      <button class="dice" type="button" id="dice">🎲 Surprise me</button>
+      <div id="options"></div>
+    </div>
+    <div class="right">
+      <form id="letterForm" novalidate>
+        <h3 id="builderTitle">Is there something you wish you could tell your mom?</h3>
+        <div class="prompts" id="prompts">
+          <button type="button">Thank you for…</button>
+          <button type="button">I’m sorry I never…</button>
+          <button type="button">I remember when…</button>
+          <button type="button">I’m proud of you because…</button>
+        </div>
+        <label>Your letter
+          <textarea id="fText" maxlength="600" placeholder="Dear Mom, …" required></textarea>
+        </label>
+        <label>Your name <small>shown under your face on the wall</small>
+          <input type="text" id="fName" maxlength="24" autocomplete="given-name" required>
+        </label>
+        <label>Your email <small>optional, never shown</small>
+          <input type="email" id="fEmail" maxlength="120" autocomplete="email">
+        </label>
+        <label class="check"><input type="checkbox" id="fSend"> <span>I’d like this letter to be emailed to my mom one day</span></label>
+        <label id="momRow" hidden>Mom’s email <small>never shown</small>
+          <input type="email" id="fMom" maxlength="120">
+        </label>
+        <p class="privacy">Only your name, your face and your letter go on the wall. Email addresses are never shown to anyone.</p>
+        <p class="err" id="fErr" role="alert"></p>
+        <button class="btn" type="submit">Pin my face to the wall ♥</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+
+<footer>
+  <div class="wrap">
+    <div><div class="brand">Care for the Carers</div><small>Made with love for every carer. © 2026 Care for the Carers</small></div>
+    <div class="social">
+      <a href="https://www.threads.com/@dearm0m___?xmt=AQG04RvTUE1UEmttTiscVIee2t9sTj5icMl1IoDCkXUpfE8" target="_blank" rel="noopener">Threads</a>
+      <a href="https://www.instagram.com/dearm0m___/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@dearm0m___?fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAafg11mD12dhVJ9uT3EhNjr3ufzcEZuEaGsdpc_GfztZ3JC1G10YS2GTT2I4hw_aem_os5w2HNYPnUmmOeqrgshLQ" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+</footer>
+
+<script src="site-data.js"></script>
+<script src="site.js"></script>
+<script src="faces.js"></script>
+<script src="thank-you.js"></script>
+<script src="letter.js"></script>
+</body>
+</html>

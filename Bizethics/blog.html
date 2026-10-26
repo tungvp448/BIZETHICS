@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Carers’ Journal · Care for the Carers</title>
+<meta name="description" content="Reports from the ward, our research, and what we learned, written by the Love Behind the Ward team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="webbiz.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="web.html">Care for the Carers</a>
+    <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
+    <ul>
+      <li><a href="web.html">Home</a></li>
+      <li><a href="story.html">Our story</a></li>
+      <li><a href="thank-you.html">Say thank you</a></li>
+      <li class="has-sub"><a href="blog.html">Journal<span class="caret" aria-hidden="true">&#9662;</span></a><ul class="sub" data-journal></ul></li>
+      <li><a href="donate.html">Donate</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="blog"></main>
+
+<div class="lb" id="lb" aria-hidden="true"><img id="lbImg" alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <div><div class="brand">Care for the Carers</div><small>Love Behind the Ward · MANA3021 Business Ethics, VinUniversity · © 2026</small></div>
+    <div class="social">
+      <a href="https://www.threads.com/@dearm0m___?xmt=AQG04RvTUE1UEmttTiscVIee2t9sTj5icMl1IoDCkXUpfE8" target="_blank" rel="noopener">Threads</a>
+      <a href="https://www.instagram.com/dearm0m___/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@dearm0m___?fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAafg11mD12dhVJ9uT3EhNjr3ufzcEZuEaGsdpc_GfztZ3JC1G10YS2GTT2I4hw_aem_os5w2HNYPnUmmOeqrgshLQ" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+</footer>
+
+<script src="site-data.js"></script>
+<script src="site.js"></script>
+<script>
+  // Journal: blog.html lists every report; blog.html?post=<slug> shows one. Posts live in site-data.js.
+  var esc = Site.esc, box = document.getElementById("blog");
+  var slug = new URLSearchParams(location.search).get("post");
+  var post = SITE.posts.filter(function (p) { return p.slug === slug; })[0];
+
+  function youtube(url) {
+    var id = (url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/) || [])[1];
+    return id ? "https://www.youtube.com/embed/" + id : "";
+  }
+
+  // A paragraph kept word for word, with its key phrases highlighted
+  function marked(text, marks) {
+    var html = esc(text);
+    (marks || []).forEach(function (m) {
+      var e = esc(m), i = html.indexOf(e);
+      if (i < 0) { console.warn("Highlight not found in paragraph:", m); return; }
+      html = html.slice(0, i) + '<mark>' + e + '</mark>' + html.slice(i + e.length);
+    });
+    return html;
+  }
+
+  function block(b) {
+    if (typeof b === "string") return '<p>' + esc(b) + '</p>';
+    if (b.p) return '<p>' + marked(b.p, b.mark) + '</p>';
+    if (b.person) return '<div class="person"><span class="avatar" aria-hidden="true">' + esc(b.person.charAt(0)) + '</span>' +
+      '<div><h2>' + esc(b.title || b.person) + '</h2><span class="role">' + esc(b.person) + ' · ' + esc(b.role || "") + '</span>' +
+      (b.quote ? '<p class="sum-quote">“' + esc(b.quote) + '”</p>' : "") + '</div></div>';
+    if (b.h) return '<h2>' + esc(b.h) + '</h2>';
+    if (b.stat) return '<div class="stat-block"><b>' + esc(b.stat) + '</b><span>' + esc(b.text) + '</span>' + (b.source ? '<cite>' + esc(b.source) + '</cite>' : "") + '</div>';
+    if (b.quote) return '<blockquote><p>' + esc(b.quote) + '</p>' + (b.by ? '<span class="by">' + esc(b.by) + '</span>' : "") + '</blockquote>';
+    if (b.image) return '<figure><img src="' + esc(b.image) + '" alt="' + esc(b.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (b.caption ? '<figcaption>' + esc(b.caption) + '</figcaption>' : "") + '</figure>';
+    if (b.todo) return '<p class="todo">' + esc(b.todo) + '</p>';
+    if ("video" in b) {
+      var src = b.video ? youtube(b.video) : "";
+      return src
+        ? '<div class="video"><iframe src="' + esc(src) + '" title="' + esc(b.title || "Video") + '" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>'
+        : '<div class="video empty"><b>Video coming soon</b><span>' + esc(b.title || "") + '</span></div>';
+    }
+    if (b.table) return '<div class="tablebox"><table><thead><tr>' +
+      b.table.head.map(function (h) { return '<th>' + esc(h) + '</th>'; }).join("") + '</tr></thead><tbody>' +
+      b.table.rows.map(function (r) { return '<tr>' + r.map(function (c) { return '<td>' + esc(c) + '</td>'; }).join("") + '</tr>'; }).join("") +
+      '</tbody></table></div>';
+    return "";
+  }
+
+  // Stat blocks that follow each other sit side by side in one grid
+  function body(list) {
+    var html = "", stats = [];
+    function flush() { if (stats.length) html += '<div class="stat-grid">' + stats.join("") + '</div>'; stats = []; }
+    list.forEach(function (b) {
+      if (b && b.stat) stats.push(block(b)); else { flush(); html += block(b); }
+    });
+    flush();
+    return html;
+  }
+
+  function minutes(p) {
+    var words = p.body.reduce(function (n, b) {
+      var t = typeof b === "string" ? b : (b.p || b.quote || b.text || "");
+      return n + t.split(/\s+/).length;
+    }, 0);
+    return Math.max(1, Math.round(words / 200));
+  }
+
+  if (post) {
+    document.title = post.title + " · The Carers’ Journal";
+    var others = SITE.posts.filter(function (p) { return p !== post; });
+    box.innerHTML =
+      '<header class="page-head article-head"><div class="wrap narrow">' +
+        '<a class="back" href="blog.html">← All reports</a>' +
+        '<span class="kicker-pill">' + esc(post.kicker) + (post.draft ? ' <span class="draft-tag">Draft</span>' : "") + '</span>' +
+        '<h1>' + esc(post.title) + '</h1>' +
+        '<p>' + esc(post.standfirst) + '</p>' +
+        '<div class="byline"><span class="authors">By ' + esc(Site.authors(post)) + '</span><span>' + esc(Site.longDate(post.date)) + '</span><span>' + minutes(post) + ' min read</span></div>' +
+      '</div></header>' +
+      '<article class="wrap narrow article">' +
+        ("audio" in post ? (post.audio
+          ? '<div class="listen"><span>🎧 Listen to this report</span><audio controls preload="none" src="' + esc(post.audio) + '"></audio></div>'
+          : '<div class="listen empty"><span>🎧 Voice reading coming soon</span></div>') : "") +
+        (post.image ? '<figure class="hero-img"><img src="' + esc(post.image) + '" alt="' + esc(post.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (post.caption ? '<figcaption>' + esc(post.caption) + '</figcaption>' : "") + '</figure>' : "") +
+        '<div class="prose">' + body(post.body) + '</div>' +
+        (post.sources && post.sources.length ? '<div class="sources"><b>Sources</b><ul>' + post.sources.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("") + '</ul></div>' : "") +
+      '</article>' +
+      '<section class="wrap" style="padding-top: 24px;"><h2>More from the Journal</h2><div class="journal">' +
+        others.slice(0, 3).map(function (p) { return Site.journalCard(p, false); }).join("") +
+      '</div></section>';
+  } else {
+    box.innerHTML =
+      '<header class="page-head"><div class="wrap"><h1>The Carers’ Journal</h1>' +
+      '<p>Reports from the ward, our research, and what we learned, written by the team.</p></div></header>' +
+      '<section><div class="wrap"><div class="journal">' +
+        SITE.posts.map(function (p, i) { return Site.journalCard(p, i === 0); }).join("") +
+      '</div></div></section>';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Donate · Care for the Carers</title>
+<meta name="description" content="Support the mothers of children in cancer treatment. Every donation and expense is published.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="webbiz.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="web.html">Care for the Carers</a>
+    <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
+    <ul>
+      <li><a href="web.html">Home</a></li>
+      <li><a href="story.html">Our story</a></li>
+      <li><a href="thank-you.html">Say thank you</a></li>
+      <li class="has-sub"><a href="blog.html">Journal<span class="caret" aria-hidden="true">&#9662;</span></a><ul class="sub" data-journal></ul></li>
+      <li><a href="donate.html">Donate</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>Support the mothers at K Hospital</h1>
+    <p>They carry the heaviest form of care work, so they are the carers we fund first. Your donation reaches them through our partner volunteer group. Please add your name in the transfer note if you would like a thank-you message.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap donate">
+    <div class="box">
+      <div>
+        <h2>Choose an amount</h2>
+        <div class="chips" id="chips">
+          <button class="chip" type="button" data-amt="50,000" data-text="a warm meal for a mother in the ward.">50,000</button>
+          <button class="chip" type="button" data-amt="100,000" data-text="daily essentials for a mother for a week.">100,000</button>
+          <button class="chip" type="button" data-amt="200,000" data-text="small comforts for several mothers.">200,000</button>
+          <button class="chip" type="button" data-amt="500,000" data-text="a care package for a whole family.">500,000</button>
+        </div>
+        <p id="impact">Tap an amount to see what it can do.</p>
+        <dl class="acct">
+          <dt>Bank</dt><dd id="bankName"></dd>
+          <dt>Account holder</dt><dd id="bankHolder"></dd>
+          <dt>Account number</dt><dd class="num" id="acct"></dd>
+        </dl>
+        <div class="actions" style="margin-top: 16px;">
+          <button class="btn" id="copy" type="button">Copy account number</button>
+          <a class="btn alt" href="#statement" id="toStatement">See our statement</a>
+        </div>
+      </div>
+      <img class="qr" src="images/qr.png" alt="QR code for donations" onerror="this.remove()">
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="wrap">
+    <h2>Where the money goes</h2>
+    <p class="lede">We list every donation received and every expense, with proof, so you can see exactly how your support is used.</p>
+    <div class="goal">
+      <strong id="goalText"></strong>
+      <div class="track"><div class="bar" id="bar"></div></div>
+    </div>
+    <div class="sum">
+      <div class="in"><span>Total received</span><b id="totalIn">0</b></div>
+      <div class="out"><span>Total spent</span><b id="totalOut">0</b></div>
+      <div><span>Remaining</span><b id="balance">0</b></div>
+    </div>
+
+    <details class="fold" id="statement">
+      <summary>Statement and proof (sao kê)</summary>
+      <div class="panel tablebox">
+        <table>
+          <thead><tr><th>Date</th><th>Description</th><th class="amt">Amount (VND)</th><th>Proof</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <details class="fold">
+      <summary>The story behind the people here</summary>
+      <div class="panel story">
+        <p>On October 17th near Bệnh Viện K Tân Triều, local non-governmental organizations (NGOs) gathered near the hospital and brought different kinds of nutritious foods for the patients and the caretakers. Under the scorching heat, a group of women volunteered to help other people who can’t fully support themselves, even though those women were also going through something on their own.</p>
+        <p>While contacting different stakeholders for support, we met Ms. X and Ms. Y. (they prefered their names not being publishes) These two independent women started a volunteer group for patients and parents of children with cancer after a family member of their own had cancer. Having gone through the same story with them, we were delighted to work with them, gain access to the ward, and listen to what the families actually needed.</p>
+        <p style="border: 2px dashed var(--rose); border-radius: 14px; padding: 10px 14px; font-size: .92rem;"><b style="color: var(--rose);">To write ·</b> The stories of the mothers and volunteers, in their own words and with their consent.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><div class="brand">Care for the Carers</div><small>Made with love for every carer. © 2026 Care for the Carers</small></div>
+    <div class="social">
+      <a href="https://www.threads.com/@dearm0m___?xmt=AQG04RvTUE1UEmttTiscVIee2t9sTj5icMl1IoDCkXUpfE8" target="_blank" rel="noopener">Threads</a>
+      <a href="https://www.instagram.com/dearm0m___/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@dearm0m___?fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAafg11mD12dhVJ9uT3EhNjr3ufzcEZuEaGsdpc_GfztZ3JC1G10YS2GTT2I4hw_aem_os5w2HNYPnUmmOeqrgshLQ" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+</footer>
+
+<script src="site-data.js"></script>
+<script src="site.js"></script>
+<script>
+  // Bank details and the statement come from site-data.js
+  var fmt = Site.fmt, m = Site.money();
+  document.getElementById("bankName").textContent = SITE.bank.name;
+  document.getElementById("bankHolder").textContent = SITE.bank.holder;
+  document.getElementById("acct").textContent = SITE.bank.number;
+
+  var rows = document.getElementById("rows");
+  SITE.entries.forEach(function (e) {
+    var tr = document.createElement("tr");
+    [e.date, e.text, (e.type === "in" ? "+" : "-") + fmt(e.amount)].forEach(function (v, i) {
+      var td = document.createElement("td");
+      td.textContent = v;
+      if (i === 2) td.className = "amt " + e.type;
+      tr.appendChild(td);
+    });
+    var proof = document.createElement("td");
+    if (e.proof) {
+      var a = document.createElement("a");
+      a.className = "proof";
+      a.href = e.proof;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = "View proof ↗";
+      proof.appendChild(a);
+    } else {
+      proof.className = "proof none";
+      proof.textContent = "Coming soon";
+    }
+    tr.appendChild(proof);
+    rows.appendChild(tr);
+  });
+
+  // "See our statement" (here or from the home page) opens the folded statement
+  var statement = document.getElementById("statement");
+  function openStatement() { statement.open = true; statement.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  document.getElementById("toStatement").addEventListener("click", function (e) { e.preventDefault(); openStatement(); });
+  if (location.hash === "#statement") setTimeout(openStatement, 100);
+  document.getElementById("totalIn").textContent = fmt(m.totalIn);
+  document.getElementById("totalOut").textContent = fmt(m.totalOut);
+  document.getElementById("balance").textContent = fmt(m.totalIn - m.totalOut);
+  document.getElementById("goalText").textContent = fmt(m.totalIn) + " of " + fmt(SITE.goal) + " VND raised (" + Math.round(m.pct) + "%)";
+  setTimeout(function () { document.getElementById("bar").style.width = m.pct + "%"; }, 300);
+
+  // ===== COPY SỐ TÀI KHOẢN =====
+  document.getElementById("copy").addEventListener("click", function () {
+    var btn = this;
+    navigator.clipboard.writeText(SITE.bank.number).then(function () {
+      btn.textContent = "Copied!";
+      setTimeout(function () { btn.textContent = "Copy account number"; }, 2000);
+    });
+  });
+
+  // ===== CHỌN SỐ TIỀN =====
+  var chips = document.querySelectorAll(".chip");
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      chips.forEach(function (x) { x.classList.remove("on"); });
+      c.classList.add("on");
+      document.getElementById("impact").textContent = c.dataset.amt + " VND can give " + c.dataset.text;
+    });
+  });
+</script>
+</body>
+</html>
