@@ -548,3 +548,34 @@ footer small { display: block; width: 100%; opacity: .75; margin-top: 8px; }
 /* Note for our lecturer at the top of the executive summary */
 .reader-note { margin: 0 0 32px; padding: 12px 18px; border-left: 4px solid var(--rose); background: rgba(255,255,255,.7); border-radius: 0 16px 16px 0; font-size: .98rem; max-width: 70ch; }
 .reader-note b { color: var(--rose); }
+
+/* ===== Executive summary, split into clear blocks ===== */
+.sum-head { max-width: 760px; }
+.sum-head h2 { margin-bottom: 14px; }
+.sum-lede { font-size: 1.2rem; line-height: 1.7; }
+.pivot { margin: 36px 0; max-width: 760px; padding: 24px 28px; background: var(--white); border-radius: 28px; }
+.pivot p { margin-bottom: 12px; }
+.pivot-line { font-family: "Fredoka", sans-serif; font-size: 1.3rem; line-height: 1.4; color: var(--berry); margin-bottom: 0 !important; }
+.pivot-line b { color: var(--rose); font-weight: 600; }
+.points.three { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.points.three > div { padding: 22px 24px; position: relative; }
+.points .num { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--rose); color: var(--white); font-weight: 800; font-size: .9rem; margin-bottom: 10px; }
+.points.three b { margin-bottom: 6px; }
+@media (max-width: 860px) { .points.three { grid-template-columns: 1fr; } }
+
+/* Two tracks on a light band, so they read as their own section */
+.band-light { background: var(--white); border-radius: 48px; margin: 0 12px; }
+.band-light .track-card { background: var(--blush); }
+.band-light .tracks { margin-top: 8px; }
+
+/* Collaborations */
+.partners { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.partner { background: var(--white); border-radius: 28px; padding: 26px 28px; display: flex; flex-direction: column; gap: 10px; }
+.partner .tag { align-self: flex-start; font-weight: 800; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; padding: 3px 12px; border-radius: 999px; background: var(--petal); }
+.partner h3 { font-size: 1.35rem; color: var(--rose); }
+.partner p { line-height: 1.65; }
+.partner-quote { font-family: "Fredoka", sans-serif; font-size: 1.1rem; line-height: 1.4 !important; padding-left: 14px; border-left: 4px solid var(--rose); }
+.partner a { margin-top: auto; font-weight: 800; text-decoration: none; }
+.partner a:hover { text-decoration: underline; }
+.team-block { margin-top: 40px; }
+@media (max-width: 760px) { .partners { grid-template-columns: 1fr; } .band-light { margin: 0; border-radius: 32px; } }
