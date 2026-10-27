@@ -3,6 +3,11 @@
   var esc = Site.esc, m = Site.money();
   function $(id) { return document.getElementById(id); }
 
+  // ===== Campaign posts (social media track) =====
+  $("campaignPosts").innerHTML = SITE.campaignPosts.map(function (c) {
+    return '<figure><img src="' + esc(c.src) + '" alt="Campaign post: ' + esc(c.caption) + '" loading="lazy" data-zoom><figcaption>' + esc(c.caption) + '</figcaption></figure>';
+  }).join("");
+
   // ===== Team =====
   $("team").innerHTML = SITE.team.map(function (t) {
     return '<span><i aria-hidden="true">' + esc(t.name.charAt(0)) + '</i><span>' + esc(t.name) + '<small>' + esc(t.role) + '</small></span></span>';

@@ -178,7 +178,7 @@ td.out { color: var(--rose); }
 .prose th, .prose td { vertical-align: top; }
 .prose .todo { font-size: .98rem; line-height: 1.6; border: 2px dashed var(--rose); border-radius: 18px; padding: 12px 16px; margin: 1.4em 0; background: var(--white); }
 .prose .todo::before { content: "To write · "; font-weight: 800; color: var(--rose); }
-.prose mark { background: linear-gradient(transparent 45%, rgba(255,197,168,.85) 45%); color: inherit; font-weight: 700; padding: 0 2px; border-radius: 2px; }
+.prose mark, .first mark { background: linear-gradient(transparent 45%, rgba(255,197,168,.85) 45%); color: inherit; font-weight: 700; padding: 0 2px; border-radius: 2px; }
 .person { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; background: var(--white); border-radius: 28px; padding: 24px 26px; margin: 2.4em 0 1.4em; }
 .person .avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--petal); color: var(--rose); display: grid; place-items: center; font-family: "Fredoka", sans-serif; font-size: 1.6rem; }
 .prose .person h2 { margin: 0 0 2px; font-size: 1.45rem; }
@@ -296,9 +296,21 @@ nav .caret { font-size: .7em; margin-left: 4px; }
 .first .letter-img img { width: 100%; display: block; border-radius: 16px; }
 .first .letter-img span { display: block; font-size: .85rem; font-weight: 700; padding: 8px 4px 2px; color: var(--berry); opacity: .75; }
 .first p { max-width: 60ch; margin-bottom: 14px; }
-.first .campaign-card { margin: 4px 0 18px; max-width: 340px; }
-.first .campaign-card img { width: 100%; display: block; border-radius: 20px; box-shadow: 0 8px 22px rgba(90,24,50,.15); cursor: zoom-in; }
-.first .campaign-card figcaption { font-size: .85rem; opacity: .75; margin-top: 6px; }
+.first .big-point { font-family: "Fredoka", sans-serif; font-size: 1.4rem; line-height: 1.35; color: var(--rose); margin: 22px 0 10px; padding-left: 16px; border-left: 5px solid var(--rose); }
+.first .lead-quote { margin: 6px 0 18px; padding: 16px 20px; background: var(--white); border-radius: 22px 22px 22px 6px; font-family: "Fredoka", sans-serif; font-size: 1.2rem; line-height: 1.4; box-shadow: 0 6px 18px rgba(90,24,50,.08); max-width: 60ch; }
+.first .lead-quote cite { display: block; font-family: "Nunito", sans-serif; font-style: normal; font-weight: 800; font-size: .85rem; color: var(--rose); margin-top: 8px; }
+
+/* Campaign posts in the Dear Mom section */
+.feed { margin-top: 28px; }
+.feed-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.feed-head h3 { font-size: 1.3rem; }
+.feed-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.feed-grid figure { margin: 0; }
+.feed-grid img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 16px; display: block; cursor: zoom-in; transition: transform .25s; box-shadow: 0 6px 16px rgba(90,24,50,.1); }
+.feed-grid img:hover { transform: translateY(-4px) rotate(-1deg); }
+.feed-grid figcaption { font-size: .8rem; line-height: 1.35; margin-top: 6px; opacity: .8; }
+@media (max-width: 900px) { .feed-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 480px) { .feed-grid { grid-template-columns: repeat(2, 1fr); } }
 .first .soft-quote { font-family: "Caveat", cursive; font-size: 1.7rem; line-height: 1.25; color: var(--rose); margin: 6px 0 16px; }
 @media (max-width: 760px) { .first { grid-template-columns: 1fr; } .first .letter-img { max-width: 320px; margin: 0 auto; } }
 
@@ -532,3 +544,7 @@ footer small { display: block; width: 100%; opacity: .75; margin-top: 8px; }
   .reveal { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Note for our lecturer at the top of the executive summary */
+.reader-note { margin: 0 0 32px; padding: 12px 18px; border-left: 4px solid var(--rose); background: rgba(255,255,255,.7); border-radius: 0 16px 16px 0; font-size: .98rem; max-width: 70ch; }
+.reader-note b { color: var(--rose); }

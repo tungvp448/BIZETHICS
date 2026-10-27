@@ -91,6 +91,16 @@ var SITE = {
     { src: "images/day-team-and-mothers.jpg", caption: "Our team with the women we met" }
   ],
 
+  // ===== Bài đăng của chiến dịch mạng xã hội (hiện ở phần Dear Mom trên trang chủ) =====
+  campaignPosts: [
+    { src: "images/campaign-her-name.jpg", caption: "Gửi mẹ: since when did you lose your own name?" },
+    { src: "images/campaign-card-com-chua.jpg", caption: "“Ăn cơm chưa con?” means “Mẹ thương con.”" },
+    { src: "images/campaign-who-is-your-mom.jpg", caption: "Who is your mother?" },
+    { src: "images/campaign-matrescence.jpg", caption: "What matrescence means" },
+    { src: "images/campaign-2000-mothers.jpg", caption: "Becoming a mother is not only becoming a mother" },
+    { src: "images/campaign-more-than-mom.jpg", caption: "Mom is more than “mom”" }
+  ],
+
   // ===== Journal: các bài report =====
   // authors: người viết. draft: true sẽ hiện nhãn "Draft".
   // body: mỗi phần tử là một khối:
@@ -208,18 +218,15 @@ var SITE = {
       standfirst: "Caregiving is the work that holds every family together, yet it is rarely seen, paid or thanked.",
       authors: ["Hà Dương", "Thảo Linh"],
       date: "2026-10-25",
-      image: "images/campaign-her-name.jpg",
+      image: "images/day-listening.jpg",
       imageTall: true,
-      caption: "From our campaign: “Gửi mẹ. Since when did you lose your own name?”",
+      caption: "Listening to the women we met near K Hospital Tân Triều.",
       draft: true,
       body: [
         { h: "When does someone lose their identity?" },
         "This is such a weird question to ask because we only think of “losing identity” as a severe neuropsychology problem. But for many, it is a dated sentence that they have to face. Experiencing this process has been normalized to the point that we totally forgot about their existence.",
-        { image: "images/campaign-who-is-your-mom.jpg", tall: true, caption: "From our campaign: “Who is your mother?”" },
         "Let us prove this in a simple question: How many times have you looked at your mother and asked yourself “What could her name tell about her besides just a mother of yours?” and “Since when did her name not belong to herself anymore?”. There is a name for this process: Matrescence, the process of becoming a mother, first proposed by medical anthropologist Dana Raphael (1970) and developed by Aurelie Athan as “a deep identity change, not just postpartum depression” (Athan & Bastidas, 2021).",
-        { image: "images/campaign-matrescence.jpg", tall: true, caption: "From our campaign: what matrescence means." },
         { stat: "2 in 3", text: "of 2,000 British mothers said they felt they had lost part of their identity.", source: "PRNewswire, 2023" },
-        { image: "images/campaign-2000-mothers.jpg", tall: true, caption: "From our campaign: “Becoming a mother is not only becoming a mother.”" },
         { quote: "It seems crazy, but I was not prepared for the profound journey of matrescence. This isn’t talked about enough.", by: "A mother, in a survey by PANDA" },
         "Society tends to dismiss someone’s pain just because it is a collective shift, especially when it is a woman. A woman whom every aspect of her is only split into before her child and after her child.",
         { h: "A norm passed down through generations" },
@@ -236,7 +243,6 @@ var SITE = {
           ]
         } },
         "Recognition without resources is empty; resources without recognition do not change the norm.",
-        { image: "images/campaign-more-than-mom.jpg", tall: true, caption: "From our campaign: “Mom is more than ‘mom’.”" },
         { todo: "Hà Dương: add evidence on unpaid care work by women and mothers in Vietnam and globally, its economic value and the recognition gap (e.g. ILO / UN Women / GSO). Verify and cite each figure." }
       ],
       sources: ["Raphael, D. (1970)", "Athan, A., & Bastidas, G. (2021)", "PRNewswire (2023)", "Kittay, E. F.", "Fraser, N.; Honneth, A.", "Gilligan, C. (1982); Noddings, N. (1984); Tronto, J."]
