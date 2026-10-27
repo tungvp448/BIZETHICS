@@ -64,6 +64,50 @@ var Site = (function () {
   function postUrl(p) { return "blog.html?post=" + encodeURIComponent(p.slug); }
   function sortedPosts() { return SITE.posts.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; }); }
 
+  // Sends a form to a Supabase function (see supabase/setup.sql). Rejects with "offline" until SITE.supabase is filled in.
+  function send(fn, payload) {
+    var cfg = SITE.supabase || {};
+    if (!cfg.url || !cfg.anonKey) return Promise.reject(new Error("offline"));
+    return fetch(cfg.url.replace(/\/+$/, "") + "/rest/v1/rpc/" + fn, {
+      method: "POST",
+      headers: { apikey: cfg.anonKey, "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).then(function (r) { if (!r.ok) throw new Error("Supabase " + r.status); });
+  }
+
+  // What to tell people when a form cannot be sent yet
+  function reachUs() {
+    var c = SITE.contact || {}, links = SITE.socials.map(function (s) {
+      return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a>';
+    }).join(", ");
+    return (c.email ? 'Please email us at <a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a> or message us on ' : "Please message us on ") + links + ".";
+  }
+
+  // "Read our stories" box, placed wherever a page has <div data-subscribe></div>
+  function subscribeBox(el) {
+    el.className = "subscribe";
+    el.innerHTML = '<div><span class="eyebrow">Subscribe</span><h3>Read our stories, once a month</h3>' +
+      '<p>New reports from the ward, our research and the letters people write, in your inbox once a month.</p></div>' +
+      '<form novalidate><label class="sr-only" for="sub-' + el.dataset.subscribe + '">Your email</label>' +
+      '<input type="email" id="sub-' + el.dataset.subscribe + '" placeholder="you@example.com" autocomplete="email" required maxlength="120">' +
+      '<button class="btn" type="submit">Subscribe</button>' +
+      '<p class="fine">One email a month. We never share your email, and you can ask us to stop at any time.</p>' +
+      '<p class="msg" role="status"></p></form>';
+    var form = el.querySelector("form"), input = el.querySelector("input"), msg = el.querySelector(".msg");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!input.value || !input.checkValidity()) { msg.className = "msg err"; msg.textContent = "Please enter a valid email."; input.focus(); return; }
+      form.querySelector("button").disabled = true;
+      send("subscribe", { p_email: input.value.trim() }).then(function () {
+        form.innerHTML = '<p class="msg ok">Thank you. Our next story will reach you next month ♥</p>';
+      }).catch(function (err) {
+        msg.className = "msg err";
+        msg.innerHTML = err.message === "offline" ? "Subscriptions are not open yet. " + reachUs() : "Sorry, something went wrong. Please try again.";
+        form.querySelector("button").disabled = false;
+      });
+    });
+  }
+
   // A Journal card, used on the home page and the Journal page
   function journalCard(p, lead) {
     return '<a class="jcard' + (lead ? " lead" : "") + '" href="' + postUrl(p) + '">' +
@@ -86,6 +130,9 @@ var Site = (function () {
         return '<li><a href="' + postUrl(p) + '"><small>' + esc(p.kicker) + '</small>' + esc(p.title) + '</a></li>';
       }).join("");
     });
+
+    // Subscribe boxes
+    document.querySelectorAll("[data-subscribe]").forEach(subscribeBox);
 
     // Mobile menu
     var nav = document.querySelector("nav"), menuBtn = document.querySelector(".menu-btn");
@@ -136,5 +183,5 @@ var Site = (function () {
     }
   });
 
-  return { fmt: fmt, money: money, countUp: countUp, hearts: hearts, timeAgo: timeAgo, longDate: longDate, esc: esc, journalCard: journalCard, authors: authors, sortedPosts: sortedPosts };
+  return { fmt: fmt, money: money, countUp: countUp, hearts: hearts, timeAgo: timeAgo, longDate: longDate, esc: esc, send: send, reachUs: reachUs, journalCard: journalCard, authors: authors, sortedPosts: sortedPosts };
 })();

@@ -182,9 +182,10 @@
     t.focus();
   });
 
+  function wantsToSend() { return $("letterForm").elements.sendToMom.value === "yes"; }
   $("fSend").addEventListener("change", function () {
-    $("momRow").hidden = !this.checked;
-    if (this.checked) $("fMom").focus();
+    $("momRow").hidden = !wantsToSend();
+    if (wantsToSend()) $("fMom").focus();
   });
 
   function fail(input, msg) {
@@ -198,7 +199,7 @@
   $("letterForm").addEventListener("submit", function (e) {
     e.preventDefault();
     var text = $("fText").value.trim(), name = $("fName").value.trim();
-    var email = $("fEmail"), mom = $("fMom"), send = $("fSend").checked;
+    var email = $("fEmail"), mom = $("fMom"), send = wantsToSend();
     if (!text) return fail($("fText"), "Write a few words to your mom first.");
     if (!name) return fail($("fName"), "Add your name so she knows it’s from you.");
     if (email.value && !email.checkValidity()) return fail(email, "That email doesn’t look right.");
@@ -217,7 +218,7 @@
       $("momRow").hidden = true;
       face = Faces.random();
       render(saved.id);
-      toast("Your letter is on the wall ♥");
+      toast(send ? "Your letter is on the wall. We’ll send it to your mom ♥" : "Your letter is on the wall ♥");
     }).catch(function () {
       $("fErr").textContent = "Sorry, we couldn’t save your letter. Please try again.";
     }).then(function () { submit.disabled = false; });

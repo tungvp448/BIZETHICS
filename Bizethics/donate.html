@@ -32,7 +32,7 @@
   </div>
 </header>
 
-<section>
+<section id="top-donate">
   <div class="wrap donate">
     <div class="box">
       <div>
@@ -94,6 +94,39 @@
   </div>
 </section>
 
+<!-- ===== Need help? Reach out to us ===== -->
+<section id="help" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="help">
+      <div>
+        <span class="eyebrow">Need help?</span>
+        <h2>Reach out to us</h2>
+        <p>If you are caring for someone through illness and it has become too much to carry alone, tell us your story. We read every message. With your permission, we share it here so that others can help.</p>
+        <form id="helpForm" class="help-form" novalidate>
+          <label>Your name <small>optional</small>
+            <input type="text" id="hName" maxlength="60" autocomplete="name">
+          </label>
+          <label>How can we reach you? <small>phone, Zalo or email</small>
+            <input type="text" id="hContact" maxlength="120" required>
+          </label>
+          <label>Your story <small>what you are going through, and what would help</small>
+            <textarea id="hStory" maxlength="3000" required></textarea>
+          </label>
+          <label class="check"><input type="checkbox" id="hShare"> <span>You may share my story on this page. You will ask me before adding my name or photos.</span></label>
+          <p class="privacy">Your contact details are never shown on the website. Only our team can read them.</p>
+          <p class="msg" id="hMsg" role="status"></p>
+          <button class="btn" type="submit">Send my story</button>
+        </form>
+      </div>
+      <div>
+        <h3>Stories from people who asked for help</h3>
+        <p class="lede" style="font-size: 1rem;">Tap a story to read it. Tap again to close it.</p>
+        <div id="helpStories"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div><div class="brand">Care for the Carers</div><small>Made with love for every carer. © 2026 Care for the Carers</small></div>
@@ -138,6 +171,39 @@
     }
     tr.appendChild(proof);
     rows.appendChild(tr);
+  });
+
+  // ===== Stories from people who asked for help (they open and close in place) =====
+  var esc = Site.esc;
+  document.getElementById("helpStories").innerHTML = SITE.helpStories.map(function (s) {
+    return '<details class="fold story-fold"><summary><span><b>' + esc(s.title) + '</b><small>' + esc(s.teaser || "") + '</small></span></summary>' +
+      '<div class="panel story">' + s.body.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join("") +
+      (s.photos && s.photos.length ? '<div class="story-photos">' + s.photos.map(function (ph) {
+        return '<figure><img src="' + esc(ph.src) + '" alt="' + esc(ph.caption || "") + '" loading="lazy">' + (ph.caption ? '<figcaption>' + esc(ph.caption) + '</figcaption>' : "") + '</figure>';
+      }).join("") + '</div>' : "") +
+      (s.todo ? '<p class="todo-note"><b>To add ·</b> ' + esc(s.todo) + '</p>' : "") +
+      '<a class="btn alt" href="#top-donate">Donate to support the mothers</a></div></details>';
+  }).join("");
+
+  // ===== Need help form =====
+  document.getElementById("helpForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var msg = document.getElementById("hMsg"), contact = document.getElementById("hContact"), story = document.getElementById("hStory"), form = this;
+    if (!contact.value.trim()) { msg.className = "msg err"; msg.textContent = "Please tell us how we can reach you."; contact.focus(); return; }
+    if (!story.value.trim()) { msg.className = "msg err"; msg.textContent = "Please tell us a little about what you are going through."; story.focus(); return; }
+    form.querySelector('[type="submit"]').disabled = true;
+    Site.send("submit_help_request", {
+      p_name: document.getElementById("hName").value.trim() || null,
+      p_contact: contact.value.trim(),
+      p_story: story.value.trim(),
+      p_share: document.getElementById("hShare").checked
+    }).then(function () {
+      form.innerHTML = '<p class="msg ok">Thank you for trusting us with your story. Someone from our team will contact you soon ♥</p>';
+    }).catch(function (err) {
+      msg.className = "msg err";
+      msg.innerHTML = err.message === "offline" ? "We can’t receive messages here yet. " + Site.reachUs() : "Sorry, something went wrong. Please try again.";
+      form.querySelector('[type="submit"]').disabled = false;
+    });
   });
 
   // "See our statement" (here or from the home page) opens the folded statement

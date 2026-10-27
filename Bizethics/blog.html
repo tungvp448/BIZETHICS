@@ -73,7 +73,7 @@
     if (b.h) return '<h2>' + esc(b.h) + '</h2>';
     if (b.stat) return '<div class="stat-block"><b>' + esc(b.stat) + '</b><span>' + esc(b.text) + '</span>' + (b.source ? '<cite>' + esc(b.source) + '</cite>' : "") + '</div>';
     if (b.quote) return '<blockquote><p>' + esc(b.quote) + '</p>' + (b.by ? '<span class="by">' + esc(b.by) + '</span>' : "") + '</blockquote>';
-    if (b.image) return '<figure><img src="' + esc(b.image) + '" alt="' + esc(b.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (b.caption ? '<figcaption>' + esc(b.caption) + '</figcaption>' : "") + '</figure>';
+    if (b.image) return '<figure' + (b.tall ? ' class="tall"' : "") + '><img src="' + esc(b.image) + '" alt="' + esc(b.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (b.caption ? '<figcaption>' + esc(b.caption) + '</figcaption>' : "") + '</figure>';
     if (b.todo) return '<p class="todo">' + esc(b.todo) + '</p>';
     if ("video" in b) {
       var src = b.video ? youtube(b.video) : "";
@@ -122,9 +122,10 @@
         ("audio" in post ? (post.audio
           ? '<div class="listen"><span>🎧 Listen to this report</span><audio controls preload="none" src="' + esc(post.audio) + '"></audio></div>'
           : '<div class="listen empty"><span>🎧 Voice reading coming soon</span></div>') : "") +
-        (post.image ? '<figure class="hero-img"><img src="' + esc(post.image) + '" alt="' + esc(post.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (post.caption ? '<figcaption>' + esc(post.caption) + '</figcaption>' : "") + '</figure>' : "") +
+        (post.image ? '<figure class="hero-img' + (post.imageTall ? " tall" : "") + '"><img src="' + esc(post.image) + '" alt="' + esc(post.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (post.caption ? '<figcaption>' + esc(post.caption) + '</figcaption>' : "") + '</figure>' : "") +
         '<div class="prose">' + body(post.body) + '</div>' +
         (post.sources && post.sources.length ? '<div class="sources"><b>Sources</b><ul>' + post.sources.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("") + '</ul></div>' : "") +
+        '<div data-subscribe="article"></div>' +
       '</article>' +
       '<section class="wrap" style="padding-top: 24px;"><h2>More from the Journal</h2><div class="journal">' +
         others.slice(0, 3).map(function (p) { return Site.journalCard(p, false); }).join("") +
@@ -135,7 +136,7 @@
       '<p>Reports from the ward, our research, and what we learned, written by the team.</p></div></header>' +
       '<section><div class="wrap"><div class="journal">' +
         SITE.posts.map(function (p, i) { return Site.journalCard(p, i === 0); }).join("") +
-      '</div></div></section>';
+      '</div><div data-subscribe="journal"></div></div></section>';
   }
 </script>
 </body>

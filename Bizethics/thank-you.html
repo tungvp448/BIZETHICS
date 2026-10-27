@@ -54,6 +54,10 @@
       <span class="eyebrow">We went first</span>
       <h2>Why don’t we say it?</h2>
       <p>In many Vietnamese families, love is cooked, not spoken. It is the fruit cut and left on your desk, the “ăn cơm chưa?” on the phone, the jacket she makes you take. So saying “con thương mẹ” out loud can feel strange, even a little embarrassing.</p>
+      <figure class="campaign-card">
+        <img src="images/campaign-card-com-chua.jpg" alt="Campaign card: a chat where Mom asks “ăn cơm chưa con?” and the child answers “rồi ạ”, with the line “dịch ra là: mẹ thương con” (it means: Mom loves you)" loading="lazy" data-zoom>
+        <figcaption>From our campaign: “Ăn cơm chưa con?” means “Mẹ thương con.”</figcaption>
+      </figure>
       <p>That does not make saying it wrong. It only means we have not practised it. The words do not replace what she does; they tell her that we finally see it.</p>
       <p>For 20/10, our team lead Thảo Linh wrote this letter to her mom. Even after years of being praised for her writing, it was one of the very few times her mom had read something she wrote. Her mom cried.</p>
       <p class="soft-quote">“I miss you more than I remember you.”<br><small style="font-family: Nunito, sans-serif; font-size: .9rem; color: var(--berry);">Ocean Vuong, quoted in the letter</small></p>
@@ -181,8 +185,12 @@
         <label>Your email <small>optional, never shown</small>
           <input type="email" id="fEmail" maxlength="120" autocomplete="email">
         </label>
-        <label class="check"><input type="checkbox" id="fSend"> <span>I’d like this letter to be emailed to my mom one day</span></label>
-        <label id="momRow" hidden>Mom’s email <small>never shown</small>
+        <fieldset class="send-choice" id="fSend">
+          <legend>Would you like us to send this letter to your mom?</legend>
+          <label><input type="radio" name="sendToMom" value="yes"> Yes, email it to her one day</label>
+          <label><input type="radio" name="sendToMom" value="no" checked> Not now, just pin it to the wall</label>
+        </fieldset>
+        <label id="momRow" hidden>Mom’s email <small>never shown, only used to send her your letter</small>
           <input type="email" id="fMom" maxlength="120">
         </label>
         <p class="privacy">Only your name, your face and your letter go on the wall. Email addresses are never shown to anyone.</p>

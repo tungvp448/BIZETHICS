@@ -155,6 +155,9 @@ td.out { color: var(--rose); }
 .article { padding-top: 40px; padding-bottom: 8px; }
 .hero-img { margin: 0 0 36px; }
 .hero-img img, .prose figure img { width: 100%; display: block; border-radius: 28px; aspect-ratio: 16/9; object-fit: cover; cursor: zoom-in; }
+/* Portrait campaign graphics are shown whole, not cropped */
+.hero-img.tall img, .prose figure.tall img { aspect-ratio: auto; width: auto; max-width: min(100%, 460px); max-height: 640px; margin: 0 auto; object-fit: contain; }
+.hero-img.tall figcaption, .prose figure.tall figcaption { text-align: center; }
 .hero-img figcaption, .prose figcaption { font-size: .9rem; margin-top: 8px; opacity: .75; }
 
 .prose { font-size: 1.13rem; line-height: 1.85; }
@@ -293,6 +296,9 @@ nav .caret { font-size: .7em; margin-left: 4px; }
 .first .letter-img img { width: 100%; display: block; border-radius: 16px; }
 .first .letter-img span { display: block; font-size: .85rem; font-weight: 700; padding: 8px 4px 2px; color: var(--berry); opacity: .75; }
 .first p { max-width: 60ch; margin-bottom: 14px; }
+.first .campaign-card { margin: 4px 0 18px; max-width: 340px; }
+.first .campaign-card img { width: 100%; display: block; border-radius: 20px; box-shadow: 0 8px 22px rgba(90,24,50,.15); cursor: zoom-in; }
+.first .campaign-card figcaption { font-size: .85rem; opacity: .75; margin-top: 6px; }
 .first .soft-quote { font-family: "Caveat", cursive; font-size: 1.7rem; line-height: 1.25; color: var(--rose); margin: 6px 0 16px; }
 @media (max-width: 760px) { .first { grid-template-columns: 1fr; } .first .letter-img { max-width: 320px; margin: 0 auto; } }
 
@@ -455,6 +461,57 @@ dialog[open] { animation: dlg .35s cubic-bezier(.3,1.4,.5,1); }
 .research .ours ul { margin: 10px 0 0 20px; }
 .research .refs { font-size: .85rem; margin-top: 24px; opacity: .8; }
 .research .refs li { margin-bottom: 6px; }
+
+/* ===== Forms shared by Need help, Subscribe and the letter ===== */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.msg { font-weight: 800; font-size: .92rem; min-height: 1.2em; }
+.msg.err { color: #c0264f; }
+.msg.ok { color: var(--green); font-size: 1.05rem; }
+.msg a { color: inherit; }
+
+/* Need help? Reach out to us */
+.help { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; background: var(--white); border-radius: 40px; padding: 40px; }
+.help-form { display: grid; gap: 12px; margin-top: 18px; }
+.help-form label { font-weight: 800; font-size: .92rem; display: grid; gap: 4px; }
+.help-form label small { font-weight: 600; opacity: .75; }
+.help-form input[type=text], .help-form textarea { font: inherit; padding: 12px 16px; border: 3px solid var(--petal); border-radius: 18px; color: var(--berry); background: var(--blush); width: 100%; }
+.help-form textarea { min-height: 140px; resize: vertical; }
+.help-form input:focus, .help-form textarea:focus { border-color: var(--rose); outline: none; }
+.help-form .check { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; }
+.help-form .check input { width: 20px; height: 20px; margin-top: 4px; accent-color: var(--rose); flex: none; }
+.help-form .privacy { font-size: .85rem; opacity: .8; }
+.help h3 { font-size: 1.4rem; color: var(--rose); margin-bottom: 4px; }
+.story-fold > summary { display: flex; width: 100%; justify-content: space-between; border-radius: 22px; padding: 16px 22px; text-align: left; }
+.story-fold > summary span { display: grid; gap: 2px; }
+.story-fold > summary small { font-weight: 600; opacity: .8; }
+.story-fold[open] > summary small { opacity: .9; }
+.story-fold .panel { background: var(--blush); }
+.story-photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin: 12px 0; }
+.story-photos img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block; }
+.todo-note { border: 2px dashed var(--rose); border-radius: 14px; padding: 10px 14px; font-size: .9rem; margin: 8px 0 14px; }
+.todo-note b { color: var(--rose); }
+@media (max-width: 860px) { .help { grid-template-columns: 1fr; padding: 28px 20px; } }
+
+/* Subscribe: read our stories once a month */
+.subscribe { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; background: var(--petal); border-radius: 32px; padding: 30px 32px; margin: 40px 0 0; }
+.subscribe h3 { font-size: 1.5rem; color: var(--rose); margin-bottom: 6px; }
+.subscribe p { font-size: .98rem; line-height: 1.6; }
+.subscribe form { display: flex; flex-wrap: wrap; gap: 10px; }
+.subscribe input { flex: 1; min-width: 200px; font: inherit; padding: 12px 18px; border: 3px solid var(--white); border-radius: 999px; background: var(--white); color: var(--berry); }
+.subscribe input:focus { border-color: var(--rose); outline: none; }
+.subscribe .fine { width: 100%; font-size: .8rem; opacity: .75; }
+.subscribe .msg { width: 100%; }
+@media (max-width: 760px) { .subscribe { grid-template-columns: 1fr; padding: 24px 20px; } }
+
+/* Collaboration line in the summary */
+.collab { margin: 4px 0 22px; padding: 14px 20px; border-left: 5px solid var(--rose); background: var(--white); border-radius: 0 20px 20px 0; font-family: "Fredoka", sans-serif; font-size: 1.15rem; line-height: 1.4; max-width: 62ch; }
+.collab a { font-family: "Nunito", sans-serif; font-size: .85rem; font-weight: 800; display: inline-block; margin-top: 4px; }
+
+/* Letter form: send it to Mom? */
+.send-choice { border: 0; padding: 14px 16px; margin: 0; background: var(--blush); border-radius: 18px; display: grid; gap: 8px; }
+.send-choice legend { font-weight: 800; font-size: .95rem; padding: 0; margin-bottom: 4px; float: left; width: 100%; }
+.send-choice label { display: flex; gap: 10px; align-items: center; font-weight: 700; cursor: pointer; }
+.send-choice input { width: 20px; height: 20px; accent-color: var(--rose); flex: none; }
 
 /* ===== Footer ===== */
 footer { background: var(--berry); color: var(--blush); padding: 40px 0 32px; margin-top: 72px; }
