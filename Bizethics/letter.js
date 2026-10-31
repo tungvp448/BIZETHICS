@@ -1,7 +1,11 @@
-// Thảo Linh's letter to her mom: the reading text beside the letter image, in Vietnamese and English.
+// The team's letters to their moms: the reading text beside each letter image, in Vietnamese and English.
 // Tiếng Việt giữ NGUYÊN VĂN lá thư; chỉ thay tên người trong gia đình bằng ⟦name⟧ để che đi.
 // { q: `...` } là đoạn trích dẫn.
-var LETTER = {
+var LETTERS = {};
+
+// Thảo Linh
+LETTERS.linh = {
+  title: "Thao Linh’s letter to her mom",
   vi: [
     `Gửi mẹ,`,
     `Nhân ngày 20 tháng 10 lần thứ mười tám mà con được viết thư tặng cho mẹ con nghĩ con nên làm gì đó đặc biệt hơn một chút. Người ta nói là ngày sinh nhật của con đáng lẽ ra nên là ngày cảm ơn ba mẹ vì đã cho con một cuộc sống nhưng con thì nghĩ là việc tách riêng biệt hai ngày này ra vẫn tốt hơn nhiều vì ngày của ai thì người đó được chúc mừng với phải.`,
@@ -40,14 +44,29 @@ var LETTER = {
   ]
 };
 
+// Hà Dương: handwritten, given with a set of pháp phục for 20/10
+LETTERS.duong = {
+  title: "Ha Duong’s letter to Mom",
+  vi: [
+    `Hé lô Mẹ!`,
+    `Chúc mẹ 20/10 vui vẻ nhé!! Đây là năm đầu tiên mẹ sinh nhật nhưng không có hai tụi con ở bên cạnh. Nhưng mẹ đừng lo, tụi con vẫn không quên dịp này đâu nhé. Chúc mẹ tuổi mới ngày càng phát triển và thành công. Đặc biệt là kiếm thêm nhiều tiền để đóng tiền học (shopping và du lịch nếu có thể hi hi, còn không thì mẹ đợi con ra trường nhé). À chúc mẹ có thật thật thật là nhiều sức khoẻ để làm việc và tu tập =>>> năm nào cũng tặng hoa nên tụi con hết ý tưởng rồi, năm nay tụi con muốn góp phần vô collection đồ pháp phục của mẹ. Hy vọng mẹ sẽ mặc đi Hồng Kông và có một chuyến đi thành công mỹ mãn và tuyệt vời. Chúc mẹ thượng lộ bình an, đi an toàn và tích được nhiều phước.`,
+    `Con và chị An yêu mẹ nhiều nhiều nhiều. Một tỷ cái ôm và hôn từ Hà Nội nhé <3 tụi con thương và nhớ mẹ nhiều lắm. Siêu nhớ nhà và món mẹ nấu ạ hi hi hi hi hi.`
+  ],
+  en: [
+    `Hello Mom!`,
+    `Happy 20/10, Mom!! This is the first year you celebrate your birthday without the two of us by your side. But don’t worry, we still haven’t forgotten this day. For your new year of life, we wish you more and more growth and success. Especially earning lots more money to pay our school fees (and for shopping and travel if you can, hehe, if not, wait until I graduate). Oh, and we wish you really, really, really good health for work and for your spiritual practice =>>> we give you flowers every year so we have run out of ideas, and this year we want to add to your pháp phục collection. We hope you will wear it to Hong Kong and have a wonderful, perfectly successful trip. We wish you a safe journey, travel safely, and gather lots of blessings.`,
+    `An and I love you so, so, so much. A billion hugs and kisses from Hanoi <3 we love and miss you so much. Missing home and your cooking like crazy, hehehe.`
+  ]
+};
+
 (function () {
   var dlg = document.getElementById("letterViewer");
   if (!dlg) return;
-  var textBox = document.getElementById("letterText"), zoom = document.getElementById("viewerZoom");
+  var textBox = document.getElementById("letterText"), zoom = document.getElementById("viewerZoom"), cur = LETTERS.linh;
 
   function render(lang) {
     textBox.lang = lang;
-    textBox.innerHTML = LETTER[lang].map(function (b) {
+    textBox.innerHTML = cur[lang].map(function (b) {
       var q = typeof b !== "string", t = Site.esc(q ? b.q : b)
         .replace(/⟦name⟧/g, '<span class="redact" title="Name hidden" aria-label="name hidden">▇▇▇</span>');
       return q ? '<blockquote>' + t + '</blockquote>' : '<p>' + t + '</p>';
@@ -61,10 +80,17 @@ var LETTER = {
     dlg.querySelectorAll("[data-pane]").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.pane === pane); });
   }
 
-  document.getElementById("openLetter").addEventListener("click", function () {
-    render("vi");
-    show("img");
-    dlg.showModal();
+  // Each letter button names its letter with data-letter; the viewer shows only that letter's parts
+  document.querySelectorAll("[data-letter]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var id = btn.dataset.letter;
+      cur = LETTERS[id];
+      document.getElementById("viewerTitle").textContent = cur.title;
+      dlg.querySelectorAll("[data-for]").forEach(function (el) { el.hidden = el.dataset.for !== id; });
+      render("vi");
+      show("img");
+      dlg.showModal();
+    });
   });
   dlg.querySelectorAll("[data-lang]").forEach(function (b) { b.addEventListener("click", function () { render(b.dataset.lang); }); });
   dlg.querySelectorAll("[data-pane]").forEach(function (b) { b.addEventListener("click", function () { show(b.dataset.pane); }); });

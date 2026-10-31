@@ -47,7 +47,7 @@
 
 <section>
   <div class="wrap first">
-    <button class="letter-img" type="button" id="openLetter" aria-label="Open Thảo Linh’s letter to her mom">
+    <button class="letter-img" type="button" id="openLetter" data-letter="linh" aria-label="Open Thảo Linh’s letter to her mom">
       <img src="images/letter-to-mom.webp" alt="Thảo Linh’s handwritten-style letter to her mom for 20/10, decorated with flowers and family photos">
       <span>Thảo Linh’s letter to her mom, 20/10 · tap to read</span>
     </button>
@@ -61,6 +61,26 @@
       <blockquote class="lead-quote">“This was the first time I ever dared to tell my mom how much I love her.”<cite>Thảo Linh</cite></blockquote>
       <p class="soft-quote">“I miss you more than I remember you.”<br><small style="font-family: Nunito, sans-serif; font-size: .9rem; color: var(--berry);">Ocean Vuong, quoted in the letter</small></p>
       <button class="btn" type="button" id="firstBtn">Write yours</button>
+    </div>
+  </div>
+</section>
+
+<!-- Hà Dương's letter, given with a set of pháp phục -->
+<section>
+  <div class="wrap first flip">
+    <button class="letter-img" type="button" data-letter="duong" aria-label="Open Hà Dương’s letter to Mom">
+      <img src="images/letter-ha-duong.jpg" alt="Hà Dương’s handwritten letter to Mom for 20/10, on top of a gift box with a set of pháp phục" loading="lazy">
+      <span>Hà Dương’s letter to Mom, 20/10 · tap to read</span>
+    </button>
+    <div>
+      <span class="eyebrow">Another letter</span>
+      <h2>Not flowers this year</h2>
+      <p>For 20/10, team member Hà Dương wrote to Mom too. There had been flowers every year, so this time Hà Dương wanted to do <mark>something more special</mark>.</p>
+      <p>Hà Dương’s mom loves <b>pháp phục</b>, the clothing worn for Buddhist practice. So the gift was a new set for her collection, with this letter tucked into the box.</p>
+      <blockquote class="lead-quote">“We give you flowers every year so we have run out of ideas. This year we want to add to your pháp phục collection.”<cite>Hà Dương, in the letter</cite></blockquote>
+      <p>The letter does not hold anything back. <mark>The love is said plainly, in words</mark>, three times over:</p>
+      <p class="soft-quote">“Con và chị An yêu mẹ nhiều nhiều nhiều.”<br><small style="font-family: Nunito, sans-serif; font-size: .9rem; color: var(--berry);">“An and I love you so, so, so much.”</small></p>
+      <button class="btn alt" type="button" data-letter="duong">Read the letter</button>
     </div>
   </div>
 </section>
@@ -106,6 +126,13 @@
   </div>
   <div class="viewer-body" data-show="img">
     <div class="pane pane-img">
+      <div data-for="duong" hidden>
+        <button class="letter-full" type="button" data-full="images/letter-ha-duong.jpg" aria-label="Hà Dương’s letter to Mom, full size">
+          <img src="images/letter-ha-duong.jpg" alt="Hà Dương’s letter to Mom for 20/10, with the pháp phục gift" loading="lazy">
+        </button>
+        <p class="viewer-hint">Tap the letter to see it full size.</p>
+      </div>
+      <div data-for="linh">
       <div class="clipboard">
         <button class="letter-full" type="button" data-full="images/letter-to-mom.webp" aria-label="Thảo Linh’s letter to her mom, full size">
           <img src="images/letter-to-mom.webp" alt="Thảo Linh’s letter to her mom for 20/10">
@@ -128,6 +155,7 @@
         </div>
       </div>
       <p class="viewer-hint">Tap the letter or a chat to see it full size.</p>
+      </div>
     </div>
     <div class="pane pane-text">
       <div class="lang" role="group" aria-label="Language">
@@ -135,7 +163,8 @@
         <button type="button" data-lang="en" aria-pressed="false">English</button>
       </div>
       <div class="letter-text" id="letterText" lang="vi"></div>
-      <p class="viewer-hint">Family members’ names are hidden. The English version is our translation.</p>
+      <p class="viewer-hint" data-for="linh">Family members’ names are hidden. The English version is our translation.</p>
+      <p class="viewer-hint" data-for="duong" hidden>The English version is our translation.</p>
     </div>
   </div>
   <div class="zoom" id="viewerZoom" hidden><img alt=""><span>Tap to go back</span></div>

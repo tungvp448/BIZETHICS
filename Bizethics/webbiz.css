@@ -316,6 +316,12 @@ nav .caret { font-size: .7em; margin-left: 4px; }
 @media (max-width: 480px) { .feed-grid { grid-template-columns: repeat(2, 1fr); } }
 .first .soft-quote { font-family: "Caveat", cursive; font-size: 1.7rem; line-height: 1.25; color: var(--rose); margin: 6px 0 16px; }
 @media (max-width: 760px) { .first { grid-template-columns: 1fr; } .first .letter-img { max-width: 320px; margin: 0 auto; } }
+/* A second letter, mirrored: text on the left, photo on the right */
+.first.flip { grid-template-columns: 1fr 340px; }
+.first.flip > .letter-img { order: 2; transform: rotate(1.5deg); }
+.first.flip > .letter-img:hover { transform: rotate(0) scale(1.02); }
+@media (max-width: 760px) { .first.flip { grid-template-columns: 1fr; } .first.flip > .letter-img { order: 0; } }
+.pane-img > [data-for="duong"] .letter-full { max-width: 640px; margin: 0 auto; }
 
 /* Letter viewer: the letter with the real chats clipped to it, and the text beside it */
 dialog.viewer { max-width: min(1200px, calc(100vw - 24px)); width: 100%; height: min(92vh, 980px); max-height: calc(100vh - 24px); display: none; grid-template-rows: auto 1fr; overflow: hidden; background: var(--blush); }
