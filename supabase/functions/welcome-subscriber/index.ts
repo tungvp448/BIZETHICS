@@ -97,8 +97,12 @@ Deno.serve(async (req: Request) => {
   try { email = String((await req.json()).email || "").trim().toLowerCase(); } catch { /* handled below */ }
   if (!email) return reply({ ok: false, error: "Missing email" }, 400);
 
-  // Google shows app passwords in groups of four ("abcd efgh ..."); the spaces are not part of it
-  const user = (Deno.env.get("GMAIL_USER") || "").trim(), pass = (Deno.env.get("GMAIL_APP_PASSWORD") || "").replace(/\s+/g, "");
+  // Google shows app passwords as 16 letters in groups of four ("abcd efgh ..."); spaces, quotes or
+  // dashes pasted around them are not part of it
+  const user = (Deno.env.get("GMAIL_USER") || "").trim().replace(/^["']|["']$/g, "");
+  const raw = (Deno.env.get("GMAIL_APP_PASSWORD") || "").replace(/\s+/g, "");
+  const letters = raw.replace(/[^A-Za-z]/g, "");
+  const pass = letters.length === 16 ? letters : raw;
   if (!user || !pass) return reply({ ok: false, error: "Gmail is not set up yet: add GMAIL_USER and GMAIL_APP_PASSWORD" }, 503);
 
   const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
@@ -117,7 +121,9 @@ Deno.serve(async (req: Request) => {
   } catch (err) {
     // Let a later attempt try again
     await db.from("subscribers").update({ welcomed_at: null }).eq("email", email);
-    console.error("Sending failed:", err instanceof Error ? err.message : err);
+    // Shapes of the secrets (never their values) help spot a wrong one: an app password is 16 letters
+    const shape = `GMAIL_USER is ${/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(user) ? "an email address at " + user.split("@")[1] : "NOT an email address"}, app password length ${pass.length} (${letters.length} letters as saved)`;
+    console.error(`Sending failed (${shape}):`, err instanceof Error ? err.message : err);
     return reply({ ok: false, error: "Sending failed" }, 502);
   }
   return reply({ ok: true, sent: true });
