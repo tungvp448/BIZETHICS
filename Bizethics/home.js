@@ -39,11 +39,6 @@
   tiles($("hospitalStats"), SITE.hospitalStats);
   $("liveText").textContent = SITE.socialUpdated ? "Updated " + Site.timeAgo(SITE.socialUpdated) : "";
 
-  // ===== The children our support reaches: the gift photos, then any extra ones =====
-  $("childrenPhotos").innerHTML = (SITE.giftPhotos || []).concat(SITE.childrenPhotos || []).map(function (g) {
-    return '<figure><img src="' + esc(g.src) + '" alt="' + esc(g.caption) + '" loading="lazy" data-zoom><figcaption>' + esc(g.caption) + '</figcaption></figure>';
-  }).join("");
-
   // ===== Timeline =====
   $("timeline").innerHTML = SITE.timeline.map(function (t) {
     var d = new Date(t.date + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short" });

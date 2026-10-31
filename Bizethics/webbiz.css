@@ -674,11 +674,6 @@ details[open] > summary .tap-text::after { content: "Tap to close"; font-size: .
 .live-wrap { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 @media (prefers-reduced-motion: reduce) { .live-badge::before { animation: none; } }
 
-/* ===== With the children (home page) ===== */
-.children { background: var(--white); border-radius: 32px; padding: 26px 28px; margin-top: 40px; }
-.children h3 { font-size: 1.4rem; color: var(--rose); }
-.children > p { max-width: 62ch; margin: 4px 0 16px; }
-
 /* Six tabs: keep the menu on one line on tablets */
 @media (min-width: 761px) and (max-width: 1040px) {
   nav .brand { font-size: 1.1rem; }
@@ -700,3 +695,27 @@ nav ul { margin-left: auto; }
   .menu-btn { order: 3; }
   nav .wrap { gap: 10px; }
 }
+
+/* ===== Gift photos in the statement: a small swipe carousel ===== */
+.swipe { max-width: 560px; }
+.swipe-track { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 2px; }
+.swipe-track::-webkit-scrollbar { display: none; }
+.swipe-track:focus-visible { outline: 3px solid var(--berry); outline-offset: 4px; border-radius: 20px; }
+.swipe-track figure { flex: 0 0 min(240px, 72%); margin: 0; scroll-snap-align: start; }
+.swipe-track img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; display: block; cursor: zoom-in; }
+.swipe-track figcaption { font-size: .82rem; line-height: 1.35; margin-top: 6px; opacity: .8; }
+.swipe-bar { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+.swipe-btn { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--rose); background: var(--white); color: var(--rose); font: inherit; font-size: 1.3rem; font-weight: 800; line-height: 1; cursor: pointer; display: grid; place-items: center; padding: 0 0 3px; }
+.swipe-btn:hover:not(:disabled) { background: var(--rose); color: var(--white); }
+.swipe-btn:disabled { opacity: .3; cursor: default; }
+.swipe-dots { display: flex; gap: 6px; }
+.swipe-dots i { width: 7px; height: 7px; border-radius: 4px; background: var(--petal); transition: width .2s, background .2s; }
+.swipe-dots i.on { width: 18px; background: var(--rose); }
+
+/* ===== Our promise to every donor (Donate) ===== */
+.promise { background: var(--white); border-radius: 28px; padding: 22px 26px; margin: 20px 0 6px; border-left: 6px solid var(--green); }
+.promise h3 { font-size: 1.25rem; color: var(--berry); margin-bottom: 8px; }
+.promise ul { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 6px; }
+.promise li { position: relative; padding-left: 30px; line-height: 1.6; }
+.promise li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 21px; height: 21px; border-radius: 50%; background: var(--green); color: var(--white); font-size: .8rem; font-weight: 800; display: grid; place-items: center; }
+.promise p { font-size: .92rem; opacity: .85; }

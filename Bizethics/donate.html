@@ -78,6 +78,15 @@
       <div><span>Remaining</span><b id="balance">0</b></div>
     </div>
 
+    <div class="promise">
+      <h3>Our promise to every donor</h3>
+      <ul>
+        <li>We always check this statement against our bank account, and update it every time money comes in or goes out.</li>
+        <li>If anything looks wrong, or you would like the proof for your own donation, message us and we will send it to you.</li>
+      </ul>
+      <p id="promiseReach"></p>
+    </div>
+
     <details class="fold" id="statement">
       <summary>Statement and proof (sao kê)</summary>
       <div class="panel tablebox">
@@ -86,9 +95,16 @@
           <tbody id="rows"></tbody>
         </table>
         <h3 class="gifts-title">Gift packages for the children</h3>
-        <p class="gifts-note">Children at K Hospital Tan Trieu after receiving gift packages from the local volunteer group we support. Tap a photo to enlarge it.</p>
+        <p class="gifts-note">Children at K Hospital Tan Trieu after receiving gift packages from the local volunteer group we support. Swipe to see more, and tap a photo to enlarge it.</p>
         <p class="privacy-note">We have blurred the children’s faces to protect them.</p>
-        <div class="gifts" id="giftPhotos"></div>
+        <div class="swipe">
+          <div class="swipe-track" id="giftPhotos" tabindex="0" aria-label="Photos of the gift packages. Swipe to see more."></div>
+          <div class="swipe-bar">
+            <button class="swipe-btn" type="button" data-dir="-1" aria-label="Previous photo">‹</button>
+            <span class="swipe-dots" id="giftDots" aria-hidden="true"></span>
+            <button class="swipe-btn" type="button" data-dir="1" aria-label="Next photo">›</button>
+          </div>
+        </div>
       </div>
     </details>
     <div class="lb" id="lb" aria-hidden="true"><img id="lbImg" alt=""></div>
@@ -97,7 +113,7 @@
       <summary>The story behind the people here</summary>
       <div class="panel story">
         <p>On October 17th near K Tân Triều Hospital, local non-governmental organizations (NGOs) gathered near the hospital and brought different kinds of nutritious foods for the patients and the caretakers. Under the scorching heat, a group of women volunteered to help other people who can’t fully support themselves, even though those women were also going through something on their own.</p>
-        <p>While contacting different stakeholders for support, we met Ms. Dung and Ms. Thanh. These two independent women started a volunteer group for patients and parents of children with cancer after a family member of their own had cancer. Having gone through the same story with them, we were delighted to work with them, gain access to the ward, and listen to what the families actually needed.</p>
+        <p>While contacting different stakeholders for support, we met Ms. Thu and Ms. Thanh. These two independent women started a volunteer group for patients and parents of children with cancer after a family member of their own had cancer. Having gone through the same story with them, we were delighted to work with them, gain access to the ward, and listen to what the families actually needed.</p>
       </div>
     </details>
   </div>
@@ -243,10 +259,33 @@
     });
   });
 
-  // Photos of the gift packages, under the statement
-  document.getElementById("giftPhotos").innerHTML = (SITE.giftPhotos || []).map(function (g) {
+  // How to reach us about a donation (the promise box)
+  document.getElementById("promiseReach").innerHTML = Site.reachUs();
+
+  // Photos of the gift packages, under the statement: one at a time, swipe or use the arrows
+  var track = document.getElementById("giftPhotos"), dots = document.getElementById("giftDots");
+  var gifts = SITE.giftPhotos || [];
+  track.innerHTML = gifts.map(function (g) {
     return '<figure><img src="' + Site.esc(g.src) + '" alt="' + Site.esc(g.caption) + '" loading="lazy" data-zoom><figcaption>' + Site.esc(g.caption) + '</figcaption></figure>';
   }).join("");
+  dots.innerHTML = gifts.map(function () { return "<i></i>"; }).join("");
+  var slides = track.children, buttons = document.querySelectorAll(".swipe-btn");
+  function current() { return slides.length ? Math.round(track.scrollLeft / (slides[0].offsetWidth + 12)) : 0; }
+  function showPlace() {
+    var i = current();
+    [].forEach.call(dots.children, function (d, n) { d.classList.toggle("on", n === i); });
+    buttons[0].disabled = i <= 0;
+    buttons[1].disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+  }
+  [].forEach.call(buttons, function (b) {
+    b.addEventListener("click", function () {
+      var to = slides[Math.max(0, Math.min(slides.length - 1, current() + Number(b.dataset.dir)))];
+      if (to) track.scrollTo({ left: to.offsetLeft - slides[0].offsetLeft, behavior: "smooth" });
+    });
+  });
+  track.addEventListener("scroll", showPlace, { passive: true });
+  document.getElementById("statement").addEventListener("toggle", showPlace);
+  showPlace();
 
   // "See our statement" (here or from the home page) opens the folded statement
   var statement = document.getElementById("statement");

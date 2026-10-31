@@ -179,7 +179,7 @@ var SITE = {
         { p: `When we looked into the ethical problems around children treated at the National Cancer Hospital (Bệnh viện K), we noticed a group that is essential but mostly overlooked: the carers of sick children, most often their mothers. They are the link that holds the whole system of care together. They stay in the ward for months, give up their income, and put their own needs last, yet public attention and charity focus almost entirely on the child and hence recognise an also vulnerable group: mothers.` },
         { p: `This is not only our impression. The Standards of Psychosocial Care for Parents of Children with Cancer make a strong recommendation that parents receive early and ongoing mental-health support. The authors reviewed 138 studies. They found that parents’ distress peaks around diagnosis, and that a distressed parent can affect how the child copes (Kearney et al., 2015). Caring for the carer is therefore not a side project. It is one of the most direct ways to care for the child.`,
           mark: ["The authors reviewed 138 studies."] },
-        { p: `While contacting different stakeholders for support, we met Ms. Dung and Ms. Thanh. These two independent women started a volunteer group for patients and parents of children with cancer after a family member of their own had cancer. Having gone through the same story with them, we were delighted to work with them, gain access to the ward, and listen to what the families actually needed.` },
+        { p: `While contacting different stakeholders for support, we met Ms. Thu and Ms. Thanh. These two independent women started a volunteer group for patients and parents of children with cancer after a family member of their own had cancer. Having gone through the same story with them, we were delighted to work with them, gain access to the ward, and listen to what the families actually needed.` },
         { p: `After listening to the mothers’ stories (described in detail in Section 5), we kept coming back to one thought: they reminded us of our own mothers. Everything that the mothers sacrificed, our mother also sacrifices: time, youth, passion, her life. It is everywhere, in everyone, yet no one sees it.`,
           mark: ["It is everywhere, in everyone, yet no one sees it."] },
         { h: "Our core argument: why two tracks" },
@@ -391,23 +391,24 @@ var SITE = {
   // Bài ẩn vẫn mở được bằng link trực tiếp để nhóm xem và viết, ví dụ blog.html?post=what-we-learned
   hiddenPosts: [
     {
-      slug: "working-with-the-student-council",
+      // Tên tổ chức tạm ẩn (đang trao đổi). Khi công bố: thêm tên vào đây và vào thẻ "Who we work with" ở web.html.
+      slug: "working-with-a-student-organisation",
       kicker: "Partnership",
-      title: "Working with the VinUniversity Student Council",
-      standfirst: "In collaboration with the VinUniversity Student Council, to treasure the ones who care for others.",
+      title: "Working with a student organisation (to be announced)",
+      standfirst: "To thank the people who spend their lives caring for others.",
       authors: ["Thảo Linh"],
       date: "2026-10-27",
       image: "",
       caption: "",
       draft: true,
       body: [
-        { quote: "In collaboration with the VinUniversity Student Council, to treasure the ones who care for others." },
-        { h: "Why a student council" },
-        "Our main track is about how young people see and treat the care work of their own mothers. A student council speaks to exactly those people, every day, on our own campus. Working together moves Care for the Carers from one team’s project to something a whole student community can take part in.",
+        { quote: "To thank the people who spend their lives caring for others." },
+        { h: "Why a student organisation" },
+        "Our main track is about how young people see and treat the care work of their own mothers. A student organisation speaks to exactly those people, every day. Working together moves Care for the Carers from one team’s project to something a whole student community can take part in.",
         { h: "How it started" },
-        { todo: "Thảo Linh: how you first contacted the Student Council, who you worked with, and what you proposed." },
+        { todo: "Thảo Linh: how you first contacted the organisation, who you worked with, and what you proposed." },
         { h: "What we did together" },
-        { todo: "What the Student Council did: sharing the campaign, events, letters to mothers, fundraising. Add numbers if you have them." },
+        { todo: "What the organisation did: sharing the campaign, events, letters, fundraising. Add numbers if you have them." },
         { h: "Proof of the collaboration" },
         { todo: "Add a screenshot of the collaboration email as { image: \"images/sc-email.jpg\", caption: \"...\" }. Hide personal email addresses and phone numbers first." },
         { h: "What comes next" },
@@ -430,7 +431,7 @@ var SITE = {
         { image: "images/campaign-poster-mom.jpg", tall: true, caption: "Our campaign poster: “Ăn cơm chưa con?” means “Mẹ thương con.”" },
         { todo: "Thảo Linh: what we did, what shifted perception and what only got likes, and how audiences responded to our personal videos with our mothers." },
         { h: "From the K Hospital track" },
-        { todo: "What it took to get support to the mothers, and what Ms. Dung and Ms. Thanh taught us." },
+        { todo: "What it took to get support to the mothers, and what Ms. Thu and Ms. Thanh taught us." },
         { h: "An honest look at ourselves" },
         { todo: "Consent and dignity when filming mothers in distress, avoiding the saviour story, and whether our own messages slipped back into praising endless sacrifice." }
       ],
@@ -442,21 +443,14 @@ var SITE = {
   // Thông tin ngân hàng dưới đây vẫn là DỮ LIỆU MẪU, cần thay bằng tài khoản thật.
   bank: { name: "Your Bank Name", holder: "NGUYEN VAN A", number: "0123456789" },
   goal: 5000000, // mục tiêu quyên góp (VND)
-  // Ảnh các phần quà được trao (hiện ở dưới bảng sao kê)
+  // Ảnh trượt (swipe) trong phần sao kê ở trang Donate. Mặt các bé đã được làm mờ. Thêm ảnh: { src: "images/...", caption: "..." }
   giftPhotos: [
-    { src: "images/gift-smile.jpg", caption: "A gift package: a meal, milk, fruit, bread, snacks and 100,000 VND" },
-    { src: "images/gift-girl.jpg", caption: "After receiving a gift package" },
-    { src: "images/gift-boy.jpg", caption: "After receiving a gift package" },
-    { src: "images/gift-sleeping.jpg", caption: "A gift package left beside a sleeping child" },
-    { src: "images/gift-boy-note.jpg", caption: "A meal, milk, bread, an egg, snacks and 100,000 VND" },
+    { src: "images/gift-smile.jpg", caption: "A meal, milk, fruit, bread, snacks and 100,000 VND" },
     { src: "images/gift-bedside.jpg", caption: "A gift package beside a hospital bed" },
-    { src: "images/gift-girl-note.jpg", caption: "Holding up the 100,000 VND from the gift package" },
-    { src: "images/gift-girl-mat.jpg", caption: "After receiving a gift package" },
-    { src: "images/gift-young-man.jpg", caption: "After receiving a gift package" }
+    { src: "images/gift-girl.jpg", caption: "After receiving a gift package" },
+    { src: "images/gift-sleeping.jpg", caption: "A gift package left beside a sleeping child" },
+    { src: "images/gift-boy-note.jpg", caption: "A meal, milk, bread, an egg, snacks and 100,000 VND" }
   ],
-  // Ảnh thêm về các bé (hiện ở trang chủ, ngay sau ảnh quà ở trên). Chỉ đăng khi gia đình đã đồng ý.
-  // Mẫu: { src: "images/children-1.jpg", caption: "..." }
-  childrenPhotos: [],
 
   // type: "in" = tiền nhận, "out" = tiền chi. proof: ảnh bằng chứng (ví dụ "images/proof-1.jpg"), để trống nếu chưa có.
   entries: [
