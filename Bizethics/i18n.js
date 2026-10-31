@@ -65,7 +65,7 @@ var I18N = (function () {
   }
 
   // The EN/VI button sits in the menu, next to the profile icon
-  var BUTTON_ON = false; // bật lên (true) khi bản tiếng Việt đã dịch xong
+  var BUTTON_ON = true; // false để tạm ẩn nút EN/VI
   function addButton() {
     var nav = document.querySelector("nav .wrap");
     if (!nav || (!BUTTON_ON && !asked)) return;
