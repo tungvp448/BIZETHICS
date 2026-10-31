@@ -640,7 +640,8 @@ details[open] > summary .tap-text::after { content: "Tap to close"; font-size: .
   .outline-toggle { display: block; position: absolute; inset: 0; width: 100%; background: transparent; border: 0; font-size: 0; cursor: pointer; }
   .outline.open .outline-toggle { display: none; }
 }
-@media (max-width: 760px) {
+/* Until there is room beside the article (760px wide), keep the outline small on the right edge */
+@media (max-width: 900px) {
   .outline { left: auto; right: 4px; padding: 10px 6px; width: 30px; }
   .outline .dash { width: 12px; }
   .outline a.on .dash { width: 18px; }
@@ -688,3 +689,14 @@ details[open] > summary .tap-text::after { content: "Tap to close"; font-size: .
 /* Note under the children's photos */
 .privacy-note { display: inline-flex; align-items: center; gap: 8px; font-size: .88rem; font-weight: 700; background: var(--blush); color: var(--berry); padding: 6px 14px; border-radius: 999px; margin: 0 0 14px; }
 .privacy-note::before { content: "🔒"; font-size: .9em; }
+
+/* Profile icon in the corner of the menu bar (links to account.html) */
+nav ul { margin-left: auto; }
+.me { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--blush); color: var(--berry); transition: background .2s, color .2s, transform .15s; }
+.me:hover { background: var(--petal); color: var(--rose); transform: scale(1.06); }
+.me[aria-current="page"] { background: var(--rose); color: var(--white); }
+@media (max-width: 760px) {
+  .me { margin-left: auto; order: 2; }
+  .menu-btn { order: 3; }
+  nav .wrap { gap: 10px; }
+}

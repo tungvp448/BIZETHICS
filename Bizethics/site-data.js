@@ -322,6 +322,54 @@ var SITE = {
       ],
       sources: []
     },
+    // Bài của Thảo Linh: giữ nguyên văn, chỉ sửa lỗi chính tả. Ảnh minh hoạ từ Unsplash (miễn phí, ghi tên tác giả) và ảnh của nhóm.
+    {
+      slug: "next-step-of-an-equal-society",
+      kicker: "Comment",
+      title: "Next Step of an Equal Society: A Contemporary Comment Based on the Report",
+      standfirst: "What we learned at K Hospital, why money alone is not enough, and why change has to begin with how we see women.",
+      authors: ["Thảo Linh"],
+      date: "2026-11-01",
+      image: "https://images.unsplash.com/photo-1533222340060-cdbedaa5760f?w=1400&q=80&auto=format&fit=crop",
+      caption: "Photo: MI PHAM on Unsplash.",
+      draft: false,
+      body: [
+        { toc: "In this article" },
+        { h: "What we realized at the event" },
+        { p: `During our time at the event, we came to realize something: sometimes, simply providing financial support or meals can genuinely give people a sense of community but that's not our final goal. For example, mothers may find a certain sense of connection through these initiatives. They get to meet people who support them and remind them that they are not alone. However, at the same time, this does not necessarily mean that their lives will change for the better as they may find emotional support, but they are still essentially living day by day. The financial burden they carry remains an enormous problem that still needs to be addressed.`, mark: ["The financial burden they carry remains an enormous problem that still needs to be addressed."] },
+        { image: "images/day-listening.jpg", caption: "Listening to the women we met near K Hospital Tan Trieu on 17 October." },
+        { h: "Why money alone is not enough" },
+        { p: `As many studies have suggested, simply giving someone a large amount of money without providing the necessary support or resources does not automatically make their lives better. That's why in the very recent years Vietnam has allocated approximately 17–19% of its total state budget (equivalent to 4.5–5.5% of GDP) to education and training. The country is also accelerating its investment in education, with the government proposing VND 580 trillion in funding for education development programs from 2026 to 2035 to improve educational quality and reduce regional disparities (VnEconomy, 2026). And when it comes to healthcare, the situation becomes even more complicated. With education, for instance, we can provide access to learning opportunities, and governments can support educational initiatives without necessarily requiring enormous financial resources, one teacher can support thousands of lives online and offline. Healthcare, however, is a completely different story. Especially when it comes to diseases such as cancer, the cost of treatment is extremely high. It requires not only financial resources but also medical facilities, infrastructure, and specialized treatments for patients. Therefore, although the government has introduced various forms of support and the healthcare system has become much more accessible to the public, there are still significant gaps that need to be addressed. If we can share some of that burden with one another, even in the smallest ways, it can still make a difference.`, mark: ["simply giving someone a large amount of money without providing the necessary support or resources does not automatically make their lives better", "If we can share some of that burden with one another, even in the smallest ways, it can still make a difference."] },
+        { stat: "17–19%", text: "of Vietnam’s total state budget goes to education and training, equivalent to 4.5–5.5% of GDP", source: "VnEconomy, 2026" },
+        { stat: "VND 580 trillion", text: "proposed for education development programs from 2026 to 2035", source: "VnEconomy, 2026" },
+        { image: "https://images.unsplash.com/photo-1511629091441-ee46146481b6?w=1400&q=80&auto=format&fit=crop", caption: "One teacher can support thousands of lives. Photo: Tra Nguyen on Unsplash." },
+        { h: "What should come next" },
+        { p: `And perhaps that is the biggest lesson we have learned from this experience. For now, we believe that we should continue providing these meals until more comprehensive changes can take place to support these women in a more sustainable way. For example, creating employment opportunities, or even hiring these women through short-term contracts and providing them with proper wages, could help them avoid being overwhelmed by their responsibilities while still having a stable source of income to support their families.`, mark: ["creating employment opportunities, or even hiring these women through short-term contracts and providing them with proper wages"] },
+        { h: "Gender equality in Vietnam today" },
+        { p: `Beyond that, issues surrounding gender equality, employment opportunities, and the gender pay gap in Vietnam are also things that need to change. We need stronger systems of protection and solidarity among women themselves, particularly through organizations such as the Vietnam Women's Union. At present, the Vietnam Women's Union has made considerable progress. Vietnamese women, especially those living in urban areas, now have access to educational opportunities that are increasingly equal to those of men, only 1.15% of the population are illiterate (Nguyen Lien, 2023). We are also making efforts to minimize gender inequality as much as possible. However, this progress does not mean that the problem has been completely solved.`, mark: ["However, this progress does not mean that the problem has been completely solved."] },
+        { p: `One of the main reasons is that the way Vietnamese society perceives gender equality is somewhat different from how it is commonly understood in other parts of the world. In Vietnam, we sometimes have the impression that gender equality already exists simply because Vietnamese people are generally gentle and harmonious towards one another. However, inequalities in the actual workplace and within families still exist due to traditional beliefs and even religions. Mothers are still often the ones who give up their careers to stay at home and take care of their families without receiving any financial compensation. Women are also frequently expected to sacrifice their own professional ambitions simply to dedicate themselves to raising their children. In the long run, these are issues that undoubtedly need to change.`, mark: ["Mothers are still often the ones who give up their careers to stay at home and take care of their families without receiving any financial compensation."] },
+        { image: "https://images.unsplash.com/photo-1526269986783-9334d7bcf3af?w=1400&q=80&auto=format&fit=crop", caption: "Photo: Nam Hoang on Unsplash." },
+        { h: "Change begins with perception" },
+        { quote: "But before anything else, we believe that the first step must be changing people's perceptions." },
+        { p: `We do not believe that fighting, attacking, or insulting one another on social media, as some people are currently doing, is necessarily the right way to advocate for gender equality. Society has been advocating for misandrist, meaning to think the opposite way of misogynist. To us, gender equality should begin with love. When people genuinely love and respect one another, they will naturally make an effort to support each other through life's difficulties. If a boy learns to love and appreciate his mother, he should also learn to respect women, his future wife, his daughters, and the women around him. Because that sense of love and respect is something that his mother has already taught him.`, mark: ["To us, gender equality should begin with love."] },
+        { p: `At the same time, we believe that equality between men and women does not necessarily mean that men and women are identical. Being equal does not mean having to be the same. And this is something that society needs to acknowledge and teach, particularly within educational environments. We need to demonstrate that gender equality does not mean that we are now equal, so we have the right to treat one another however we want. Rather, it means that because we are equal, we should learn to live together, respect one another, and love one another.`, mark: ["Being equal does not mean having to be the same."] },
+        { image: "https://images.unsplash.com/photo-1694009514875-025cd00ed625?w=1400&q=80&auto=format&fit=crop", caption: "Photo: Jon Sailer on Unsplash." },
+        { h: "Why we created Dear Mom" },
+        { p: `And that is exactly why our social media campaign, Dear Mom, was created.`, mark: ["Dear Mom"] },
+        { p: `Dear Mom is a collection of letters written by children to their mothers, expressing the love, appreciation, and gratitude they have for everything their mothers have given them. Through these letters, we want to remind people of the value of women, not simply as mothers who take care of their families, but as individuals who deserve to be loved, respected, and supported in return.`, mark: ["as individuals who deserve to be loved, respected, and supported in return"] },
+        { image: "images/campaign-poster-mom.jpg", tall: true, caption: "Our Dear Mom campaign poster: “Ăn cơm chưa con?” means “Mẹ thương con.”" },
+        { p: `Through this call to action, we want to emphasize that if we truly want to support women around the world, especially those living in difficult circumstances, we need to change the way society as a whole perceives them. We cannot simply keep throwing money at problems and assuming that financial assistance alone will solve everything. Financial support is important, and initiatives such as providing meals should continue, but they are only part of a much bigger picture.`, mark: ["they are only part of a much bigger picture"] },
+        { h: "Looking ahead" },
+        { p: `Looking ahead, we hope that we can move further into education and develop our social media platform beyond simply calling for donations or encouraging people to participate in our activities. We want it to become a platform that genuinely raises awareness, challenges people's perceptions, and encourages critical thinking, understanding, and social responsibility among Vietnamese people, especially younger generations. We want to help them gradually develop a more informed and thoughtful perspective on the social issues surrounding them.`, mark: ["a platform that genuinely raises awareness, challenges people's perceptions, and encourages critical thinking"] },
+        { p: `Eventually, we hope to expand this initiative into something much bigger: a platform that can stand alongside women, advocate for them, and give them the opportunity to speak for themselves through their own personal stories. Not necessarily only the stories of mothers at K Hospital, but the stories of women from all walks of life, across Vietnam and eventually around the world.` },
+        { quote: "Because at the end of the day, we do not simply want to tell stories about women. We want to create a space where women can tell their own stories, where their voices are heard, and where society can finally begin to understand what they have been going through.", by: "Thảo Linh" }
+      ],
+      sources: [
+        { text: "VnEconomy (2026). Hiện trạng giáo dục Việt Nam: một góc nhìn kinh tế học", url: "https://vneconomy.vn/hien-trang-giao-duc-viet-nam-mot-goc-nhin-kinh-te-hoc.htm" },
+        { text: "Nguyen Lien (2023). Việt Nam vẫn còn trên 734.000 người chưa đạt chuẩn biết chữ mức độ 1. Đại biểu Nhân dân", url: "http://daibieunhandan.vn/viet-nam-van-con-tren-734-000-nguoi-chua-dat-chuan-biet-chu-muc-do-1-10324848.html" },
+        { text: "Illustration photos from Unsplash, free to use under the Unsplash License: MI PHAM, Tra Nguyen, Nam Hoang, Jon Sailer", url: "https://unsplash.com/license" }
+      ]
+    },
     {
       slug: "thank-you-from-the-team",
       kicker: "Letters",
@@ -340,33 +388,8 @@ var SITE = {
   ],
 
   // Bài đang tạm ẩn khỏi Journal vì chưa có nội dung. Muốn hiện lại: chuyển bài vào "posts" ở trên.
-  // Bài ẩn vẫn mở được bằng link trực tiếp để nhóm xem và viết, ví dụ blog.html?post=what-we-would-improve
+  // Bài ẩn vẫn mở được bằng link trực tiếp để nhóm xem và viết, ví dụ blog.html?post=what-we-learned
   hiddenPosts: [
-    {
-      slug: "what-we-would-improve",
-      kicker: "Next time",
-      title: "What we would improve next time",
-      standfirst: "What we would do differently, and the systems that could help more carers and their families.",
-      authors: [],
-      date: "2026-11-01",
-      image: "images/day-team-and-mothers.jpg",
-      caption: "Our team with the women we met on 17 October.",
-      draft: true,
-      body: [
-        { toc: "In this article" },
-        { h: "What worked, and what we would keep" },
-        { todo: "The parts of the project we would do again in the same way, and why." },
-        { h: "What we would do better" },
-        { todo: "On the social media track: content, timing, reaching people beyond our own friends." },
-        { todo: "On the K Hospital track: planning with Ms. Dung and Ms. Thanh, the budget, the day itself." },
-        { todo: "On the team: how we split the work, and what we would change." },
-        { h: "Systems that could help more people" },
-        { todo: "Ideas for longer-term change, for example a regular schedule with the volunteer group, an easy way for families to ask for help, or monthly support instead of one day. Write only what the team has actually discussed." },
-        { h: "What you can do" },
-        { todo: "One or two simple actions for readers, so they can take part in the next round." }
-      ],
-      sources: []
-    },
     {
       slug: "working-with-the-student-council",
       kicker: "Partnership",

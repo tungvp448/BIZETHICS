@@ -124,7 +124,7 @@ var Site = (function () {
   document.addEventListener("DOMContentLoaded", function () {
     // Mark the current tab
     var page = location.pathname.split("/").pop() || "web.html";
-    document.querySelectorAll("nav ul a").forEach(function (a) {
+    document.querySelectorAll("nav ul a, nav a.me").forEach(function (a) {
       if (a.getAttribute("href") === page) a.setAttribute("aria-current", "page");
     });
 
