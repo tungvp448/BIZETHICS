@@ -145,3 +145,36 @@ revoke all on function public.subscribe(text) from public;
 revoke all on function public.submit_help_request(text, text, text, boolean) from public;
 grant execute on function public.subscribe(text) to anon, authenticated;
 grant execute on function public.submit_help_request(text, text, text, boolean) to anon, authenticated;
+
+-- ============================================================
+-- Welcome email: khi có người đăng ký, gửi thư cảm ơn từ Gmail của nhóm.
+-- Thư được gửi bởi Edge Function "welcome-subscriber" (supabase/functions/welcome-subscriber).
+-- Cần đặt 2 secret trong Supabase → Edge Functions → Secrets: GMAIL_USER và GMAIL_APP_PASSWORD.
+-- ============================================================
+
+create extension if not exists pg_net with schema extensions;
+
+alter table public.subscribers add column if not exists welcomed_at timestamptz;
+
+create or replace function public.send_welcome_email()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  perform net.http_post(
+    url := 'https://dlzsvmfkawbsvmaioohj.supabase.co/functions/v1/welcome-subscriber',
+    body := jsonb_build_object('email', new.email),
+    headers := '{"Content-Type": "application/json"}'::jsonb
+  );
+  return new;
+end;
+$$;
+
+revoke all on function public.send_welcome_email() from public, anon, authenticated;
+
+drop trigger if exists subscribers_send_welcome on public.subscribers;
+create trigger subscribers_send_welcome
+  after insert on public.subscribers
+  for each row execute function public.send_welcome_email();
