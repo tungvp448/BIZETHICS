@@ -94,13 +94,16 @@
     return "s-" + text.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   }
 
-  // Agenda: one numbered link per section heading in the article (plus the references)
+  // Side outline, like Google Docs: a dash per section that opens into the list of titles on hover or tap
+  var outline = "";
   function agenda(list, title, hasSources) {
     var items = list.filter(function (b) { return b && b.h; }).map(function (b) {
-      return '<li><a href="#' + anchor(b.h) + '">' + esc(b.h) + '</a></li>';
+      return '<li><a href="#' + anchor(b.h) + '"><span class="dash" aria-hidden="true"></span><span class="label">' + esc(b.h) + '</span></a></li>';
     });
-    if (hasSources) items.push('<li><a href="#s-references">References</a></li>');
-    return '<nav class="agenda" aria-label="' + esc(title) + '"><b>' + esc(title) + '</b><ol>' + items.join("") + '</ol></nav>';
+    if (hasSources) items.push('<li><a href="#s-references"><span class="dash" aria-hidden="true"></span><span class="label">References</span></a></li>');
+    return '<nav class="outline" id="outline" aria-label="' + esc(title) + '">' +
+      '<button class="outline-toggle" type="button" aria-expanded="false" aria-controls="outline">' + esc(title) + '</button>' +
+      '<b class="outline-title">' + esc(title) + '</b><ol>' + items.join("") + '</ol></nav>';
   }
 
   // Stat blocks that follow each other sit side by side in one grid
@@ -108,12 +111,38 @@
     var html = "", stats = [];
     function flush() { if (stats.length) html += '<div class="stat-grid">' + stats.join("") + '</div>'; stats = []; }
     list.forEach(function (b) {
-      if (b && b.toc) { flush(); html += agenda(list, b.toc, hasSources); }
+      if (b && b.toc) outline = agenda(list, b.toc, hasSources);
       else if (b && b.stat) stats.push(block(b));
       else { flush(); html += block(b); }
     });
     flush();
     return html;
+  }
+
+  // Shows the outline beside the article and marks the section being read
+  function startOutline() {
+    if (!outline) return;
+    document.body.insertAdjacentHTML("beforeend", outline);
+    var nav = document.getElementById("outline"), toggle = nav.querySelector(".outline-toggle");
+    var links = [].slice.call(nav.querySelectorAll("a"));
+    var targets = links.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+
+    function mark() {
+      var current = 0;
+      targets.forEach(function (t, i) { if (t && t.getBoundingClientRect().top < window.innerHeight * 0.35) current = i; });
+      links.forEach(function (a, i) { a.classList.toggle("on", i === current); });
+      var article = document.querySelector(".article"), r = article.getBoundingClientRect();
+      nav.classList.toggle("shown", r.top < window.innerHeight * 0.6 && r.bottom > window.innerHeight * 0.4);
+    }
+    window.addEventListener("scroll", mark, { passive: true });
+    window.addEventListener("resize", mark);
+    mark();
+
+    // On touch screens there is no hover: tap the dashes to open, tap a title or outside to close
+    function setOpen(open) { nav.classList.toggle("open", open); toggle.setAttribute("aria-expanded", open); }
+    toggle.addEventListener("click", function () { setOpen(!nav.classList.contains("open")); });
+    nav.addEventListener("click", function (e) { if (e.target.closest("a")) setOpen(false); });
+    document.addEventListener("click", function (e) { if (!nav.contains(e.target)) setOpen(false); });
   }
 
   function source(s) {
@@ -152,6 +181,7 @@
       '<section class="wrap" style="padding-top: 24px;"><h2>More from the Journal</h2><div class="journal">' +
         others.slice(0, 3).map(function (p) { return Site.journalCard(p, false); }).join("") +
       '</div></section>';
+    startOutline();
   } else {
     box.innerHTML =
       '<header class="page-head"><div class="wrap"><h1>The Carers’ Journal</h1>' +
