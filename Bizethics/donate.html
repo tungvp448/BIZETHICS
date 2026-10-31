@@ -55,7 +55,10 @@
           <a class="btn alt" href="#statement" id="toStatement">See our statement</a>
         </div>
       </div>
-      <img class="qr" src="images/qr.png" alt="QR code for donations" onerror="this.alt='QR code is temporarily unavailable. Please use the account number.'">
+      <figure class="qr-box">
+        <div id="qr" class="qr" role="img" aria-label="VietQR code for a bank transfer to the account above"></div>
+        <figcaption>Scan with any Vietnamese banking app</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -140,6 +143,7 @@
 
 <script src="site-data.js"></script>
 <script src="site.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
   // Bank details are set here (they override anything in site-data.js)
   var BANK = {
@@ -147,6 +151,28 @@
     holder: "NGUYEN QUANG KHANH",
     number: "1035273315"
   };
+
+  // ===== VietQR: the standard bank-transfer QR code that Vietnamese banking apps read =====
+  // Built from BANK above. BANK_BIN is the bank's code in the VietQR system (Vietcombank = 970436).
+  var BANK_BIN = "970436";
+  function tlv(id, value) { return id + String(value.length).padStart(2, "0") + value; }
+  function crc16(s) {
+    var crc = 0xFFFF;
+    for (var i = 0; i < s.length; i++) {
+      crc ^= s.charCodeAt(i) << 8;
+      for (var j = 0; j < 8; j++) crc = crc & 0x8000 ? ((crc << 1) ^ 0x1021) & 0xFFFF : (crc << 1) & 0xFFFF;
+    }
+    return crc.toString(16).toUpperCase().padStart(4, "0");
+  }
+  function vietQR(bin, account, note) {
+    var payload = tlv("00", "01") + tlv("01", "11") +
+      tlv("38", tlv("00", "A000000727") + tlv("01", tlv("00", bin) + tlv("01", account)) + tlv("02", "QRIBFTTA")) +
+      tlv("53", "704") + tlv("58", "VN") + (note ? tlv("62", tlv("08", note)) : "") + "6304";
+    return payload + crc16(payload);
+  }
+  var qrBox = document.getElementById("qr");
+  if (window.QRCode) new QRCode(qrBox, { text: vietQR(BANK_BIN, BANK.number, "Care for the Carers"), width: 200, height: 200, correctLevel: QRCode.CorrectLevel.M });
+  else qrBox.textContent = "QR code is temporarily unavailable. Please use the account number.";
 
   var fmt = Site.fmt, m = Site.money();
   document.getElementById("bankName").textContent = BANK.name;

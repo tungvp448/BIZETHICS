@@ -18,15 +18,15 @@
     return '<a class="channel" href="' + esc(s.url) + '" target="_blank" rel="noopener"><span>' + esc(s.name) + '</span><small>' + esc(s.handle) + ' ↗</small></a>';
   }).join("");
 
-  // ===== Stats: a number, or "Updating" until the team adds it =====
+  // ===== Stats: a number that counts up, a figure written as text ("~500"), or "Updating" =====
   function tiles(box, list) {
     list.forEach(function (k) {
-      var el = document.createElement("div"), has = typeof k.value === "number";
+      var el = document.createElement("div"), has = typeof k.value === "number", shown = has ? "0" : (k.text || "Updating");
       el.className = "kpi";
-      el.innerHTML = '<span class="val' + (has ? "" : " pending") + '">' + (has ? "0" : "Updating") + '</span>' +
+      el.innerHTML = '<span class="val' + (has || k.text ? "" : " pending") + '">' + esc(shown) + '</span>' +
         '<span class="lbl">' + esc(k.label) + '</span>' +
-        '<span class="sub">' + [k.target ? "Goal " + Site.fmt(k.target) : "", k.updated ? "updated " + Site.timeAgo(k.updated) : "", k.live ? "live" : ""]
-          .filter(Boolean).join(" · ") + '</span>' +
+        '<span class="sub">' + esc([k.sub, k.target ? "Goal " + Site.fmt(k.target) : "", k.updated ? "updated " + Site.timeAgo(k.updated) : ""]
+          .filter(Boolean).join(" · ")) + '</span>' +
         (has && k.target ? '<div class="track"><div></div></div>' : "");
       box.appendChild(el);
       if (!has) return;
@@ -35,16 +35,9 @@
     });
   }
 
-  Letters.list().catch(function () { return []; }).then(function (letters) {
-    tiles($("socialStats"), SITE.socialStats.concat([{ label: "Letters on our Say thank you wall", value: letters.length, live: true }]));
-  });
-  tiles($("hospitalStats"), [
-    { label: "Raised (VND)", value: m.totalIn, target: SITE.goal, live: true },
-    { label: "Spent on the mothers (VND)", value: m.totalOut, live: true }
-  ].concat(SITE.hospitalStats));
-
-  var dates = SITE.socialStats.concat(SITE.hospitalStats).map(function (k) { return k.updated; }).filter(Boolean).sort();
-  $("liveText").textContent = dates.length ? "Live · last update " + Site.timeAgo(dates[dates.length - 1]) : "Live · numbers update as the campaign runs";
+  tiles($("socialStats"), SITE.socialStats);
+  tiles($("hospitalStats"), SITE.hospitalStats);
+  $("liveText").textContent = "Figures as of 28 Oct 2026";
 
   // ===== Timeline =====
   $("timeline").innerHTML = SITE.timeline.map(function (t) {

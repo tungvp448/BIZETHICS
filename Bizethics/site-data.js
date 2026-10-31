@@ -36,11 +36,11 @@ var SITE = {
 
   // ===== Thành viên nhóm =====
   team: [
-    { name: "Thảo Linh", role: "Project lead, video & report editor" },
-    { name: "Hà Dương", role: "Budget, logistics & website" },
+    { name: "Thảo Linh", role: "Project lead, video, research & website support" },
+    { name: "Hà Dương", role: "Budget, website & logistics" },
     { name: "Khánh Ngọc", role: "Timeline & executive summary" },
-    { name: "Quang Khánh", role: "Research & results" },
-    { name: "Raine", role: "Storyteller, host & posters" }
+    { name: "Quang Khánh", role: "Research, results & build" },
+    { name: "Raine", role: "Storyteller, reporter, host & posters" }
   ],
 
   // ===== Mạng xã hội =====
@@ -51,19 +51,22 @@ var SITE = {
   ],
 
   // ===== Số liệu =====
-  // value: số hiện tại. Để null nếu chưa có số, trang sẽ hiện "Updating".
+  // value: số (tự đếm lên khi cuộn tới), hoặc text: con số viết sẵn như "~500", "2,000+". Không có cả hai thì hiện "Updating".
+  // sub: dòng chú thích nhỏ dưới con số.
   // target: mục tiêu trong kế hoạch (Impact measures trong Docs). updated: ngày cập nhật (YYYY-MM-DD).
   // Track A: chiến dịch mạng xã hội (chính)
   socialStats: [
-    { label: "Views across posts and videos", value: null, target: 3000, updated: "" },
-    { label: "Dear Mom letters and posts shared", value: null, updated: "" },
-    { label: "Followers on TikTok, Instagram and Threads", value: null, updated: "" },
-    { label: "“Show it to your mother” reaction clips", value: null, target: 5, updated: "" }
+    { label: "Views across TikTok, Instagram and Threads", text: "2,800+", sub: "as of 28 Oct 2026" },
+    { label: "TikTok views", text: "2,000+", sub: "4 posts · nearly 100 interactions" },
+    { label: "Instagram views", text: "~500", sub: "nearly 100 interactions" },
+    { label: "Interactions across all three", text: "~220", sub: "TikTok, Instagram and Threads (5 posts on Threads)" }
   ],
-  // Track B: hỗ trợ các mẹ ở viện K. Số tiền tự tính từ bảng sao kê (entries) ở dưới.
+  // Track B: hỗ trợ ở viện K Tân Triều ngày 17/10 (theo Executive Summary của nhóm)
   hospitalStats: [
-    { label: "Mothers and caregivers reached on 17 Oct", value: null, target: 15, updated: "" },
-    { label: "New volunteers signed up with our partner group", value: null, target: 5, updated: "" }
+    { label: "Contributed to the local volunteer group (VND)", value: 2000000, sub: "fresh meals and essential supplies for hospital families" },
+    { label: "Spent on flowers (VND)", value: 600000, sub: "for mothers near the hospital" },
+    { label: "Meal portions distributed on 17 Oct", text: "~500", sub: "with the local volunteer group" },
+    { label: "Mothers who may have received support", text: "50–100", sub: "our estimate, not formally counted or verified" }
   ],
 
   // ===== Dòng thời gian (cũ nhất ở trên) =====
@@ -95,10 +98,7 @@ var SITE = {
   campaignPosts: [
     { src: "images/campaign-her-name.jpg", caption: "Gửi mẹ: since when did you lose your own name?" },
     { src: "images/campaign-card-com-chua.jpg", caption: "“Ăn cơm chưa con?” means “Mẹ thương con.”" },
-    { src: "images/campaign-who-is-your-mom.jpg", caption: "Who is your mother?" },
-    { src: "images/campaign-matrescence.jpg", caption: "What matrescence means" },
-    { src: "images/campaign-2000-mothers.jpg", caption: "Becoming a mother is not only becoming a mother" },
-    { src: "images/campaign-more-than-mom.jpg", caption: "Mom is more than “mom”" }
+    { src: "images/campaign-2000-mothers.jpg", caption: "Becoming a mother is not only becoming a mother" }
   ],
 
   // ===== Journal: các bài report =====
@@ -116,6 +116,61 @@ var SITE = {
   //   { person: "Tên", role: "...", title: "...", quote: "..." }   thẻ mở đầu phần viết của một người
   // audio: link file đọc bài (mp3...), hiện ở đầu bài. Để trống thì hiện "Voice reading coming soon".
   posts: [
+    // Hai bài dưới đây giữ NGUYÊN VĂN nội dung nhóm cung cấp. Chỉ thêm tô sáng (mark), không sửa chữ.
+    {
+      slug: "executive-summary",
+      kicker: "Executive summary",
+      title: "Executive Summary",
+      standfirst: "A summary of the whole Care for the Carers project: what we did, what we found, and what we have not yet proven.",
+      authors: ["Khánh Ngọc"],
+      date: "2026-10-28",
+      image: "images/day-team-handing-fruit.jpg",
+      caption: "Our team at the food distribution near K Hospital Tan Trieu, 17 October 2026.",
+      draft: false,
+      body: [
+        { p: `Care for the Carers is a social impact project developed by VinUniversity students for the MANA3021 Business Ethics course. It addresses the widespread lack of recognition and support for unpaid caregiving, particularly the work performed by mothers. Although caregiving is essential to family life, it is often treated as an expected responsibility rather than meaningful work deserving recognition, shared responsibility, and fair support. The project therefore aims to address both the everyday attitudes that make care work invisible and the practical needs of caregivers experiencing particularly demanding circumstances.`,
+          mark: ["It addresses the widespread lack of recognition and support for unpaid caregiving, particularly the work performed by mothers."] },
+        { p: `The project draws on three ethical frameworks: Care Ethics, Justice, and Utilitarianism. Care Ethics highlights the importance of understanding and responding to caregivers’ needs; Justice raises questions about the fairness of caregiving expectations and the recognition of unpaid work; and Utilitarianism encourages consideration of how public awareness and practical assistance can contribute to overall well-being. Together, these frameworks inform an approach that combines social awareness with direct support rather than relying on a single charitable activity.`,
+          mark: ["Care Ethics, Justice, and Utilitarianism", "combines social awareness with direct support"] },
+        { p: `The project operates through two parallel, mutually reinforcing initiatives. The main initiative, Dear Mom, is a social media campaign aimed at children and young people. It encourages them to recognise their own mothers’ caregiving as real work, express appreciation, share household and care responsibilities, and pay attention to their mothers’ needs and personal aspirations. The supporting initiative provides practical assistance to caregivers at K Hospital Tan Trieu, where the pressures associated with caring for children undergoing cancer treatment make the need for support particularly visible. The hospital activity gives the campaign a concrete example of caregivers’ circumstances, while the campaign seeks to broaden public understanding of the issue beyond the hospital.`,
+          mark: ["The main initiative, Dear Mom, is a social media campaign aimed at children and young people.", "The supporting initiative provides practical assistance to caregivers at K Hospital Tan Trieu"] },
+        { p: `On 17 October 2026, the team participated in a volunteering activity at K Hospital Tan Trieu. It contributed VND 2,000,000 to a local volunteer group that prepares fresh meals and provides essential supplies for hospital families, spent VND 600,000 on flowers, and helped distribute nearly 500 meal portions that day. Based on visual observations and conversations during the visit, the team estimated that approximately 50–100 mothers may have received support; this figure was not formally counted or independently verified. The contribution supported the volunteer group’s work and did not constitute direct wage payments to mothers.`,
+          mark: ["contributed VND 2,000,000", "spent VND 600,000 on flowers", "helped distribute nearly 500 meal portions", "this figure was not formally counted or independently verified"] },
+        { p: `The social media campaign generated initial online reach. As of 28 October 2026, its TikTok account had published four posts with more than 2,000 views and nearly 100 interactions. Instagram recorded approximately 500 views and nearly 100 interactions, while the new Threads account had five posts with approximately 300 views and nearly 20 interactions. The project website provides information about the initiative, features communications content related to K Hospital, and allows visitors to donate directly. Posts connect the campaign’s message with the hospital initiative and direct audiences towards the website. Although donations have been invited, the amount received through the website has not been confirmed. The available figures demonstrate initial exposure and engagement, but the team has no additional confirmed evidence of changes in public attitudes or behaviour.`,
+          mark: ["more than 2,000 views and nearly 100 interactions", "the amount received through the website has not been confirmed"] },
+        { p: `Ethical responsibility also shaped the team’s approach to communicating the project. The team sought permission before taking or publishing photographs and videos, took steps to protect individuals’ privacy, and aimed to maintain transparency in reporting project expenditure and fundraising information. These considerations are important when communicating about people experiencing difficult circumstances: their stories should be treated with dignity, and their experiences should not be used merely to attract attention or engagement.`,
+          mark: ["their stories should be treated with dignity"] },
+        { p: `Looking ahead, the team plans to continue publishing social media content and maintaining the website as a channel for project information and potential contributions. The two initiatives are designed to reinforce one another: practical support demonstrates how caregivers’ needs can be addressed through concrete action, while public awareness encourages young people to reconsider how they value and share caregiving responsibilities. However, the project has not yet established a measurable link between online engagement and donations, nor demonstrated lasting changes in behaviour. Its current results should therefore be understood as an initial step towards a longer-term goal: making care work more visible, valued, and fairly supported in everyday life.`,
+          mark: ["making care work more visible, valued, and fairly supported in everyday life"] }
+      ],
+      sources: []
+    },
+    {
+      slug: "problem-statement",
+      kicker: "Why we started",
+      title: "Problem Statement",
+      standfirst: "Why care work goes unseen, and why we started Care for the Carers.",
+      authors: ["Khánh Ngọc"],
+      date: "2026-10-28",
+      image: "",
+      caption: "",
+      draft: false,
+      body: [
+        { p: `Caregiving is the work that holds families together, yet it is often invisible, unpaid, and insufficiently recognised. Across many households, mothers take on substantial daily responsibilities, from managing household needs to providing emotional support for family members. Because these responsibilities are often treated as a natural part of being a mother rather than meaningful work, their time, effort, and personal needs can easily be overlooked. Children and young people may benefit from their mothers’ care without fully recognising the work involved or considering how they can contribute to these responsibilities themselves.`,
+          mark: ["Caregiving is the work that holds families together, yet it is often invisible, unpaid, and insufficiently recognised."] },
+        { p: `This issue raises an important ethical question: why is care work essential to family life, yet so often taken for granted? When mothers are expected to prioritise others continually, their own well-being, identities, and aspirations may receive insufficient attention. From the perspective of care ethics, ethical responsibility involves recognising relationships, understanding people’s needs, and responding with care. Justice draws attention to the unequal distribution and insufficient recognition of unpaid caregiving, while utilitarianism encourages consideration of how actions can improve overall well-being. Together, these perspectives suggest that addressing the issue requires more than occasional expressions of gratitude; it requires greater recognition of care work and more equitable sharing of caregiving responsibilities.`,
+          mark: ["why is care work essential to family life, yet so often taken for granted?", "it requires greater recognition of care work and more equitable sharing of caregiving responsibilities"] },
+        { p: `At K Hospital Tan Trieu, the challenges faced by mothers caring for children with cancer provide a particularly visible example of this broader issue. These mothers may spend extended periods supporting their children through treatment while managing emotional strain, financial pressures, and disruptions to their own lives. Their circumstances make them a relevant group for practical support, but the underlying problem extends beyond the hospital to families and communities more broadly. Their experiences illustrate why caregivers’ needs deserve attention alongside those of the people receiving care.`,
+          mark: ["a particularly visible example of this broader issue", "the underlying problem extends beyond the hospital"] },
+        { p: `In response, Care for the Carers adopts two parallel and complementary approaches. The main initiative, the social media campaign Dear Mom, seeks to encourage children and young people to recognise their own mothers’ caregiving as real work, express appreciation, share household and care responsibilities, and take an interest in their mothers’ needs and aspirations. Alongside this, the project provides practical support to caregivers at K Hospital Tan Trieu through contributions to a local volunteer group, food distribution, and flowers. The hospital initiative provides a tangible example of caregivers’ circumstances, while the broader campaign seeks to challenge the attitudes that can make their work invisible in everyday life.`,
+          mark: ["two parallel and complementary approaches", "the social media campaign Dear Mom"] },
+        { p: `The project also recognises that raising awareness must be accompanied by responsible action. Its website provides information about the initiative and allows visitors to contribute through donations, creating a potential connection between public engagement and practical support. However, the amount received through the website has not been confirmed, and the project has not established that it has changed public attitudes or behaviour. Its activities should therefore be understood as an initial effort to promote recognition and provide assistance, rather than proof of systemic change.`,
+          mark: ["raising awareness must be accompanied by responsible action", "rather than proof of systemic change"] },
+        { p: `Through these two initiatives, Care for the Carers aims to move beyond one-off expressions of gratitude towards a more sustained recognition of care work. The project did not establish a wage-payment system for mothers it also seeks to draw attention to the wider question of how unpaid care work can receive greater social recognition and support.`,
+          mark: ["move beyond one-off expressions of gratitude towards a more sustained recognition of care work"] }
+      ],
+      sources: []
+    },
     {
       slug: "real-reporting-at-k-hospital",
       kicker: "Report · Two perspectives",
@@ -131,7 +186,7 @@ var SITE = {
       body: [
         { video: "", title: "Our report from the day" },
 
-        { person: "Raine", role: "Storyteller, host & posters", title: "Raine’s View as a person from Phillipino.",
+        { person: "Raine", role: "Storyteller, reporter, host & posters", title: "Raine’s View as a person from Phillipino.",
           quote: "A simple thank you to your mother would matter." },
         { p: `In Vietnamese we have a sentence: “Mẹ nuôi con biển hồ lai láng, con nuôi mẹ kể tháng kể ngày” where it is translated into “A mother raises her child with an ocean-like abundance, the child raises the mother counting months and counting days”. It is written as a custom being formed through generations of neglect and assumptions of a mother shall always give her everything to her child while receiving it back is an option for that child to make. This, even though it is normalized, clearly stated the position a woman is pushed into after entering motherhood. And we can clearly saw that on the day they we got to our destination: Bệnh Viện K Tân Triều.`,
           mark: ["receiving it back is an option for that child to make"] },
@@ -146,7 +201,7 @@ var SITE = {
         { p: `The current world situation focuses on who holds power over something or someone that creates a lot of conflict between people and different countries. We forget about the nurturing, pillars, and protector of children, women who chose to share and provide love to children: WOMEN. A mother. It’s not too late for everyone to start appreciating the human beings that protected a life in the womb for nine months. Give them love, the kind that warms them while they're also doing it for others, providing mothers with hope and words that will make them fight for what they need or want in this world, and appreciating them for choosing to be someone's mother even with the life-changing milestones they knew they were going to experience. A simple thank you to your mother would matter. Make everyday a mother's day!`,
           mark: ["A simple thank you to your mother would matter."] },
 
-        { person: "Thảo Linh", role: "Project lead, video & report editor", title: "Thao Linh’s View",
+        { person: "Thảo Linh", role: "Project lead, video, research & website support", title: "Thao Linh’s View",
           quote: "How can we make their voices be heard?" },
         { p: `As I was the one who talked to the program organizers, who were two women running this program, I learned that they came here around four to five times a week because they genuinely wanted to volunteer and help these people. I was connected to them through my mom, who had also once suffered from cancer. Because of her own experience, she wanted to spread love to people who were going through the same condition as her.`,
           mark: ["four to five times a week"] },
@@ -215,7 +270,7 @@ var SITE = {
       slug: "the-work-no-one-sees",
       kicker: "Deep research · The main problem",
       title: "The work no one sees",
-      standfirst: "Caregiving is the work that holds every family together, yet it is rarely seen, paid or thanked.",
+      standfirst: "Caregiving is the work that holds families together, yet it is often invisible, unpaid, and insufficiently recognised.",
       authors: ["Hà Dương", "Thảo Linh"],
       date: "2026-10-25",
       image: "images/day-listening.jpg",
@@ -268,11 +323,11 @@ var SITE = {
         { h: "Why did the problem happen?" },
         "The problem mainly comes from traditional gender expectations, financial pressure, emotional stress, and a lack of support for caregivers. In Vietnamese society, mothers are often expected to take primary responsibility for caring for their children, especially when a child is seriously ill. At the same time, most medical and social attention focuses on the children receiving treatment, while the emotional and physical needs of their mothers receive less recognition. As a result, mothers’ sacrifices are often treated as normal responsibilities rather than struggles that deserve attention and support.",
         { h: "How the two problems are connected" },
-        "K Hospital is live proof. It shows people that these mothers can be supported, paid, and helped. This gives the campaign a real, visible example to promote. Social media is systemic change. It changes how people perceive caregiving, which in turn changes how the public views the work at K Hospital.",
+        "K Hospital is live proof. It shows people that these mothers can be supported and helped. This gives the campaign a real, visible example to promote. Social media is systemic change. It changes how people perceive caregiving, which in turn changes how the public views the work at K Hospital.",
         "Each track strengthens the other: the hospital project gives the campaign credibility, and the campaign builds the awareness that makes the hospital project matter to more people.",
         "Supporting carers also helps the children they look after: parents’ distress peaks around diagnosis and can affect how the child copes (Kearney et al., 2015). But that is a supporting reason. The main one is that their work is real, unpaid and unseen.",
         { h: "Has the problem been solved?" },
-        "Not yet. Care work is still largely unpaid and unrecognised. Our K Hospital track showed, on a small scale, that carers can be supported and paid when people are given a concrete way to help. Our social media track started changing how young people see and treat the care work of their own mothers. Lasting change needs both: resources for the most burdened carers and a new social norm for everyone.",
+        "Not yet. Care work is still largely unpaid and unrecognised. Our K Hospital track showed, on a small scale, that carers can be supported when people are given a concrete way to help. Our social media track started changing how young people see and treat the care work of their own mothers. Lasting change needs both: resources for the most burdened carers and a new social norm for everyone.",
         { todo: "Quang Khánh: review what others already do (hospital social work, volunteer groups like Ms X & Ms Y’s, charity funds, policy) and name the gap." }
       ],
       sources: ["VNA (2022)", "Do et al. (2024)", "SGGP (2023)", "Joshi et al. (2025)", "Psicología y Salud (2014)", "Kearney et al. (2015)"]
@@ -322,8 +377,8 @@ var SITE = {
   goal: 5000000, // mục tiêu quyên góp (VND)
   // type: "in" = tiền nhận, "out" = tiền chi. proof: ảnh bằng chứng (ví dụ "images/proof-1.jpg"), để trống nếu chưa có.
   entries: [
-    { date: "17/10/2026", text: "Contributions from team members", type: "in", amount: 2500000, proof: "" },
-    { date: "17/10/2026", text: "Sent to our partner volunteer group", type: "out", amount: 2000000, proof: "" },
-    { date: "17/10/2026", text: "Flowers for mothers near K Hospital", type: "out", amount: 500000, proof: "" }
+    { date: "17/10/2026", text: "Contributions from team members", type: "in", amount: 2600000, proof: "" },
+    { date: "17/10/2026", text: "Contributed to the local volunteer group (fresh meals and essential supplies for hospital families)", type: "out", amount: 2000000, proof: "" },
+    { date: "17/10/2026", text: "Flowers for mothers near K Hospital Tan Trieu", type: "out", amount: 600000, proof: "" }
   ]
 };

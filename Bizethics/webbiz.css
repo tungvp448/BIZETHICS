@@ -107,7 +107,10 @@ nav ul a[aria-current="page"] { background: var(--rose); color: var(--white); }
 .acct dt { font-size: .9rem; font-weight: 800; }
 .acct dd { font-size: 1.15rem; margin-bottom: 10px; }
 .acct dd.num { font-family: "Fredoka", sans-serif; font-size: 1.8rem; color: var(--rose); letter-spacing: .04em; }
-.qr { width: 200px; border-radius: 20px; border: 3px solid var(--petal); }
+.qr-box { margin: 0; text-align: center; }
+.qr { width: 224px; padding: 12px; background: var(--white); border-radius: 20px; border: 3px solid var(--petal); margin: 0 auto; }
+.qr img, .qr canvas { display: block; width: 100% !important; height: auto !important; }
+.qr-box figcaption { font-size: .85rem; font-weight: 700; margin-top: 8px; opacity: .8; }
 @media (max-width: 640px) { .donate .box { grid-template-columns: 1fr; } }
 
 /* ===== Statement ===== */
@@ -579,3 +582,24 @@ footer small { display: block; width: 100%; opacity: .75; margin-top: 8px; }
 .partner a:hover { text-decoration: underline; }
 .team-block { margin-top: 40px; }
 @media (max-width: 760px) { .partners { grid-template-columns: 1fr; } .band-light { margin: 0; border-radius: 32px; } }
+
+/* ===== Interactive tracks: tap a card to open its details ===== */
+.tap-hint { font-weight: 800; color: var(--rose); margin: -6px 0 14px; }
+.tracks.interactive { align-items: start; }
+.tracks.interactive .track-card { padding: 0; border: 3px solid var(--petal); transition: border-color .2s, box-shadow .2s, transform .2s; }
+.tracks.interactive .track-card.main { border-color: var(--rose); }
+.tracks.interactive summary { list-style: none; cursor: pointer; padding: 24px 26px; display: grid; gap: 8px; border-radius: 25px; }
+.tracks.interactive summary::-webkit-details-marker { display: none; }
+.tracks.interactive .track-card:not([open]):hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(232,69,124,.18); border-color: var(--rose); }
+.tracks.interactive summary:focus-visible { outline: 3px solid var(--berry); outline-offset: 2px; }
+.tracks.interactive h3 { margin: 0; }
+.tap { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: .95rem; color: var(--rose); }
+.tap-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--rose); color: var(--white); display: grid; place-items: center; font-size: 1.4rem; line-height: 1; flex: none; transition: transform .25s; animation: tap-pulse 2s ease-in-out infinite; }
+@keyframes tap-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(232,69,124,.45); } 50% { box-shadow: 0 0 0 8px rgba(232,69,124,0); } }
+details[open] > summary .tap-icon { transform: rotate(45deg); animation: none; }
+details[open] > summary .tap-text { font-size: 0; }
+details[open] > summary .tap-text::after { content: "Tap to close"; font-size: .95rem; }
+.track-body { padding: 0 26px 24px; margin: 0; animation: unfold .3s ease-out; }
+.track-body dt { margin-top: 6px; }
+.as-of { display: inline-block; font-weight: 800; font-size: .85rem; color: var(--berry); opacity: .7; }
+.tracks.interactive summary .tag { justify-self: start; margin-bottom: 0; }
