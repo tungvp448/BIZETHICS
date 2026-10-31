@@ -6,6 +6,7 @@
 <title>Donate · Care for the Carers</title>
 <meta name="description" content="Support the mothers of children in cancer treatment. Every donation and expense is published.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="webbiz.css">
 </head>
@@ -38,15 +39,15 @@
       <div>
         <h2>Choose an amount</h2>
         <div class="chips" id="chips">
-          <button class="chip" type="button" data-amt="50,000" data-text="a warm meal for a mother in the ward.">50,000</button>
-          <button class="chip" type="button" data-amt="100,000" data-text="daily essentials for a mother for a week.">100,000</button>
-          <button class="chip" type="button" data-amt="200,000" data-text="small comforts for several mothers.">200,000</button>
-          <button class="chip" type="button" data-amt="500,000" data-text="a care package for a whole family.">500,000</button>
+          <button class="chip" type="button" aria-pressed="false" data-amt="50,000" data-text="a warm meal for a mother in the ward.">50,000</button>
+          <button class="chip" type="button" aria-pressed="false" data-amt="100,000" data-text="daily essentials for a mother for a week.">100,000</button>
+          <button class="chip" type="button" aria-pressed="false" data-amt="200,000" data-text="small comforts for several mothers.">200,000</button>
+          <button class="chip" type="button" aria-pressed="false" data-amt="500,000" data-text="a care package for a whole family.">500,000</button>
         </div>
-        <p id="impact">Tap an amount to see what it can do.</p>
+        <p id="impact" aria-live="polite">Tap an amount to see what it can do.</p>
         <dl class="acct">
-          <dt>Bank </dt><dd id="bankName"></dd>
-          <dt>Account Holderdt><dd id="bankHolder"></dd>
+          <dt>Bank</dt><dd id="bankName"></dd>
+          <dt>Account holder</dt><dd id="bankHolder"></dd>
           <dt>Account number</dt><dd class="num" id="acct"></dd>
         </dl>
         <div class="actions" style="margin-top: 16px;">
@@ -54,7 +55,7 @@
           <a class="btn alt" href="#statement" id="toStatement">See our statement</a>
         </div>
       </div>
-      <img class="qr" src="images/qr.png" alt="QR code for donations" onerror="this.remove()">
+      <img class="qr" src="images/qr.png" alt="QR code for donations" onerror="this.alt='QR code is temporarily unavailable. Please use the account number.'">
     </div>
   </div>
 </section>
@@ -65,7 +66,7 @@
     <p class="lede">We list every donation received and every expense, with proof, so you can see exactly how your support is used.</p>
     <div class="goal">
       <strong id="goalText"></strong>
-      <div class="track"><div class="bar" id="bar"></div></div>
+      <div class="track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="track"><div class="bar" id="bar"></div></div>
     </div>
     <div class="sum">
       <div class="in"><span>Total received</span><b id="totalIn">0</b></div>
@@ -87,8 +88,7 @@
       <summary>The story behind the people here</summary>
       <div class="panel story">
         <p>On October 17th near K Tân Triều Hospital, local non-governmental organizations (NGOs) gathered near the hospital and brought different kinds of nutritious foods for the patients and the caretakers. Under the scorching heat, a group of women volunteered to help other people who can’t fully support themselves, even though those women were also going through something on their own.</p>
-        <p>While contacting different stakeholders for support, we met Ms. X and Ms. Y. (they prefered their names not being publishes) These two independent women started a volunteer group for patients and parents of children with cancer after a family member of their own had cancer. Having gone through the same story with them, we were delighted to work with them, gain access to the ward, and listen to what the families actually needed.</p>
-        <p style="border: 2px dashed var(--rose); border-radius: 14px; padding: 10px 14px; font-size: .92rem;"><b style="color: var(--rose);">To write ·</b> The stories of the mothers and volunteers, in their own words and with their consent.</p>
+        <p>While contacting different stakeholders for support, we met Ms. X and Ms. Y (they preferred their names not to be published). These two independent women started a volunteer group for patients and parents of children with cancer after a family member of their own had cancer. Having gone through the same story with them, we were delighted to work with them, gain access to the ward, and listen to what the families actually needed.</p>
       </div>
     </details>
   </div>
@@ -131,9 +131,9 @@
   <div class="wrap">
     <div><div class="brand">Care for the Carers</div><small>Made with love for every carer. © 2026 Care for the Carers</small></div>
     <div class="social">
-      <a href="https://www.threads.com/@dearm0m___?xmt=AQG04RvTUE1UEmttTiscVIee2t9sTj5icMl1IoDCkXUpfE8" target="_blank" rel="noopener">Threads</a>
+      <a href="https://www.threads.com/@dearm0m___" target="_blank" rel="noopener">Threads</a>
       <a href="https://www.instagram.com/dearm0m___/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.tiktok.com/@dearm0m___?fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAafg11mD12dhVJ9uT3EhNjr3ufzcEZuEaGsdpc_GfztZ3JC1G10YS2GTT2I4hw_aem_os5w2HNYPnUmmOeqrgshLQ" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.tiktok.com/@dearm0m___" target="_blank" rel="noopener">TikTok</a>
     </div>
   </div>
 </footer>
@@ -141,11 +141,17 @@
 <script src="site-data.js"></script>
 <script src="site.js"></script>
 <script>
-  // Bank details and the statement come from site-data.js
+  // Bank details are set here (they override anything in site-data.js)
+  var BANK = {
+    name: "Vietcombank",
+    holder: "NGUYEN QUANG KHANH",
+    number: "1035273315"
+  };
+
   var fmt = Site.fmt, m = Site.money();
-  document.getElementById("bankName").textContent = SITE.bank.name;
-  document.getElementById("bankHolder").textContent = SITE.bank.holder;
-  document.getElementById("acct").textContent = SITE.bank.number;
+  document.getElementById("bankName").textContent = BANK.name;
+  document.getElementById("bankHolder").textContent = BANK.holder;
+  document.getElementById("acct").textContent = BANK.number;
 
   var rows = document.getElementById("rows");
   SITE.entries.forEach(function (e) {
@@ -181,7 +187,6 @@
       (s.photos && s.photos.length ? '<div class="story-photos">' + s.photos.map(function (ph) {
         return '<figure><img src="' + esc(ph.src) + '" alt="' + esc(ph.caption || "") + '" loading="lazy">' + (ph.caption ? '<figcaption>' + esc(ph.caption) + '</figcaption>' : "") + '</figure>';
       }).join("") + '</div>' : "") +
-      (s.todo ? '<p class="todo-note"><b>To add ·</b> ' + esc(s.todo) + '</p>' : "") +
       '<a class="btn alt" href="#top-donate">Donate to support the mothers</a></div></details>';
   }).join("");
 
@@ -211,27 +216,48 @@
   function openStatement() { statement.open = true; statement.scrollIntoView({ behavior: "smooth", block: "start" }); }
   document.getElementById("toStatement").addEventListener("click", function (e) { e.preventDefault(); openStatement(); });
   if (location.hash === "#statement") setTimeout(openStatement, 100);
+
+  var pct = Math.min(100, m.pct);
   document.getElementById("totalIn").textContent = fmt(m.totalIn);
   document.getElementById("totalOut").textContent = fmt(m.totalOut);
   document.getElementById("balance").textContent = fmt(m.totalIn - m.totalOut);
   document.getElementById("goalText").textContent = fmt(m.totalIn) + " of " + fmt(SITE.goal) + " VND raised (" + Math.round(m.pct) + "%)";
-  setTimeout(function () { document.getElementById("bar").style.width = m.pct + "%"; }, 300);
+  document.getElementById("track").setAttribute("aria-valuenow", Math.round(pct));
+  setTimeout(function () { document.getElementById("bar").style.width = pct + "%"; }, 300);
 
-  // ===== COPY SỐ TÀI KHOẢN =====
+  // ===== COPY ACCOUNT NUMBER =====
   document.getElementById("copy").addEventListener("click", function () {
     var btn = this;
-    navigator.clipboard.writeText(SITE.bank.number).then(function () {
-      btn.textContent = "Copied!";
+    function done(text) {
+      btn.textContent = text;
       setTimeout(function () { btn.textContent = "Copy account number"; }, 2000);
-    });
+    }
+    function fallback() {
+      var t = document.createElement("textarea");
+      t.value = BANK.number;
+      t.style.position = "fixed";
+      t.style.opacity = "0";
+      document.body.appendChild(t);
+      t.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (err) {}
+      document.body.removeChild(t);
+      done(ok ? "Copied!" : "Please copy manually");
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(BANK.number).then(function () { done("Copied!"); }).catch(fallback);
+    } else {
+      fallback();
+    }
   });
 
-  // ===== CHỌN SỐ TIỀN =====
+  // ===== CHOOSE AN AMOUNT =====
   var chips = document.querySelectorAll(".chip");
   chips.forEach(function (c) {
     c.addEventListener("click", function () {
-      chips.forEach(function (x) { x.classList.remove("on"); });
+      chips.forEach(function (x) { x.classList.remove("on"); x.setAttribute("aria-pressed", "false"); });
       c.classList.add("on");
+      c.setAttribute("aria-pressed", "true");
       document.getElementById("impact").textContent = c.dataset.amt + " VND can give " + c.dataset.text;
     });
   });
