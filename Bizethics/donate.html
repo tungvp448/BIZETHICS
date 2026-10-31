@@ -84,8 +84,12 @@
           <thead><tr><th>Date</th><th>Description</th><th class="amt">Amount (VND)</th><th>Proof</th></tr></thead>
           <tbody id="rows"></tbody>
         </table>
+        <h3 class="gifts-title">Gift packages for the children</h3>
+        <p class="gifts-note">Children at K Hospital Tan Trieu after receiving gift packages from the local volunteer group we support. Tap a photo to enlarge it.</p>
+        <div class="gifts" id="giftPhotos"></div>
       </div>
     </details>
+    <div class="lb" id="lb" aria-hidden="true"><img id="lbImg" alt=""></div>
 
     <details class="fold">
       <summary>The story behind the people here</summary>
@@ -236,6 +240,11 @@
       form.querySelector('[type="submit"]').disabled = false;
     });
   });
+
+  // Photos of the gift packages, under the statement
+  document.getElementById("giftPhotos").innerHTML = (SITE.giftPhotos || []).map(function (g) {
+    return '<figure><img src="' + Site.esc(g.src) + '" alt="' + Site.esc(g.caption) + '" loading="lazy" data-zoom><figcaption>' + Site.esc(g.caption) + '</figcaption></figure>';
+  }).join("");
 
   // "See our statement" (here or from the home page) opens the folded statement
   var statement = document.getElementById("statement");

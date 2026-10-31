@@ -70,7 +70,8 @@
     if (b.person) return '<div class="person"><span class="avatar" aria-hidden="true">' + esc(b.person.charAt(0)) + '</span>' +
       '<div><h2>' + esc(b.title || b.person) + '</h2><span class="role">' + esc(b.person) + ' · ' + esc(b.role || "") + '</span>' +
       (b.quote ? '<p class="sum-quote">“' + esc(b.quote) + '”</p>' : "") + '</div></div>';
-    if (b.h) return '<h2>' + esc(b.h) + '</h2>';
+    if (b.h) return '<h2 id="' + anchor(b.h) + '">' + esc(b.h) + '</h2>';
+    if (b.list) return '<ul class="prose-list">' + b.list.map(function (t) { return '<li>' + marked(t, b.mark) + '</li>'; }).join("") + '</ul>';
     if (b.stat) return '<div class="stat-block"><b>' + esc(b.stat) + '</b><span>' + esc(b.text) + '</span>' + (b.source ? '<cite>' + esc(b.source) + '</cite>' : "") + '</div>';
     if (b.quote) return '<blockquote><p>' + esc(b.quote) + '</p>' + (b.by ? '<span class="by">' + esc(b.by) + '</span>' : "") + '</blockquote>';
     if (b.image) return '<figure' + (b.tall ? ' class="tall"' : "") + '><img src="' + esc(b.image) + '" alt="' + esc(b.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (b.caption ? '<figcaption>' + esc(b.caption) + '</figcaption>' : "") + '</figure>';
@@ -88,15 +89,36 @@
     return "";
   }
 
+  // An id for a section heading, so the agenda can link to it
+  function anchor(text) {
+    return "s-" + text.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  }
+
+  // Agenda: one numbered link per section heading in the article (plus the references)
+  function agenda(list, title, hasSources) {
+    var items = list.filter(function (b) { return b && b.h; }).map(function (b) {
+      return '<li><a href="#' + anchor(b.h) + '">' + esc(b.h) + '</a></li>';
+    });
+    if (hasSources) items.push('<li><a href="#s-references">References</a></li>');
+    return '<nav class="agenda" aria-label="' + esc(title) + '"><b>' + esc(title) + '</b><ol>' + items.join("") + '</ol></nav>';
+  }
+
   // Stat blocks that follow each other sit side by side in one grid
-  function body(list) {
+  function body(list, hasSources) {
     var html = "", stats = [];
     function flush() { if (stats.length) html += '<div class="stat-grid">' + stats.join("") + '</div>'; stats = []; }
     list.forEach(function (b) {
-      if (b && b.stat) stats.push(block(b)); else { flush(); html += block(b); }
+      if (b && b.toc) { flush(); html += agenda(list, b.toc, hasSources); }
+      else if (b && b.stat) stats.push(block(b));
+      else { flush(); html += block(b); }
     });
     flush();
     return html;
+  }
+
+  function source(s) {
+    if (typeof s === "string") return '<li>' + esc(s) + '</li>';
+    return '<li>' + esc(s.text) + (s.url ? ': <a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.url) + '</a>' : "") + '</li>';
   }
 
   function minutes(p) {
@@ -123,8 +145,8 @@
           ? '<div class="listen"><span>🎧 Listen to this report</span><audio controls preload="none" src="' + esc(post.audio) + '"></audio></div>'
           : '<div class="listen empty"><span>🎧 Voice reading coming soon</span></div>') : "") +
         (post.image ? '<figure class="hero-img' + (post.imageTall ? " tall" : "") + '"><img src="' + esc(post.image) + '" alt="' + esc(post.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (post.caption ? '<figcaption>' + esc(post.caption) + '</figcaption>' : "") + '</figure>' : "") +
-        '<div class="prose">' + body(post.body) + '</div>' +
-        (post.sources && post.sources.length ? '<div class="sources"><b>Sources</b><ul>' + post.sources.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("") + '</ul></div>' : "") +
+        '<div class="prose">' + body(post.body, post.sources && post.sources.length > 0) + '</div>' +
+        (post.sources && post.sources.length ? '<div class="sources" id="s-references"><h2>References</h2><ul>' + post.sources.map(source).join("") + '</ul></div>' : "") +
         '<div data-subscribe="article"></div>' +
       '</article>' +
       '<section class="wrap" style="padding-top: 24px;"><h2>More from the Journal</h2><div class="journal">' +

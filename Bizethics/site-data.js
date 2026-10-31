@@ -146,16 +146,20 @@ var SITE = {
       sources: []
     },
     {
-      slug: "problem-statement",
-      kicker: "Why we started",
-      title: "Problem Statement",
-      standfirst: "Why care work goes unseen, and why we started Care for the Carers.",
-      authors: ["Khánh Ngọc"],
+      slug: "the-work-no-one-sees",
+      kicker: "Problem statement & deep research",
+      title: "The work no one sees",
+      standfirst: "Caregiving is the work that holds families together, yet it is often invisible, unpaid, and insufficiently recognised.",
+      authors: ["Thảo Linh", "Khánh Ngọc", "Hà Dương"],
       date: "2026-10-28",
-      image: "",
-      caption: "",
+      image: "images/day-listening.jpg",
+      imageTall: true,
+      caption: "Listening to the women we met near K Hospital Tân Triều.",
       draft: false,
+      // Nội dung giữ NGUYÊN VĂN bài của nhóm. Chỉ thêm tiêu đề mục, tô sáng (mark), bảng và danh sách cho dễ đọc.
       body: [
+        { toc: "In this article" },
+        { h: "Problem Statement" },
         { p: `Caregiving is the work that holds families together, yet it is often invisible, unpaid, and insufficiently recognised. Across many households, mothers take on substantial daily responsibilities, from managing household needs to providing emotional support for family members. Because these responsibilities are often treated as a natural part of being a mother rather than meaningful work, their time, effort, and personal needs can easily be overlooked. Children and young people may benefit from their mothers’ care without fully recognising the work involved or considering how they can contribute to these responsibilities themselves.`,
           mark: ["Caregiving is the work that holds families together, yet it is often invisible, unpaid, and insufficiently recognised."] },
         { p: `This issue raises an important ethical question: why is care work essential to family life, yet so often taken for granted? When mothers are expected to prioritise others continually, their own well-being, identities, and aspirations may receive insufficient attention. From the perspective of care ethics, ethical responsibility involves recognising relationships, understanding people’s needs, and responding with care. Justice draws attention to the unequal distribution and insufficient recognition of unpaid caregiving, while utilitarianism encourages consideration of how actions can improve overall well-being. Together, these perspectives suggest that addressing the issue requires more than occasional expressions of gratitude; it requires greater recognition of care work and more equitable sharing of caregiving responsibilities.`,
@@ -167,9 +171,80 @@ var SITE = {
         { p: `The project also recognises that raising awareness must be accompanied by responsible action. Its website provides information about the initiative and allows visitors to contribute through donations, creating a potential connection between public engagement and practical support. However, the amount received through the website has not been confirmed, and the project has not established that it has changed public attitudes or behaviour. Its activities should therefore be understood as an initial effort to promote recognition and provide assistance, rather than proof of systemic change.`,
           mark: ["raising awareness must be accompanied by responsible action", "rather than proof of systemic change"] },
         { p: `Through these two initiatives, Care for the Carers aims to move beyond one-off expressions of gratitude towards a more sustained recognition of care work. The project did not establish a wage-payment system for mothers it also seeks to draw attention to the wider question of how unpaid care work can receive greater social recognition and support.`,
-          mark: ["move beyond one-off expressions of gratitude towards a more sustained recognition of care work"] }
+          mark: ["move beyond one-off expressions of gratitude towards a more sustained recognition of care work"] },
+        { h: "Deep research: how we found the problem" },
+        { p: `When we looked into the ethical problems around children treated at the National Cancer Hospital (Bệnh viện K), we noticed a group that is essential but mostly overlooked: the carers of sick children, most often their mothers. They are the link that holds the whole system of care together. They stay in the ward for months, give up their income, and put their own needs last, yet public attention and charity focus almost entirely on the child and hence recognise an also vulnerable group: mothers.` },
+        { p: `This is not only our impression. The Standards of Psychosocial Care for Parents of Children with Cancer make a strong recommendation that parents receive early and ongoing mental-health support. The authors reviewed 138 studies. They found that parents’ distress peaks around diagnosis, and that a distressed parent can affect how the child copes (Kearney et al., 2015). Caring for the carer is therefore not a side project. It is one of the most direct ways to care for the child.`,
+          mark: ["The authors reviewed 138 studies."] },
+        { p: `While contacting different stakeholders for support, we met Ms. X and Ms. Y. These two independent women started a volunteer group for patients and parents of children with cancer after a family member of their own had cancer. Having gone through the same story with them, we were delighted to work with them, gain access to the ward, and listen to what the families actually needed.` },
+        { p: `After listening to the mothers’ stories (described in detail in Section 5), we kept coming back to one thought: they reminded us of our own mothers. Everything that the mothers sacrificed, our mother also sacrifices: time, youth, passion, her life. It is everywhere, in everyone, yet no one sees it.`,
+          mark: ["It is everywhere, in everyone, yet no one sees it."] },
+        { p: `This widened our view beyond the group we first set out to help.` },
+        { p: `We can either` },
+        { p: `We also realised that lasting change will not come from one visit or one donation, but from a shift in how everyone treats the carers in their own lives. That is why we added a small, repeatable action anyone can take: “Care for the Carers”, saying thank you this 20/10 to the women who have taken care of us.`,
+          mark: ["lasting change will not come from one visit or one donation"] },
+        { p: `In this project, we tell the stories of the mothers who most need help, through their own eyes in the hospital. We then apply what we learnt from them to design a more systematic change that encourages everyone to recognise and care for the carers in their own lives in hope of creating a domino effect to encourage everyone to care for any carers at all.` },
+        { p: `Before getting into more specific local ethical issues, let’s go through the universal collective experience that could explain the underlying psychological factors of why this issue happened in the first place:` },
+        { h: `“When does someone lose their identity?”` },
+        { p: `This is such a weird question to ask because we only think of "losing identity” as a severe neuropsychology problem. But for many, it is a dated sentence that they have to face. Experiencing this process has been normalized to the point that we totally forgot about their existence.` },
+        { p: `Let us prove this in a simple question: How many times have you looked at your mother and asked yourself “What could her name tell about her besides just a mother of yours?” and “Since when did her name not belong to herself anymore?”. There is a name for this process: Matrescence - the process of becoming a mother, first proposed by medical anthropologist Dana Raphael (1970) and developed by Aurelie Athan as “a deep identity change, not just postpartum depression” (Athan. A., Bastidas. G., 2021).`,
+          mark: ["“Since when did her name not belong to herself anymore?”"] },
+        { p: `On a survey made by PANDA in 2025, a mother shared her thought: “It seems crazy, but I was not prepared for the profound journey of matrescence. This isn't talked about enough”. In a survey linked to that study, of 2,000 British mothers, two-thirds of them said they felt they have lost part of their identity (PRNewswire, 2023). Society tends to deceive someone’s pain just because it is a collective shift, especially when it is a woman. But it will haunt you one day a horrifying truth that your women have lived a life you forced them to live. A woman whom every aspect of her is only split into before her child and after her child.`,
+          mark: ["two-thirds of them said they felt they have lost part of their identity"] },
+        { p: `If the simple fact of hundreds of thousands women suffering from mental illnesses still doesn’t sound like an ethical problem to you simply because you too, like many people,  have confronted the patriarchy system, then let’s go through what “more ethical” problems this can raise.` },
+        { h: "Layer 1: The wider problem. Care is work, but it is rarely treated as work" },
+        { p: `Worldwide, about 16.4 billion hours of unpaid care work are done every day, the equivalent of 2 billion people working eight-hour days with no pay. Valued at an hourly minimum wage, this would be about 9% of global GDP (US$11 trillion) (ILO, 2018). Women perform 76.2% of these hours, more than three times as much as men, and 80% in Asia and the Pacific (ILO, 2018). The cost lands on women’s livelihoods: ILO’s 2024 estimates, drawn from 125 countries, count 708 million women, against 40 million men, who are outside the labour force because of unpaid care responsibilities (ILO, 2024). Change is slow: at the pace seen in countries with trend data, the gender gap in unpaid care would take about 210 years to close (ILO, 2018).`,
+          mark: ["16.4 billion hours of unpaid care work are done every day", "Women perform 76.2% of these hours", "708 million women", "about 210 years to close"] },
+        { p: `Vietnam follows the same pattern. Women spend about 15.5 hours a week on unpaid care work, almost double the 8.75 hours men spend, and the value of this work is estimated at up to 20% of GDP, yet it is largely absent from official economic measures (UN Women and Ministry of Home Affairs workshop, 8 Oct 2026). Vietnam’s first national time-use survey (World Bank with GSO, 2022; 6,000 respondents) found that women spend about three hours a day on housework against 1 hour 42 minutes for men, and that 45% of women take part in family care work versus 24% of men. The norm behind these numbers is strong: 96% of respondents in a survey presented at the workshop agreed that child care is inherently a woman’s responsibility.`,
+          mark: ["Women spend about 15.5 hours a week on unpaid care work", "up to 20% of GDP", "96% of respondents"] },
+        { p: `This is the recognition gap at the centre of our problem. The work is real, demanding and economically valuable, yet it is unpaid, uncounted and treated as a “natural duty”. The ILO’s own policy frame calls for recognising, reducing and redistributing unpaid care work. It also makes the “paid” angle of our funding track concrete: if care work has economic value, paying carers is not charity but payment for work that is already being done.`,
+          mark: ["This is the recognition gap at the centre of our problem."] },
+        { h: "Layer 2: K Hospital, the most severe case" },
+        { p: `Within this picture, mothers caring for children with cancer carry some of the heaviest loads. Vietnam records around 2,700 new pediatric cancer cases a year (VNA, 2022). K Hospital’s Tan Trieu campus is the busiest cancer hospital in the country, and its pediatric admissions have risen steadily, averaging about 266 newly admitted children a year from 2017 to 2021 (Do et al., 2024).`,
+          mark: ["around 2,700 new pediatric cancer cases a year", "about 266 newly admitted children a year"] },
+        { image: "images/day-queue-from-above.jpg", caption: "Waiting along the pavement near K Hospital Tân Triều, 17 October 2026." },
+        { p: `Behind every child is a primary caregiver, overwhelmingly the mother. International studies reveal the toll: mothers often spend more than nine hours a day on caregiving, and clinical depression and anxiety affect over 40% of cancer caregivers worldwide (Joshi et al., 2025; Psicología y Salud, 2014). A survey at Vietnam’s Children’s Hospital 2 echoes this, with caregivers scoring very low on freedom from hopelessness and anxiety. Financial hardship adds to the strain, especially for rural families. Mothers give up their income and put their own needs last, while public attention and charity stay almost entirely child-centred. Society normalises this sacrifice through the lens of matrescence (the transition into motherhood), treating it as a natural duty and making the mother’s struggle invisible.`,
+          mark: ["more than nine hours a day on caregiving", "over 40% of cancer caregivers worldwide"] },
+        { image: "images/day-carers-resting.jpg", caption: "A short rest on the pavement near the hospital." },
+        { p: `At K Hospital, then, we see the care work described above in its most intense and least visible form, and the group with the greatest need for support. That is why these mothers are our representative group for funding. They illustrate the problem; they are not the whole of it.`,
+          mark: ["They illustrate the problem; they are not the whole of it."] },
+        { h: "2. What ethical issues does it touch?" },
+        { p: `Our core claim is that carers deserve care and recognition for their own sake: their work is real, demanding, unpaid and unseen. The frameworks below are read through that claim.`,
+          mark: ["carers deserve care and recognition for their own sake"] },
+        { p: `Ethics of Care. Unlike traditional ethics, this framework (Gilligan, Noddings, Tronto) grounds morality in relationships and dependency. Its guiding questions (as framed in Team 1’s slides) are who needs to be cared for, what the relationship is, and which response nurtures it. Institutions usually answer “the child” and stop, but the mother is also in a relationship of dependency and also needs care. Mothers provide relentless, unpaid care but receive none in return, which violates Eva Feder Kittay’s principle of doulia: those who care for dependents have a fundamental right to be cared for themselves. “Care for the Carers” puts this into practice by noticing and supporting the caregiver. Kant’s humanity principle points the same way: never treat people merely as tools to achieve results, so a mother cannot matter only as a means to her child’s recovery. One caution: Ethics of Care is criticised for tying care to “feminine” traits, which can reinforce the very stereotype we want to challenge. The campaign should present care as skilled work, not as women’s nature.`,
+          mark: ["Ethics of Care.", "those who care for dependents have a fundamental right to be cared for themselves"] },
+        { p: `Justice. The systemic neglect of mothers shows three layers of injustice:`, mark: ["Justice."] },
+        { list: [
+          `Distributive: the burdens and costs of care fall disproportionately on women and on low-income, rural families.`,
+          `Recognition (Fraser; Honneth): mothers are not recognised as a group with distinct needs, and their work is not counted as work. Institutional empathy and resources flow almost solely to the child.`,
+          `Gender: society treats this sacrifice as a mother’s “natural duty” (see the 96% figure above), exploiting patriarchal norms to avoid providing systemic support.`
+        ] },
+        { p: `CSR: inside-out and outside-in (Porter & Kramer, 2006).`, mark: ["CSR: inside-out and outside-in (Porter & Kramer, 2006)."] },
+        { list: [
+          `Inside-out (organisations’ impact on society): the hospital’s lack of caregiver support facilities, and corporate charities’ exclusive focus on children’s medical bills, are major institutional blind spots.`,
+          `Outside-in (society’s impact on organisations): the unseen burden of care returns to the corporate sector as lost female talent, since the ILO identifies care responsibilities as the main reason women are not looking or not available for employment, and as burnout and absenteeism among working carers. This gives companies a business reason to intervene.`
+        ] },
+        { p: `Creating Shared Value (Porter & Kramer, 2011). CSV is a corporate strategy, so we frame it as a proposition for project partners and as a supporting argument, not our main reason. Parental distress peaks around diagnosis and affects how well the child copes with treatment (Kearney et al., 2015), so supporting mothers can also help treatment run more smoothly. This creates a “Shared Value Ecosystem”: treatment runs smoother, hospital staff face less operational strain, and sponsors build genuine brand value while supporting their wider community. The business logic has precedent: Patagonia reports that its on-site childcare recoups 90-125% of its cost through lower turnover and higher engagement (company-reported). This speaks to sponsors with a narrow view of CSR (Friedman). The moral case speaks to the broad, stakeholder view (Freeman, 1984), and we lead with the second.`,
+          mark: ["Creating Shared Value (Porter & Kramer, 2011)."] },
+        { h: "How the frameworks map to our two tracks" },
+        { table: {
+          head: ["Track", "Frameworks", "What it does"],
+          rows: [
+            ["Social media (main, systemic)", "Ethics of Care (caring for the carer); Recognition justice (Fraser, Honneth); Gender justice", "Makes care work visible and challenges the “natural duty” norm, including how children learn to see and treat their mothers"],
+            ["K Hospital funding (live proof)", "Distributive justice; CSR inside-out / outside-in; CSV", "Redirects resources to the most burdened carers (i.e., pays them) and gives hospitals and sponsors reasons to fund carers"]
+          ]
+        } },
+        { p: `Recognition without resources is empty; resources without recognition do not change the norm.`,
+          mark: ["Recognition without resources is empty; resources without recognition do not change the norm."] }
       ],
-      sources: []
+      sources: [
+        { text: "ILO (2018)", url: "https://www.ilo.org/resource/news/ilo-calls-urgent-action-prevent-looming-global-care-crisis" },
+        { text: "ILO (2024)", url: "https://www.ilo.org/resource/news/unpaid-care-work-prevents-708-million-women-participating-labour-market" },
+        { text: "VietnamPlus (8/10/2026)", url: "https://www.vietnamplus.vn/dau-tu-vao-kinh-te-cham-soc-dong-luc-nang-quyen-nang-kinh-te-cho-phu-nu-post1140729.vnp" },
+        { text: "Tuổi Trẻ (20/5/2023)", url: "https://tuoitre.vn/1-3-nu-gioi-o-viet-nam-khong-co-thoi-gian-giai-tri-trong-ngay-20230520101446874.htm" },
+        { text: "World Bank, Vietnam Time Use Survey 2022", url: "https://microdata.worldbank.org/catalog/5844/related-materials" },
+        { text: "TNU Journal of Science and Technology (2024)", url: "https://jst.tnu.edu.vn/jst/article/download/10431/pdf" }
+      ]
     },
     {
       slug: "real-reporting-at-k-hospital",
@@ -242,6 +317,25 @@ var SITE = {
       sources: []
     },
     {
+      slug: "thank-you-from-the-team",
+      kicker: "Letters",
+      title: "Thank you, from the five of us",
+      standfirst: "Each of us wrote to the women who have taken care of us.",
+      authors: ["Thảo Linh", "Hà Dương", "Khánh Ngọc", "Quang Khánh", "Raine"],
+      date: "2026-10-28",
+      image: "images/day-team-and-mothers.jpg",
+      caption: "Our team with the women we met on 17 October.",
+      draft: false,
+      body: [
+        { quote: "Words are not enough to describe the gratitude this world owes every mother and the womanhood that comes with it. Carrying a life for 9 months and nurturing kids to become a responsible adult is a priceless job, a paycheck of a lifetime. It’s not simple, even just deciding if you want to be a mother or not is not an easy feat. I have great respect for women who love their children and who became a mother until their death bed. For the women not only in this lifetime but also for the women who paved the way and gave birth to amazing people, THANK YOU! Women will always have a special place in my heart, especially mothers. I value you, I appreciate you, and being a woman is the greatest thing!", by: "Raine, “To My Beloved and Respected Women”" }
+      ],
+      sources: []
+    }
+  ],
+
+  // Bài đang tạm ẩn khỏi Journal vì chưa có nội dung. Muốn hiện lại: chuyển bài vào "posts" ở trên.
+  hiddenPosts: [
+    {
       slug: "working-with-the-student-council",
       kicker: "Partnership",
       title: "Working with the VinUniversity Student Council",
@@ -267,72 +361,6 @@ var SITE = {
       sources: []
     },
     {
-      slug: "the-work-no-one-sees",
-      kicker: "Deep research · The main problem",
-      title: "The work no one sees",
-      standfirst: "Caregiving is the work that holds families together, yet it is often invisible, unpaid, and insufficiently recognised.",
-      authors: ["Hà Dương", "Thảo Linh"],
-      date: "2026-10-25",
-      image: "images/day-listening.jpg",
-      imageTall: true,
-      caption: "Listening to the women we met near K Hospital Tân Triều.",
-      draft: true,
-      body: [
-        { h: "When does someone lose their identity?" },
-        "This is such a weird question to ask because we only think of “losing identity” as a severe neuropsychology problem. But for many, it is a dated sentence that they have to face. Experiencing this process has been normalized to the point that we totally forgot about their existence.",
-        "Let us prove this in a simple question: How many times have you looked at your mother and asked yourself “What could her name tell about her besides just a mother of yours?” and “Since when did her name not belong to herself anymore?”. There is a name for this process: Matrescence, the process of becoming a mother, first proposed by medical anthropologist Dana Raphael (1970) and developed by Aurelie Athan as “a deep identity change, not just postpartum depression” (Athan & Bastidas, 2021).",
-        { stat: "2 in 3", text: "of 2,000 British mothers said they felt they had lost part of their identity.", source: "PRNewswire, 2023" },
-        { quote: "It seems crazy, but I was not prepared for the profound journey of matrescence. This isn’t talked about enough.", by: "A mother, in a survey by PANDA" },
-        "Society tends to dismiss someone’s pain just because it is a collective shift, especially when it is a woman. A woman whom every aspect of her is only split into before her child and after her child.",
-        { h: "A norm passed down through generations" },
-        "In Vietnamese we have a sentence: “Mẹ nuôi con biển hồ lai láng, con nuôi mẹ kể tháng kể ngày” where it is translated into “A mother raises her child with an ocean-like abundance, the child raises the mother counting months and counting days”. It is written as a custom being formed through generations of neglect and assumptions of a mother shall always give her everything to her child while receiving it back is an option for that child to make. This, even though it is normalized, clearly stated the position a woman is pushed into after entering motherhood.",
-        { h: "Why it is an ethical problem" },
-        "Ethics of Care. Unlike traditional ethics, this framework (Gilligan, Noddings, Tronto) grounds morality in relationships and dependency. Mothers provide relentless, unpaid care but receive none in return. This violates Eva Feder Kittay’s principle of doulia: the idea that those who care for dependents possess a fundamental right to be cared for themselves. “Care for the Carers” operationalizes this by actively noticing and supporting the caregiver.",
-        "Recognition (Fraser; Honneth). Mothers are not recognized as a group with distinct needs, as all institutional empathy and resources are funneled solely toward the child.",
-        "Gender. Society treats this extreme sacrifice as a mother’s “natural duty,” exploiting patriarchal norms to avoid providing systemic support.",
-        { table: {
-          head: ["Track", "Ethical frameworks"],
-          rows: [
-            ["A · Social media (main, systemic)", "Ethics of Care (caring for the carer), Recognition justice (making care work visible), Gender justice (challenging the “natural duty” norm)"],
-            ["B · K Hospital funding (live proof)", "Distributive justice (redirecting resources to the most burdened carers), CSR inside-out / outside-in and Creating Shared Value"]
-          ]
-        } },
-        "Recognition without resources is empty; resources without recognition do not change the norm.",
-        { todo: "Hà Dương: add evidence on unpaid care work by women and mothers in Vietnam and globally, its economic value and the recognition gap (e.g. ILO / UN Women / GSO). Verify and cite each figure." }
-      ],
-      sources: ["Raphael, D. (1970)", "Athan, A., & Bastidas, G. (2021)", "PRNewswire (2023)", "Kittay, E. F.", "Fraser, N.; Honneth, A.", "Gilligan, C. (1982); Noddings, N. (1984); Tronto, J."]
-    },
-    {
-      slug: "the-most-extreme-case",
-      kicker: "Deep research · Why K Hospital",
-      title: "The most extreme version of a problem in every home",
-      standfirst: "At K Hospital Tân Triều we saw the most extreme version of a problem that exists in almost every home. This is why the two tracks belong together.",
-      authors: ["Quang Khánh", "Hà Dương"],
-      date: "2026-10-25",
-      image: "images/day-flowers-together.jpg",
-      caption: "With women we met near K Hospital Tân Triều.",
-      draft: true,
-      body: [
-        "We first went to K Hospital to help sick children. What we found was a bigger, quieter problem: the care work of mothers, unpaid and unseen, which is at its most extreme there but exists in every home.",
-        { stat: "2,700", text: "new pediatric cancer cases are recorded in Vietnam every year.", source: "VNA, 2022" },
-        { stat: "266", text: "new children a year, on average, were admitted to K Hospital’s Tân Triều campus from 2017 to 2021.", source: "Do et al., 2024" },
-        { stat: "176 million VND", text: "average cancer treatment cost per patient per year at K Hospital; health insurance covered only about 29%.", source: "SGGP, 2023" },
-        { stat: "40%+", text: "of cancer caregivers worldwide are affected by clinical depression and anxiety. Mothers often spend over nine hours a day caregiving.", source: "Joshi et al., 2025; Psicología y Salud, 2014" },
-        "Behind every child is a primary caregiver, overwhelmingly the mother, carrying an immense unseen burden. A survey at Vietnam’s Children’s Hospital 2 echoes this, showing caregivers scoring distressingly low on freedom from hopelessness and anxiety.",
-        "This emotional strain is worsened by severe financial hardship, especially for rural families. Yet, public attention and charity remain almost exclusively child-centric. Mothers forfeit their income and put their own needs last. Society normalizes this extreme sacrifice through the lens of matrescence (the transition into motherhood), treating it as a natural duty and rendering the mother’s struggle invisible.",
-        { h: "Why did the problem happen?" },
-        "The problem mainly comes from traditional gender expectations, financial pressure, emotional stress, and a lack of support for caregivers. In Vietnamese society, mothers are often expected to take primary responsibility for caring for their children, especially when a child is seriously ill. At the same time, most medical and social attention focuses on the children receiving treatment, while the emotional and physical needs of their mothers receive less recognition. As a result, mothers’ sacrifices are often treated as normal responsibilities rather than struggles that deserve attention and support.",
-        { h: "How the two problems are connected" },
-        "K Hospital is live proof. It shows people that these mothers can be supported and helped. This gives the campaign a real, visible example to promote. Social media is systemic change. It changes how people perceive caregiving, which in turn changes how the public views the work at K Hospital.",
-        "Each track strengthens the other: the hospital project gives the campaign credibility, and the campaign builds the awareness that makes the hospital project matter to more people.",
-        "Supporting carers also helps the children they look after: parents’ distress peaks around diagnosis and can affect how the child copes (Kearney et al., 2015). But that is a supporting reason. The main one is that their work is real, unpaid and unseen.",
-        { h: "Has the problem been solved?" },
-        "Not yet. Care work is still largely unpaid and unrecognised. Our K Hospital track showed, on a small scale, that carers can be supported when people are given a concrete way to help. Our social media track started changing how young people see and treat the care work of their own mothers. Lasting change needs both: resources for the most burdened carers and a new social norm for everyone.",
-        { todo: "Quang Khánh: review what others already do (hospital social work, volunteer groups like Ms X & Ms Y’s, charity funds, policy) and name the gap." }
-      ],
-      sources: ["VNA (2022)", "Do et al. (2024)", "SGGP (2023)", "Joshi et al. (2025)", "Psicología y Salud (2014)", "Kearney et al. (2015)"]
-    },
-    {
       slug: "what-we-learned",
       kicker: "Reflection",
       title: "What we learned",
@@ -352,22 +380,6 @@ var SITE = {
         { todo: "Consent and dignity when filming mothers in distress, avoiding the saviour story, and whether our own messages slipped back into praising endless sacrifice." }
       ],
       sources: []
-    },
-    {
-      slug: "thank-you-from-the-team",
-      kicker: "Letters",
-      title: "Thank you, from the five of us",
-      standfirst: "Each of us wrote to the women who have taken care of us.",
-      authors: ["Thảo Linh", "Hà Dương", "Khánh Ngọc", "Quang Khánh", "Raine"],
-      date: "2026-10-28",
-      image: "images/day-team-and-mothers.jpg",
-      caption: "Our team with the women we met on 17 October.",
-      draft: true,
-      body: [
-        { quote: "Words are not enough to describe the gratitude this world owes every mother and the womanhood that comes with it. Carrying a life for 9 months and nurturing kids to become a responsible adult is a priceless job, a paycheck of a lifetime. It’s not simple, even just deciding if you want to be a mother or not is not an easy feat. I have great respect for women who love their children and who became a mother until their death bed. For the women not only in this lifetime but also for the women who paved the way and gave birth to amazing people, THANK YOU! Women will always have a special place in my heart, especially mothers. I value you, I appreciate you, and being a woman is the greatest thing!", by: "Raine, “To My Beloved and Respected Women”" },
-        { todo: "Thảo Linh, Hà Dương, Khánh Ngọc, Quang Khánh: add your letters." }
-      ],
-      sources: []
     }
   ],
 
@@ -375,10 +387,18 @@ var SITE = {
   // Thông tin ngân hàng dưới đây vẫn là DỮ LIỆU MẪU, cần thay bằng tài khoản thật.
   bank: { name: "Your Bank Name", holder: "NGUYEN VAN A", number: "0123456789" },
   goal: 5000000, // mục tiêu quyên góp (VND)
+  // Ảnh các phần quà được trao (hiện ở dưới bảng sao kê)
+  giftPhotos: [
+    { src: "images/gift-smile.jpg", caption: "A gift package: a meal, milk, fruit, bread, snacks and 100,000 VND" },
+    { src: "images/gift-girl.jpg", caption: "After receiving a gift package" },
+    { src: "images/gift-boy.jpg", caption: "After receiving a gift package" },
+    { src: "images/gift-sleeping.jpg", caption: "A gift package left beside a sleeping child" }
+  ],
+
   // type: "in" = tiền nhận, "out" = tiền chi. proof: ảnh bằng chứng (ví dụ "images/proof-1.jpg"), để trống nếu chưa có.
   entries: [
     { date: "17/10/2026", text: "Contributions from team members", type: "in", amount: 2600000, proof: "" },
-    { date: "17/10/2026", text: "Contributed to the local volunteer group (fresh meals and essential supplies for hospital families)", type: "out", amount: 2000000, proof: "" },
+    { date: "15/10/2026", text: "Contributed to the local volunteer group (fresh meals and essential supplies for hospital families)", type: "out", amount: 2000000, proof: "images/proof-transfer-2m.jpg" },
     { date: "17/10/2026", text: "Flowers for mothers near K Hospital Tan Trieu", type: "out", amount: 600000, proof: "" }
   ]
 };
