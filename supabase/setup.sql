@@ -178,3 +178,64 @@ drop trigger if exists subscribers_send_welcome on public.subscribers;
 create trigger subscribers_send_welcome
   after insert on public.subscribers
   for each row execute function public.send_welcome_email();
+
+-- ============================================================
+-- Personal settings (account.html): tài khoản dùng Supabase Auth (email + mật khẩu).
+--   profiles   tên và ảnh đại diện của mỗi người; ai cũng chỉ đọc/sửa được của chính mình.
+--   my_subscription / set_subscription   xem và bật/tắt nhận thư cho email của người đang đăng nhập.
+-- Sau mỗi lần đổi tên, ảnh hoặc mật khẩu, trang gọi Edge Function "account-notice" để gửi thư xác nhận.
+-- ============================================================
+
+create table if not exists public.profiles (
+  id uuid primary key references auth.users (id) on delete cascade,
+  name text check (name is null or char_length(btrim(name)) <= 40),
+  avatar text check (avatar is null or (avatar like 'data:image/%' and char_length(avatar) <= 60000)),
+  updated_at timestamptz not null default now()
+);
+
+alter table public.profiles enable row level security;
+revoke all on public.profiles from anon;
+grant select, insert, update on public.profiles to authenticated;
+
+drop policy if exists "Read own profile" on public.profiles;
+create policy "Read own profile" on public.profiles for select to authenticated using (id = (select auth.uid()));
+drop policy if exists "Create own profile" on public.profiles;
+create policy "Create own profile" on public.profiles for insert to authenticated with check (id = (select auth.uid()));
+drop policy if exists "Update own profile" on public.profiles;
+create policy "Update own profile" on public.profiles for update to authenticated using (id = (select auth.uid())) with check (id = (select auth.uid()));
+
+create or replace function public.my_subscription()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select exists (select 1 from public.subscribers where email = lower(auth.jwt() ->> 'email'));
+$$;
+
+create or replace function public.set_subscription(p_on boolean)
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  me text := lower(auth.jwt() ->> 'email');
+begin
+  if auth.uid() is null or me is null then
+    raise exception 'Not signed in';
+  end if;
+  if p_on then
+    insert into public.subscribers (email) values (me) on conflict (email) do nothing;
+  else
+    delete from public.subscribers where email = me;
+  end if;
+  return p_on;
+end;
+$$;
+
+revoke all on function public.my_subscription() from public, anon;
+revoke all on function public.set_subscription(boolean) from public, anon;
+grant execute on function public.my_subscription() to authenticated;
+grant execute on function public.set_subscription(boolean) to authenticated;

@@ -21,6 +21,7 @@
       <li><a href="thank-you.html">Say thank you</a></li>
       <li class="has-sub"><a href="blog.html">Journal<span class="caret" aria-hidden="true">&#9662;</span></a><ul class="sub" data-journal></ul></li>
       <li><a href="donate.html">Donate</a></li>
+      <li><a href="account.html">Settings</a></li>
     </ul>
   </div>
 </nav>
@@ -46,7 +47,8 @@
   // Journal: blog.html lists every report; blog.html?post=<slug> shows one. Posts live in site-data.js.
   var esc = Site.esc, box = document.getElementById("blog");
   var slug = new URLSearchParams(location.search).get("post");
-  var post = SITE.posts.filter(function (p) { return p.slug === slug; })[0];
+  // Hidden drafts are not listed anywhere, but open from a direct link so the team can write them
+  var post = SITE.posts.concat(SITE.hiddenPosts || []).filter(function (p) { return p.slug === slug; })[0];
 
   function youtube(url) {
     var id = (url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/) || [])[1];

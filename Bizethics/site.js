@@ -91,15 +91,19 @@ var Site = (function () {
       '<form novalidate><label class="sr-only" for="sub-' + el.dataset.subscribe + '">Your email</label>' +
       '<input type="email" id="sub-' + el.dataset.subscribe + '" placeholder="you@example.com" autocomplete="email" required maxlength="120">' +
       '<button class="btn" type="submit">Subscribe</button>' +
-      '<p class="fine">One email a month. We never share your email, and you can ask us to stop at any time.</p>' +
+      '<p class="fine">One email a month. We never share your email, and you can unsubscribe at any time in your <a href="account.html">settings</a>.</p>' +
       '<p class="msg" role="status"></p></form>';
     var form = el.querySelector("form"), input = el.querySelector("input"), msg = el.querySelector(".msg");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!input.value || !input.checkValidity()) { msg.className = "msg err"; msg.textContent = "Please enter a valid email."; input.focus(); return; }
       form.querySelector("button").disabled = true;
-      send("subscribe", { p_email: input.value.trim() }).then(function () {
-        form.innerHTML = '<p class="msg ok">Thank you. Our next story will reach you next month ♥</p>';
+      var email = input.value.trim();
+      send("subscribe", { p_email: email }).then(function () {
+        // Remembered for this tab only, so Personal settings can fill in the email
+        try { sessionStorage.setItem("subEmail", email); } catch (e) {}
+        form.innerHTML = '<p class="msg ok">Thank you! A welcome email is on its way ♥</p>' +
+          '<p>Want to add your name and photo, or choose a password? <a href="account.html">Open your personal settings →</a></p>';
       }).catch(function (err) {
         msg.className = "msg err";
         msg.innerHTML = err.message === "offline" ? "Subscriptions are not open yet. " + reachUs() : "Sorry, something went wrong. Please try again.";

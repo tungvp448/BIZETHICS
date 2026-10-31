@@ -647,3 +647,44 @@ details[open] > summary .tap-text::after { content: "Tap to close"; font-size: .
   .outline:hover, .outline:focus-within, .outline.open { width: min(300px, calc(100vw - 32px)); }
 }
 .outline::-webkit-scrollbar { display: none; }
+
+/* ===== Personal settings (account.html) ===== */
+.account { max-width: 680px; padding-top: 40px; padding-bottom: 72px; }
+.acc-card { background: var(--white); border-radius: 32px; padding: 30px 32px; }
+.acc-card h2 { font-size: 1.8rem; margin-bottom: 8px; }
+.help-form input[type=email], .help-form input[type=password] { font: inherit; padding: 12px 16px; border: 3px solid var(--petal); border-radius: 18px; color: var(--berry); background: var(--blush); width: 100%; }
+.linkish { background: none; border: 0; padding: 0; font: inherit; font-weight: 800; color: var(--rose); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; justify-self: start; }
+.linkish:hover { color: var(--berry); }
+.linkish[disabled] { opacity: .5; cursor: wait; }
+.avatar-row { display: flex; align-items: center; gap: 20px; margin-bottom: 6px; }
+.avatar-row b { display: block; font-family: "Fredoka", sans-serif; font-size: 1.4rem; font-weight: 600; color: var(--rose); line-height: 1.2; }
+.avatar { flex: none; width: 112px; height: 112px; border-radius: 50%; border: 4px solid var(--white); box-shadow: 0 0 0 3px var(--rose); background: var(--petal) center / cover no-repeat; font-family: "Fredoka", sans-serif; font-size: 2.6rem; color: var(--rose); cursor: pointer; transition: transform .15s; }
+.avatar:hover { transform: scale(1.04); }
+.who-email { display: block; font-size: .9rem; opacity: .75; word-break: break-all; }
+.avatar-tools { display: flex; gap: 16px; margin-top: 6px; font-size: .92rem; }
+.sub-box { margin: 28px 0 22px; padding-top: 22px; border-top: 3px solid var(--petal); }
+.sub-box h3 { font-size: 1.3rem; color: var(--rose); margin-bottom: 4px; }
+@media (max-width: 560px) { .acc-card { padding: 24px 20px; } .avatar { width: 88px; height: 88px; font-size: 2rem; } .avatar-row { gap: 14px; } }
+
+/* ===== Live tracking badge (social stats on the home page) ===== */
+.live-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--rose); color: var(--white); font-weight: 800; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; padding: 6px 14px 6px 12px; border-radius: 999px; }
+.live-badge::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--white); animation: live-dot 1.4s ease-in-out infinite; }
+@keyframes live-dot { 50% { opacity: .35; transform: scale(.75); } }
+.live-wrap { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+@media (prefers-reduced-motion: reduce) { .live-badge::before { animation: none; } }
+
+/* ===== With the children (home page) ===== */
+.children { background: var(--white); border-radius: 32px; padding: 26px 28px; margin-top: 40px; }
+.children h3 { font-size: 1.4rem; color: var(--rose); }
+.children > p { max-width: 62ch; margin: 4px 0 16px; }
+
+/* Six tabs: keep the menu on one line on tablets */
+@media (min-width: 761px) and (max-width: 1040px) {
+  nav .brand { font-size: 1.1rem; }
+  nav ul { gap: 2px; flex-wrap: nowrap; }
+  nav ul a { padding: 6px 9px; font-size: .92rem; white-space: nowrap; }
+}
+
+/* Note under the children's photos */
+.privacy-note { display: inline-flex; align-items: center; gap: 8px; font-size: .88rem; font-weight: 700; background: var(--blush); color: var(--berry); padding: 6px 14px; border-radius: 999px; margin: 0 0 14px; }
+.privacy-note::before { content: "🔒"; font-size: .9em; }

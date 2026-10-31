@@ -55,8 +55,11 @@ var SITE = {
   // sub: dòng chú thích nhỏ dưới con số.
   // target: mục tiêu trong kế hoạch (Impact measures trong Docs). updated: ngày cập nhật (YYYY-MM-DD).
   // Track A: chiến dịch mạng xã hội (chính)
+  // Trang chủ hiện nút "Live tracking". Số liệu do nhóm tự đếm và cập nhật tay: sửa các con số bên dưới,
+  // rồi đổi socialUpdated thành ngày cập nhật (YYYY-MM-DD) để web hiện "Updated today / 2 days ago".
+  socialUpdated: "2026-10-28",
   socialStats: [
-    { label: "Views across TikTok, Instagram and Threads", text: "2,800+", sub: "as of 28 Oct 2026" },
+    { label: "Views across TikTok, Instagram and Threads", text: "2,800+", sub: "all three channels together" },
     { label: "TikTok views", text: "2,000+", sub: "4 posts · nearly 100 interactions" },
     { label: "Instagram views", text: "~500", sub: "nearly 100 interactions" },
     { label: "Interactions across all three", text: "~220", sub: "TikTok, Instagram and Threads (5 posts on Threads)" }
@@ -337,7 +340,33 @@ var SITE = {
   ],
 
   // Bài đang tạm ẩn khỏi Journal vì chưa có nội dung. Muốn hiện lại: chuyển bài vào "posts" ở trên.
+  // Bài ẩn vẫn mở được bằng link trực tiếp để nhóm xem và viết, ví dụ blog.html?post=what-we-would-improve
   hiddenPosts: [
+    {
+      slug: "what-we-would-improve",
+      kicker: "Next time",
+      title: "What we would improve next time",
+      standfirst: "What we would do differently, and the systems that could help more carers and their families.",
+      authors: [],
+      date: "2026-11-01",
+      image: "images/day-team-and-mothers.jpg",
+      caption: "Our team with the women we met on 17 October.",
+      draft: true,
+      body: [
+        { toc: "In this article" },
+        { h: "What worked, and what we would keep" },
+        { todo: "The parts of the project we would do again in the same way, and why." },
+        { h: "What we would do better" },
+        { todo: "On the social media track: content, timing, reaching people beyond our own friends." },
+        { todo: "On the K Hospital track: planning with Ms. Dung and Ms. Thanh, the budget, the day itself." },
+        { todo: "On the team: how we split the work, and what we would change." },
+        { h: "Systems that could help more people" },
+        { todo: "Ideas for longer-term change, for example a regular schedule with the volunteer group, an easy way for families to ask for help, or monthly support instead of one day. Write only what the team has actually discussed." },
+        { h: "What you can do" },
+        { todo: "One or two simple actions for readers, so they can take part in the next round." }
+      ],
+      sources: []
+    },
     {
       slug: "working-with-the-student-council",
       kicker: "Partnership",
@@ -395,8 +424,16 @@ var SITE = {
     { src: "images/gift-smile.jpg", caption: "A gift package: a meal, milk, fruit, bread, snacks and 100,000 VND" },
     { src: "images/gift-girl.jpg", caption: "After receiving a gift package" },
     { src: "images/gift-boy.jpg", caption: "After receiving a gift package" },
-    { src: "images/gift-sleeping.jpg", caption: "A gift package left beside a sleeping child" }
+    { src: "images/gift-sleeping.jpg", caption: "A gift package left beside a sleeping child" },
+    { src: "images/gift-boy-note.jpg", caption: "A meal, milk, bread, an egg, snacks and 100,000 VND" },
+    { src: "images/gift-bedside.jpg", caption: "A gift package beside a hospital bed" },
+    { src: "images/gift-girl-note.jpg", caption: "Holding up the 100,000 VND from the gift package" },
+    { src: "images/gift-girl-mat.jpg", caption: "After receiving a gift package" },
+    { src: "images/gift-young-man.jpg", caption: "After receiving a gift package" }
   ],
+  // Ảnh thêm về các bé (hiện ở trang chủ, ngay sau ảnh quà ở trên). Chỉ đăng khi gia đình đã đồng ý.
+  // Mẫu: { src: "images/children-1.jpg", caption: "..." }
+  childrenPhotos: [],
 
   // type: "in" = tiền nhận, "out" = tiền chi. proof: ảnh bằng chứng (ví dụ "images/proof-1.jpg"), để trống nếu chưa có.
   entries: [

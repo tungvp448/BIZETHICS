@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal settings · Care for the Carers</title>
+<meta name="description" content="Your name, photo, password and monthly email from Care for the Carers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="webbiz.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="web.html">Care for the Carers</a>
+    <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
+    <ul>
+      <li><a href="web.html">Home</a></li>
+      <li><a href="story.html">Our story</a></li>
+      <li><a href="thank-you.html">Say thank you</a></li>
+      <li class="has-sub"><a href="blog.html">Journal<span class="caret" aria-hidden="true">&#9662;</span></a><ul class="sub" data-journal></ul></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="account.html">Settings</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>Personal settings</h1>
+    <p>Your name, your photo, your password and our monthly email, all in one place.</p>
+  </div>
+</header>
+
+<main class="wrap account">
+
+  <!-- Signed out: sign in or create an account -->
+  <section class="acc-card" id="signedOut" hidden>
+    <h2>Sign in</h2>
+    <p>Use the email you subscribed with. New here? Pick a password and press <b>Create account</b>, then confirm it from your inbox.</p>
+    <form id="authForm" class="help-form" novalidate>
+      <label>Email <input type="email" id="aEmail" autocomplete="email" required maxlength="120"></label>
+      <label>Password <small>at least 8 characters</small>
+        <input type="password" id="aPass" autocomplete="current-password" required minlength="8" maxlength="72"></label>
+      <div class="actions" style="margin-top: 6px;">
+        <button class="btn" type="submit" id="signIn">Sign in</button>
+        <button class="btn alt" type="button" id="signUp">Create account</button>
+      </div>
+      <button class="linkish" type="button" id="forgot">Forgot your password?</button>
+      <p class="msg" id="authMsg" role="status"></p>
+    </form>
+  </section>
+
+  <!-- Signed in: avatar, name, password, subscription -->
+  <section class="acc-card" id="signedIn" hidden>
+    <form id="profileForm" class="help-form" novalidate>
+      <div class="avatar-row">
+        <button type="button" class="avatar" id="avatarBtn" aria-label="Choose a profile photo"><span id="avatarInitial">♥</span></button>
+        <div>
+          <b id="whoName">Your profile</b>
+          <span class="who-email" id="whoEmail"></span>
+          <span class="avatar-tools">
+            <button class="linkish" type="button" id="avatarPick">Choose a photo</button>
+            <button class="linkish" type="button" id="avatarRemove" hidden>Remove</button>
+          </span>
+        </div>
+        <input type="file" id="avatarFile" accept="image/*" hidden>
+      </div>
+      <label>Your name <input type="text" id="pName" autocomplete="name" maxlength="40" placeholder="What should we call you?"></label>
+      <label>New password <small>leave empty to keep your current one</small>
+        <input type="password" id="pPass" autocomplete="new-password" minlength="8" maxlength="72"></label>
+      <div class="actions" style="margin-top: 6px;">
+        <button class="btn" type="submit" id="save">Save changes</button>
+      </div>
+      <p class="msg" id="profileMsg" role="status"></p>
+    </form>
+
+    <div class="sub-box">
+      <h3>Monthly stories</h3>
+      <p id="subText">Checking…</p>
+      <button class="linkish" type="button" id="subToggle" hidden></button>
+      <p class="msg" id="subMsg" role="status"></p>
+    </div>
+
+    <button class="btn alt" type="button" id="signOut">Sign out</button>
+  </section>
+
+  <p class="msg err" id="offline" hidden>Personal settings are not available right now. Please try again later.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><div class="brand">Care for the Carers</div><small>Care for the Carers · MANA3021 Business Ethics, VinUniversity · © 2026</small></div>
+    <div class="social">
+      <a href="https://www.threads.com/@dearm0m___" target="_blank" rel="noopener">Threads</a>
+      <a href="https://www.instagram.com/dearm0m___/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@dearm0m___" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="site-data.js"></script>
+<script src="site.js"></script>
+<script src="account.js"></script>
+</body>
+</html>
