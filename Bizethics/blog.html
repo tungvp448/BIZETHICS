@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="webbiz.css">
+<script src="i18n.js"></script>
 </head>
 <body>
 
@@ -50,11 +51,6 @@
   // Hidden drafts are not listed anywhere, but open from a direct link so the team can write them
   var post = SITE.posts.concat(SITE.hiddenPosts || []).filter(function (p) { return p.slug === slug; })[0];
 
-  function youtube(url) {
-    var id = (url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/) || [])[1];
-    return id ? "https://www.youtube.com/embed/" + id : "";
-  }
-
   // A paragraph kept word for word, with its key phrases highlighted
   function marked(text, marks) {
     var html = esc(text);
@@ -79,9 +75,12 @@
     if (b.image) return '<figure' + (b.tall ? ' class="tall"' : "") + '><img src="' + esc(b.image) + '" alt="' + esc(b.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (b.caption ? '<figcaption>' + esc(b.caption) + '</figcaption>' : "") + '</figure>';
     if (b.todo) return '<p class="todo">' + esc(b.todo) + '</p>';
     if ("video" in b) {
-      var src = b.video ? youtube(b.video) : "";
-      return src
-        ? '<div class="video"><iframe src="' + esc(src) + '" title="' + esc(b.title || "Video") + '" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>'
+      // Only the cover picture loads at first; YouTube's player loads when the reader presses play, so the page stays fast
+      var id = Site.youtubeId(b.video);
+      return id
+        ? '<div class="video yt" id="video"><button type="button" data-yt="' + id + '" aria-label="Play video: ' + esc(b.title || "Video") + '">' +
+          '<img src="https://i.ytimg.com/vi/' + id + '/hqdefault.jpg" alt="" loading="lazy"><i aria-hidden="true">▶</i>' +
+          (b.title ? '<span>' + esc(b.title) + '</span>' : "") + '</button></div>'
         : '<div class="video empty"><b>Video coming soon</b><span>' + esc(b.title || "") + '</span></div>';
     }
     if (b.table) return '<div class="tablebox"><table><thead><tr>' +
@@ -163,6 +162,8 @@
   if (post) {
     document.title = post.title + " · The Carers’ Journal";
     var others = SITE.posts.filter(function (p) { return p !== post; });
+    // A video that opens the report is shown first, above everything else
+    var lead = post.body[0] && post.body[0].video ? post.body[0] : null, rest = lead ? post.body.slice(1) : post.body;
     box.innerHTML =
       '<header class="page-head article-head"><div class="wrap narrow">' +
         '<a class="back" href="blog.html">← All reports</a>' +
@@ -172,11 +173,12 @@
         '<div class="byline"><span class="authors">By ' + esc(Site.authors(post)) + '</span><span>' + esc(Site.longDate(post.date)) + '</span><span>' + minutes(post) + ' min read</span></div>' +
       '</div></header>' +
       '<article class="wrap narrow article">' +
+        (lead ? block(lead) : "") +
         ("audio" in post ? (post.audio
           ? '<div class="listen"><span>🎧 Listen to this report</span><audio controls preload="none" src="' + esc(post.audio) + '"></audio></div>'
           : '<div class="listen empty"><span>🎧 Voice reading coming soon</span></div>') : "") +
         (post.image ? '<figure class="hero-img' + (post.imageTall ? " tall" : "") + '"><img src="' + esc(post.image) + '" alt="' + esc(post.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (post.caption ? '<figcaption>' + esc(post.caption) + '</figcaption>' : "") + '</figure>' : "") +
-        '<div class="prose">' + body(post.body, post.sources && post.sources.length > 0) + '</div>' +
+        '<div class="prose">' + body(rest, post.sources && post.sources.length > 0) + '</div>' +
         (post.sources && post.sources.length ? '<div class="sources" id="s-references"><h2>References</h2><ul>' + post.sources.map(source).join("") + '</ul></div>' : "") +
         '<div data-subscribe="article"></div>' +
       '</article>' +
@@ -184,6 +186,12 @@
         others.slice(0, 3).map(function (p) { return Site.journalCard(p, false); }).join("") +
       '</div></section>';
     startOutline();
+    // Play: swap the cover picture for YouTube's player
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-yt]");
+      if (!b) return;
+      b.parentNode.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0" title="' + esc(b.getAttribute("aria-label")) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    });
   } else {
     box.innerHTML =
       '<header class="page-head"><div class="wrap"><h1>The Carers’ Journal</h1>' +

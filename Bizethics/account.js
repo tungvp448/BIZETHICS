@@ -169,7 +169,7 @@
 
   $("subToggle").addEventListener("click", function () {
     var on = !subscribed, btn = this;
-    if (!on && !confirm("Stop receiving our monthly stories?")) return;
+    if (!on && !confirm(I18N.t("Stop receiving our monthly stories?"))) return;
     btn.disabled = true;
     sb.rpc("set_subscription", { p_on: on }).then(function (r) {
       btn.disabled = false;

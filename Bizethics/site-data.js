@@ -58,6 +58,9 @@ var SITE = {
   // Trang chủ hiện nút "Live tracking". Số liệu do nhóm tự đếm và cập nhật tay: sửa các con số bên dưới,
   // rồi đổi socialUpdated thành ngày cập nhật (YYYY-MM-DD) để web hiện "Updated today / 2 days ago".
   socialUpdated: "2026-10-28",
+
+  // Video mới nhất: hiện thành một ô lớn "Watch our newest video" ở Trang chủ và Our story.
+  latestVideo: { url: "https://youtu.be/B6fadq2YHpk", title: "A day at K Hospital Tân Triều", text: "Our report from 17 October: the volunteer group, the mothers we met, and what we learned.", post: "real-reporting-at-k-hospital" },
   socialStats: [
     { label: "Views across TikTok, Instagram and Threads", text: "2,800+", sub: "all three channels together" },
     { label: "TikTok views", text: "2,000+", sub: "4 posts · nearly 100 interactions" },
@@ -265,7 +268,7 @@ var SITE = {
       draft: false,
       // Các đoạn văn dưới đây giữ NGUYÊN VĂN bài viết của Raine và Thảo Linh. Chỉ thêm tô sáng (mark), không sửa chữ.
       body: [
-        { video: "", title: "Our report from the day" },
+        { video: "https://youtu.be/B6fadq2YHpk", title: "Our report from the day" },
 
         { person: "Raine", role: "Storyteller, reporter, host & posters", title: "Raine’s View as a person from Phillipino.",
           quote: "A simple thank you to your mother would matter." },

@@ -83,6 +83,19 @@ var Site = (function () {
     return (c.email ? 'Please email us at <a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a> or message us on ' : "Please message us on ") + links + ".";
   }
 
+  // A YouTube video's id, from any youtu.be / watch / embed link
+  function youtubeId(url) { return ((url || "").match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/) || [])[1] || ""; }
+
+  // "Watch our newest video" banner, placed wherever a page has <div data-watch></div>
+  function watchBox(el) {
+    var v = SITE.latestVideo, id = v && youtubeId(v.url);
+    if (!id) return el.remove();
+    el.innerHTML = '<a class="watch" href="blog.html?post=' + esc(v.post) + '#video">' +
+      '<span class="watch-thumb"><img src="https://i.ytimg.com/vi/' + id + '/hqdefault.jpg" alt="" loading="lazy"><i aria-hidden="true">▶</i></span>' +
+      '<span class="watch-text"><small>New video</small><b>Watch our newest video</b><span>' + esc(v.title) + '</span><em>' + esc(v.text) + '</em>' +
+      '<span class="btn">▶ Watch now</span></span></a>';
+  }
+
   // "Read our stories" box, placed wherever a page has <div data-subscribe></div>
   function subscribeBox(el) {
     el.className = "subscribe";
@@ -137,6 +150,7 @@ var Site = (function () {
 
     // Subscribe boxes
     document.querySelectorAll("[data-subscribe]").forEach(subscribeBox);
+    document.querySelectorAll("[data-watch]").forEach(watchBox);
 
     // Mobile menu
     var nav = document.querySelector("nav"), menuBtn = document.querySelector(".menu-btn");
@@ -187,5 +201,5 @@ var Site = (function () {
     }
   });
 
-  return { fmt: fmt, money: money, countUp: countUp, hearts: hearts, timeAgo: timeAgo, longDate: longDate, esc: esc, send: send, reachUs: reachUs, journalCard: journalCard, authors: authors, sortedPosts: sortedPosts };
+  return { fmt: fmt, money: money, countUp: countUp, hearts: hearts, timeAgo: timeAgo, longDate: longDate, esc: esc, send: send, reachUs: reachUs, youtubeId: youtubeId, journalCard: journalCard, authors: authors, sortedPosts: sortedPosts };
 })();
