@@ -40,11 +40,12 @@ var SITE = {
 
   // ===== Thành viên nhóm =====
   team: [
-    { name: "Thảo Linh", role: "Project lead, video, research & website support" },
-    { name: "Hà Dương", role: "Budget, website & logistics" },
-    { name: "Khánh Ngọc", role: "Timeline & executive summary" },
-    { name: "Quang Khánh", role: "Research, results & build" },
-    { name: "Raine", role: "Storyteller, reporter, host & posters" }
+    // name: họ tên đầy đủ, id: mã số sinh viên (hiện nhỏ cạnh vai trò ở Trang chủ)
+    { name: "Thái Thảo Linh", id: "V202502481", role: "Project lead, video, research & website support" },
+    { name: "Dương Khánh Hà", id: "VU2611131", role: "Budget, website & logistics" },
+    { name: "Phạm Khánh Ngọc", id: "VU2611129", role: "Timeline & executive summary" },
+    { name: "Nguyễn Quang Khánh", id: "VU2611349", role: "Research, results & build" },
+    { name: "Ethan Raine Montellano Abad", id: "VU2611660", role: "Storyteller, reporter, host & posters" }
   ],
 
   // ===== Mạng xã hội =====
@@ -305,6 +306,7 @@ var SITE = {
 
         { person: "Raine", role: "Storyteller, reporter, host & posters", title: "Raine’s View as a person from Phillipino.",
           quote: "A simple thank you to your mother would matter." },
+        { listen: "audio/real-reporting-raine.mp3", title: "Listen to Raine’s view", by: "Raine" },
         { p: `In Vietnamese we have a sentence: “Mẹ nuôi con biển hồ lai láng, con nuôi mẹ kể tháng kể ngày” where it is translated into “A mother raises her child with an ocean-like abundance, the child raises the mother counting months and counting days”. It is written as a custom being formed through generations of neglect and assumptions of a mother shall always give her everything to her child while receiving it back is an option for that child to make. This, even though it is normalized, clearly stated the position a woman is pushed into after entering motherhood. And we can clearly saw that on the day they we got to our destination: Bệnh Viện K Tân Triều.`,
           mark: ["receiving it back is an option for that child to make"] },
         { p: `"I will fight for my children on any level in order for them to be happy and have peace of mind and carry out their duties." A heartwarming quote from Princess Diana that conveys the essence and beauty of motherhood. On October 17th near Bệnh Viện K Tân Triều, local non-governmental organizations (NGOs) gathered near the hospital and brought different kinds of nutritious foods for the patients and the caretakers. Under the scorching heat, a group of women volunteered to help other people who can't fully support themselves - gave food to everyone that badly needs it even though those women were also going through something on their own. They chose to help the community and stand strong to become one of the pillars people could depend to even when the volunteering program happens just every week. These women shared what they have, they showed up for the people, and these actions and little gestures of help and compassion warms the people and gives hope to those who need it.`,
@@ -420,7 +422,14 @@ var SITE = {
         { quote: "Words are not enough to describe the gratitude this world owes every mother and the womanhood that comes with it. Carrying a life for 9 months and nurturing kids to become a responsible adult is a priceless job, a paycheck of a lifetime. It’s not simple, even just deciding if you want to be a mother or not is not an easy feat. I have great respect for women who love their children and who became a mother until their death bed. For the women not only in this lifetime but also for the women who paved the way and gave birth to amazing people, THANK YOU! Women will always have a special place in my heart, especially mothers. I value you, I appreciate you, and being a woman is the greatest thing!", by: "Raine, “To My Beloved and Respected Women”" },
         // Poster của Raine cho chiến dịch
         { image: "images/poster-see-the-mother.jpg", tall: true, caption: "Raine’s poster: See the mother behind the care." },
-        { image: "images/poster-show-her.jpg", tall: true, caption: "Raine’s poster: Don’t just thank her, show her. One small act of care today." }
+        { image: "images/poster-show-her.jpg", tall: true, caption: "Raine’s poster: Don’t just thank her, show her. One small act of care today." },
+
+        // Phần của Thảo Linh: giữ nguyên lời, chỉ sửa ngữ pháp và dấu câu.
+        { person: "Thảo Linh", role: "Project lead, video, research & website support", title: "Thảo Linh’s part" },
+        `This journey, I might have to say, is not the most graceful one that one could go through during one’s uni life, because I have been very busy with my work lately. However, I got to go out and interact with so many people, and especially to do such meaningful work with my teammates, people that I never thought I would be so close with during my time at uni. Together we created a project that I initially thought not everybody was interested in, but it turned out everybody had such great energy, and that’s what I appreciated the most out of this project.`,
+        `So many people were there to encourage us and to go through this journey with us: our friends, our family, and the people that we met along the way, like Ms. Thu and Ms. Thanh in the project. They were more than I could ever wish for. Especially the consultation from the people that I asked, and the help from the friends who helped us with the project, like voice recording, collaborations, funding, and things like that.`,
+        { p: `Also, to my mom, who really gave me such a big motive to create this project and to go through with it, even though I was going through so much hardship. She gave me encouragement to show the world that people can learn how to love each other more, day by day. And I am truly very grateful for that.`,
+          mark: ["people can learn how to love each other more, day by day"] }
       ],
       sources: []
     }

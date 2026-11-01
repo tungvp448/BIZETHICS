@@ -10,7 +10,7 @@
 
   // ===== Team =====
   $("team").innerHTML = SITE.team.map(function (t) {
-    return '<span><i aria-hidden="true">' + esc(t.name.charAt(0)) + '</i><span>' + esc(t.name) + '<small>' + esc(t.role) + '</small></span></span>';
+    return '<span><i aria-hidden="true">' + esc(t.name.charAt(0)) + '</i><span>' + esc(t.name) + (t.id ? ' <em class="sid">' + esc(t.id) + '</em>' : '') + '<small>' + esc(t.role) + '</small></span></span>';
   }).join("");
 
   // ===== Social channels =====
