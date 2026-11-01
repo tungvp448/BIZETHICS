@@ -242,14 +242,6 @@ nav .caret { font-size: .7em; margin-left: 4px; }
 .kpi .val.pending { font-size: 1.4rem; color: var(--berry); opacity: .55; padding: 8px 0 6px; }
 
 /* ===== Timeline (brief, horizontal on wide screens) ===== */
-.steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; counter-reset: step; }
-.steps li { background: var(--white); border-radius: 24px; padding: 18px; position: relative; }
-.steps li::before { counter-increment: step; content: counter(step); position: absolute; top: -12px; left: 18px; width: 28px; height: 28px; border-radius: 50%; background: var(--rose); color: var(--white); font-weight: 800; display: grid; place-items: center; font-size: .9rem; }
-.steps time { display: block; font-weight: 800; color: var(--rose); margin-top: 6px; }
-.steps b { display: block; font-family: var(--display); font-size: 1.1rem; line-height: 1.25; margin: 2px 0 6px; }
-.steps p { font-size: .92rem; line-height: 1.5; }
-@media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
 
 /* ===== Journal cards (home) ===== */
 .journal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -763,3 +755,45 @@ html.i18n-wait body { visibility: hidden; }
   .lang-btn { min-width: 34px; height: 32px; padding: 0 8px; }
   .me { width: 36px; height: 36px; }
 }
+
+/* Home: a quiet note under the hero buttons */
+.read-en { margin-top: 18px !important; font-size: .9rem !important; font-weight: 700; opacity: .7; }
+
+/* "Vietnamese is a beta" notice, centred on screen after switching to VI */
+.beta-note { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 16px; background: rgba(43,29,22,.45); animation: betaIn .25s ease-out; }
+.beta-card { position: relative; width: min(440px, 100%); background: var(--white); border-radius: 28px; padding: 28px 24px 24px; text-align: center; box-shadow: 0 24px 60px rgba(43,29,22,.3); font-family: "Nunito", system-ui, sans-serif; }
+.beta-card h2 { font-family: "Fredoka", "Nunito", sans-serif; font-size: 1.45rem; color: var(--rose); margin: 10px 0 8px; }
+.beta-card p { margin: 0; }
+.beta-tag { display: inline-block; font-weight: 800; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--white); background: var(--rose); padding: 3px 12px; border-radius: 999px; }
+.beta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+.beta-x { position: absolute; top: 10px; right: 12px; width: 38px; height: 38px; border: 0; border-radius: 50%; background: var(--blush); color: var(--berry); font-size: 1.4rem; line-height: 1; cursor: pointer; }
+.beta-x:hover { background: var(--petal); }
+@keyframes betaIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===== Timeline: small cards that open on tap; "Now" gets a soft pulsing ring ===== */
+.steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; align-items: start; counter-reset: step; margin-top: 18px; }
+.t-card { position: relative; background: var(--white); border-radius: 22px; box-shadow: 0 4px 14px rgba(90,24,50,.06); transition: transform .2s, box-shadow .2s; }
+.t-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(90,24,50,.12); }
+.t-card::before { counter-increment: step; content: counter(step); position: absolute; top: -11px; left: 16px; width: 26px; height: 26px; border-radius: 50%; background: var(--rose); color: var(--white); font-weight: 800; font-size: .85rem; display: grid; place-items: center; z-index: 1; }
+.t-card button { all: unset; box-sizing: border-box; display: block; width: 100%; padding: 22px 16px 14px; cursor: pointer; border-radius: 22px; position: relative; }
+.t-card button:focus-visible { outline: 3px solid var(--rose); outline-offset: 2px; }
+.t-card time { display: block; font-weight: 800; color: var(--rose); font-size: .9rem; }
+.t-card b { display: block; font-family: var(--display); font-size: 1.02rem; line-height: 1.25; margin-top: 2px; padding-right: 18px; }
+.t-state { position: absolute; top: 10px; right: 12px; font-size: .66rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; opacity: .55; }
+.t-more { position: absolute; right: 12px; bottom: 12px; width: 20px; height: 20px; border-radius: 50%; background: var(--blush); color: var(--rose); font-weight: 800; display: grid; place-items: center; font-size: .9rem; transition: transform .25s; }
+.t-card.open .t-more { transform: rotate(45deg); }
+.t-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.t-body p { overflow: hidden; margin: 0; padding: 0 16px; font-size: .88rem; line-height: 1.5; }
+.t-card.open .t-body { grid-template-rows: 1fr; }
+.t-card.open .t-body p { padding-bottom: 16px; }
+.t-card.is-done { opacity: .8; }
+.t-card.is-done::before { background: var(--berry); }
+.t-card.is-next { background: transparent; border: 2px dashed var(--petal); box-shadow: none; }
+/* the stage we are in now */
+.t-card.is-now { box-shadow: 0 0 0 3px var(--rose); }
+.t-card.is-now::after { content: ""; position: absolute; inset: -3px; border-radius: 25px; border: 3px solid var(--rose); pointer-events: none; animation: nowPulse 2.2s ease-out infinite; }
+.t-card.is-now .t-state { opacity: 1; color: var(--white); background: var(--rose); padding: 2px 8px; border-radius: 999px; top: 8px; }
+@keyframes nowPulse { 0% { opacity: .7; transform: scale(1); } 100% { opacity: 0; transform: scale(1.08); } }
+@media (prefers-reduced-motion: reduce) { .t-card.is-now::after { animation: none; opacity: 0; } }
+@media (max-width: 1040px) { .steps { grid-template-columns: repeat(3, 1fr); row-gap: 22px; } }
+@media (max-width: 560px) { .steps { grid-template-columns: 1fr 1fr; } }

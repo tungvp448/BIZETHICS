@@ -39,11 +39,27 @@
   tiles($("hospitalStats"), SITE.hospitalStats);
   $("liveText").textContent = SITE.socialUpdated ? "Updated " + Site.timeAgo(SITE.socialUpdated) : "";
 
-  // ===== Timeline =====
-  $("timeline").innerHTML = SITE.timeline.map(function (t) {
-    var d = new Date(t.date + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short" });
-    return '<li><time datetime="' + esc(t.date) + '">' + esc(d) + '</time><b>' + esc(t.title) + '</b><p>' + esc(t.text) + '</p></li>';
+  // ===== Timeline: small cards that open on tap; the stage we are in now gets a soft pulsing ring =====
+  var n = new Date(), today = n.getFullYear() + "-" + ("0" + (n.getMonth() + 1)).slice(-2) + "-" + ("0" + n.getDate()).slice(-2), now = -1;
+  SITE.timeline.forEach(function (t, i) { if (t.date <= today) now = i; });
+  $("timeline").innerHTML = SITE.timeline.map(function (t, i) {
+    var d = t.label || new Date(t.date + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short" }),
+      state = i < now ? "done" : i === now ? "now" : "next", open = i === now;
+    return '<li class="t-card is-' + state + (open ? " open" : "") + '">' +
+      '<button type="button" aria-expanded="' + open + '" aria-controls="t-' + i + '">' +
+        '<span class="t-state">' + (state === "done" ? "Done" : state === "now" ? "Now" : "Next") + '</span>' +
+        '<time datetime="' + esc(t.date) + '">' + esc(d) + '</time><b>' + esc(t.title) + '</b>' +
+        '<span class="t-more" aria-hidden="true">+</span>' +
+      '</button>' +
+      '<div class="t-body" id="t-' + i + '"><p>' + esc(t.text) + '</p></div></li>';
   }).join("");
+  $("timeline").addEventListener("click", function (e) {
+    var b = e.target.closest(".t-card button");
+    if (!b) return;
+    var li = b.parentNode, open = !li.classList.contains("open");
+    li.classList.toggle("open", open);
+    b.setAttribute("aria-expanded", open);
+  });
 
   // ===== Journal (in the order written in site-data.js; the first one is the lead) =====
   $("journalCards").innerHTML = SITE.posts.map(function (p, i) { return Site.journalCard(p, i === 0); }).join("");

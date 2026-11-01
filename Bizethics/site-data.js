@@ -81,7 +81,9 @@ var SITE = {
     { date: "2026-10-17", title: "Volunteer visit", text: "We joined a local volunteer group near K Hospital Tân Triều to hand out food and give flowers to mothers." },
     { date: "2026-10-18", title: "The 20/10 campaign (18–22 Oct)", text: "Posters and short videos that put the mothers at the centre. Each post ends with one action: send a message to your own mother, or support the mothers at K Hospital." },
     { date: "2026-10-20", title: "Vietnamese Women’s Day", text: "Dear Mom: we invite everyone to say thank you to the women who have taken care of them." },
-    { date: "2026-10-31", title: "Report and website", text: "We publish what we did, what we learned and every expense." }
+    { date: "2026-10-31", title: "Report and website", text: "We publish what we did, what we learned and every expense." },
+    // Từ 1/11 trở đi. Thẻ có ngày gần nhất đã tới sẽ tự hiện vòng "Now" nhấp nháy.
+    { date: "2026-11-01", label: "From 1 Nov", title: "Explore and expand", text: "We keep exploring and growing Care for the Carers: more stories, more partners, and more ways to support carers." }
   ],
 
   // ===== Ảnh "Moments from our project" =====

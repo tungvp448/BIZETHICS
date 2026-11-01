@@ -80,15 +80,47 @@ var I18N = (function () {
     b.setAttribute("data-no-i18n", "");
     b.addEventListener("click", function () {
       try { localStorage.setItem(KEY, lang === "vi" ? "en" : "vi"); } catch (e) {}
+      // Switching to Vietnamese shows the beta notice once, on the next page
+      try { if (lang !== "vi") sessionStorage.setItem("cftc-vi-note", "1"); } catch (e) {}
       var url = location.href.replace(/([?&])lang=(en|vi)(&|(?=#)|$)/, function (_, a, b, c) { return c === "&" ? a : ""; });
       if (url === location.href) location.reload(); else location.href = url;
     });
     nav.insertBefore(b, nav.querySelector(".me") || nav.querySelector(".menu-btn"));
   }
 
+  // "Vietnamese is still a beta" notice in the middle of the screen, kept in English on purpose
+  function betaNotice() {
+    var show = false;
+    try { show = sessionStorage.getItem("cftc-vi-note") === "1"; sessionStorage.removeItem("cftc-vi-note"); } catch (e) {}
+    if (!show) return;
+    var box = document.createElement("div");
+    box.className = "beta-note";
+    box.setAttribute("data-no-i18n", "");
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
+    box.setAttribute("aria-labelledby", "betaTitle");
+    box.innerHTML = '<div class="beta-card" lang="en">' +
+      '<button type="button" class="beta-x" aria-label="Close">×</button>' +
+      '<span class="beta-tag">Beta</span>' +
+      '<h2 id="betaTitle">We recommend reading in English</h2>' +
+      '<p>The Vietnamese version is still a beta, so some content could be misaligned.</p>' +
+      '<div class="beta-actions"><button type="button" class="btn" data-keep>Continue in Vietnamese</button>' +
+      '<button type="button" class="btn alt" data-en>Switch to English</button></div></div>';
+    function close() { box.remove(); document.removeEventListener("keydown", esc); }
+    function esc(e) { if (e.key === "Escape") close(); }
+    box.addEventListener("click", function (e) {
+      if (e.target === box || e.target.closest(".beta-x, [data-keep]")) close();
+      else if (e.target.closest("[data-en]")) { try { localStorage.setItem(KEY, "en"); } catch (er) {} location.reload(); }
+    });
+    document.addEventListener("keydown", esc);
+    document.body.appendChild(box);
+    box.querySelector("[data-keep]").focus();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     addButton();
     if (lang !== "vi") return;
+    betaNotice();
     walk(document.body);
     var t = lookup(document.title);
     if (t != null) document.title = t;
