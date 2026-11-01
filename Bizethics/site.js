@@ -156,6 +156,7 @@ var Site = (function () {
         // Remembered for this tab only, so Personal settings can fill in the email
         try { sessionStorage.setItem("subEmail", email); } catch (e) {}
         form.innerHTML = '<p class="msg ok">Thank you! A welcome email is on its way ♥</p>' +
+          '<p class="spam-note">Can’t find our email? Please check your spam or junk folder.</p>' +
           '<p>Want to add your name and photo, or choose a password? <a href="account.html">Open your personal settings →</a></p>';
       }).catch(function (err) {
         msg.className = "msg err";

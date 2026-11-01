@@ -10,7 +10,18 @@
   var here = location.href.split("#")[0].split("?")[0];
   var me = null, saved = { name: "", avatar: "" }, avatar = "", subscribed = false;
 
-  function say(el, text, ok) { el.className = "msg " + (ok ? "ok" : "err"); el.textContent = text; }
+  function say(el, text, ok) {
+    el.className = "msg " + (ok ? "ok" : "err"); el.textContent = text;
+    var n = el.nextElementSibling; if (n && n.classList.contains("spam-note")) n.remove();
+  }
+  // After we send an email, remind people to look in spam or junk if it has not arrived
+  function spamNote(el) {
+    if (el.nextElementSibling && el.nextElementSibling.classList.contains("spam-note")) return;
+    var n = document.createElement("p");
+    n.className = "spam-note";
+    n.textContent = "Can’t find our email? Please check your spam or junk folder.";
+    el.insertAdjacentElement("afterend", n);
+  }
 
   // Supabase error messages, in plain words
   function friendly(err) {
@@ -69,7 +80,7 @@
       if (r.error) return say(authMsg, friendly(r.error));
       // Supabase answers without a session (and without an error) when the email is already registered
       if (r.data.user && r.data.user.identities && !r.data.user.identities.length) return say(authMsg, friendly({ message: "already registered" }));
-      if (!r.data.session) say(authMsg, "Almost there! We’ve sent a link to " + c.email + ". Open it to confirm your account, then come back and sign in.", true);
+      if (!r.data.session) { say(authMsg, "Almost there! We’ve sent a link to " + c.email + ". Open it to confirm your account, then come back and sign in.", true); spamNote(authMsg); }
     });
   });
 
@@ -81,6 +92,7 @@
       busy(false);
       if (r.error) return say(authMsg, friendly(r.error));
       say(authMsg, "If " + email + " has an account, a link to choose a new password is on its way.", true);
+      spamNote(authMsg);
     });
   });
 
@@ -176,7 +188,7 @@
       if (r.error) return say($("subMsg"), friendly(r.error));
       subscribed = on; showSub();
       // Subscribing again sends the welcome email by itself; unsubscribing gets a short goodbye
-      if (on) return say($("subMsg"), "Welcome back! Check your inbox for a little hello.", true);
+      if (on) { say($("subMsg"), "Welcome back! Check your inbox for a little hello.", true); return spamNote($("subMsg")); }
       notify(["unsubscribed"]).then(function () { say($("subMsg"), "You’ve unsubscribed. We’ve emailed you a confirmation.", true); });
     });
   });

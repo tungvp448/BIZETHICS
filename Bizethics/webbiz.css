@@ -851,3 +851,7 @@ sup.fn a:hover { text-decoration: underline; }
 }
 /* letters with several paragraphs */
 .prose blockquote p + p { margin-top: .7em; }
+
+/* "Check your spam" reminder after we send an email */
+.spam-note { margin: 6px 0 0; padding: 8px 12px; border-radius: 12px; background: #fff7b8; color: var(--berry); font-size: .85rem; font-weight: 700; line-height: 1.4; }
+.spam-note::before { content: "📩 "; }

@@ -435,6 +435,7 @@
     [`Please copy manually`, `Vui lòng sao chép thủ công`],
     [`Please enter a valid email.`, `Vui lòng nhập một email hợp lệ.`],
     [`Thank you! A welcome email is on its way ♥`, `Cảm ơn bạn! Email chào mừng đang trên đường đến ♥`],
+    [`Can’t find our email? Please check your spam or junk folder.`, `Chưa thấy email của chúng mình? Bạn hãy kiểm tra hộp thư rác (Spam) nhé.`],
     [`Want to add your name and photo, or choose a password? <a href="account.html">Open your personal settings →</a>`, `Bạn muốn thêm tên và ảnh, hoặc đặt mật khẩu? <a href="account.html">Mở cài đặt cá nhân →</a>`],
     [`Add your own face and letter`, `Thêm khuôn mặt và lá thư của bạn`],
     [`Write a few words to your mom first.`, `Hãy viết vài lời cho mẹ trước đã.`],
