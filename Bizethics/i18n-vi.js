@@ -195,6 +195,8 @@
     [`A mother walking hand in hand with her daughter and her son, with hearts floating up`, `Một người mẹ nắm tay con gái và con trai đi dạo, những trái tim bay lên`],
     [`Special thanks`, `Lời cảm ơn đặc biệt`],
     [`Website support`, `Hỗ trợ website`],
+    [`Professor, Ph.D Bùi Thị Minh Hồng`, `GS. TS. Bùi Thị Minh Hồng`],
+    [`Thank you for consulting and also guiding us to execute this project.`, `Xin cảm ơn vì đã tư vấn và hướng dẫn chúng mình thực hiện dự án này.`],
     [`Thank you for supporting the technical aspects of the website. You gave Care for the Carers a home online where every story, report and letter can be seen.`, `Cảm ơn bạn đã hỗ trợ phần kỹ thuật của website. Bạn đã cho Care for the Carers một ngôi nhà trên mạng, nơi mọi câu chuyện, bài viết và lá thư đều được nhìn thấy.`]
   ]);
 
