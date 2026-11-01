@@ -797,3 +797,9 @@ html.i18n-wait body { visibility: hidden; }
 @media (prefers-reduced-motion: reduce) { .t-card.is-now::after { animation: none; opacity: 0; } }
 @media (max-width: 1040px) { .steps { grid-template-columns: repeat(3, 1fr); row-gap: 22px; } }
 @media (max-width: 560px) { .steps { grid-template-columns: 1fr 1fr; } }
+
+/* English version: Vietnamese words inside title / handwriting text use fonts that have Vietnamese letters */
+.vi-w { font-family: "Baloo 2", "Nunito", sans-serif; }
+.vi-w.hand { font-family: "Dancing Script", cursive; }
+.vi-w { font-weight: 700; }
+.vi-w.hand { font-weight: 700; }

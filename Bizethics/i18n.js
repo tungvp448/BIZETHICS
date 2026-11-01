@@ -117,9 +117,55 @@ var I18N = (function () {
     box.querySelector("[data-keep]").focus();
   }
 
+  // English version: Vietnamese words in the title and handwriting fonts (Fredoka, Caveat have no Vietnamese letters)
+  // are wrapped so they use Baloo 2 / Dancing Script, instead of mixing two fonts inside one word.
+  var W = /[^\s.,;:!?“”"'()[\]{}<>\/|·–—-]/.source, V = /[àáãèéìíòóõùúýăâđêôơưĂÂĐÊÔƠỪ-̣Ạ-ỹ]/.source,
+    WORD = W + "*" + V + W + "*",
+    // a run of Vietnamese words; short plain words inside it ("K", "con", "lai") and a short capitalised first word ("Con") join the run
+    VI_WORD = new RegExp("(?:[A-Z][a-z]{0,3}\\s+)?" + WORD + "(?:\\s+(?:[A-Za-z]{1,4}\\s+){0,2}" + WORD + ")*", "g");
+  var fontsAdded = false;
+  function vietWords(root) {
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), nodes = [], n;
+    while ((n = walker.nextNode())) {
+      VI_WORD.lastIndex = 0;
+      if (!VI_WORD.test(n.nodeValue)) continue;
+      var p = n.parentNode;
+      if (!p || p.closest(".vi-w, script, style, textarea, svg")) continue;
+      var f = getComputedStyle(p).fontFamily;
+      if (/Fredoka/.test(f)) nodes.push([n, "vi-w"]);
+      else if (/Caveat/.test(f)) nodes.push([n, "vi-w hand"]);
+    }
+    nodes.forEach(function (x) {
+      var frag = document.createDocumentFragment(), text = x[0].nodeValue, last = 0;
+      text.replace(VI_WORD, function (w, i) {
+        if (i > last) frag.appendChild(document.createTextNode(text.slice(last, i)));
+        var s = document.createElement("span");
+        s.className = x[1];
+        s.textContent = w;
+        frag.appendChild(s);
+        last = i + w.length;
+      });
+      if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+      x[0].parentNode.replaceChild(frag, x[0]);
+    });
+    if (nodes.length && !fontsAdded) {
+      fontsAdded = true;
+      var l = document.createElement("link");
+      l.rel = "stylesheet";
+      l.href = "https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Dancing+Script:wght@600;700&display=swap";
+      document.head.appendChild(l);
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     addButton();
-    if (lang !== "vi") return;
+    if (lang !== "vi") {
+      vietWords(document.body);
+      new MutationObserver(function (list) {
+        list.forEach(function (m) { m.addedNodes.forEach(function (a) { if (a.nodeType === 1 && !a.classList.contains("vi-w")) vietWords(a); }); });
+      }).observe(document.body, { childList: true, subtree: true });
+      return;
+    }
     betaNotice();
     walk(document.body);
     var t = lookup(document.title);
