@@ -815,3 +815,9 @@ sup.fn a:hover { text-decoration: underline; }
 .sources ol { margin: 6px 0 0 22px; }
 .sources li:target { background: var(--petal); border-radius: 8px; }
 .story .sources, .research .sources { margin-top: 28px; font-size: .88rem; }
+
+/* A story with one photo: show it full width, in its own shape */
+.story-photos figure { margin: 0; }
+.story-photos figure:only-child { grid-column: 1 / -1; }
+.story-photos figure:only-child img { aspect-ratio: auto; }
+.story-photos figcaption { font-size: .82rem; line-height: 1.45; opacity: .75; margin-top: 6px; }

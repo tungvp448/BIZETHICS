@@ -24,12 +24,16 @@ var SITE = {
       title: "A mother caring for her severely ill daughter",
       teaser: "Her only wish is for her daughter to recover.",
       body: [
-        "We met her on 17 October, near Bệnh Viện K Tân Triều, during the food distribution. She told us that her daughter was severely ill.",
-        "When we gave her a flower, she started crying. It had been such a long time since someone had given her flowers.",
-        "We asked what her wish was, at this moment in her life. Her only wish was for her child to recover from the sickness. Nothing else. She told us it had been a long time since she had been able to take a day for herself.",
-        "We asked whether we could help her get some money through donations, even if it was just a small amount. She said yes and gave us her contact information."
+        // Nguyên văn của nhóm (Raine), không sửa chữ.
+        "We met a mother on 17 October, near Bệnh Viện K Tân Triều, during the food distribution. She told us that her daughter was severely ill.",
+        "The whole time she was busy organizing the distribution to secure everyone will have their fair share. We asked her to join our interview and gave her a flower and tears shed on her face with a brimming smile. It had been such a long time since she received a flower. It was a simple gesture of giving her something so she’ll feel appreciated. Then, we asked what was her wish at this moment in her life. Her only response was for her child to recover and nothing else. Additionally, she told us it’s been so long since she had time for herself even just for a day.",
+        "The team asked for a possible solution to help the mothers and she said a little amount of money through donations, even if it’s just a small amount will do.",
+        "These caretakers don’t receive salaries for doing the best they can while helping their children survive daily. Even a small gesture through sharing what we know about the small organization and donating will greatly contribute to these survivors and caretakers that deserve the life just like what everyone experience everyday."
       ],
-      photos: [],
+      // Ảnh cắt từ video ngày 17/10 (IMG_7512). Mặt cô đã được làm mờ.
+      photos: [
+        { src: "images/story-mother-flower.jpg", caption: "Talking with her on 17 October, the flower in her hands. We have blurred her face to protect her privacy." }
+      ],
       todo: "Add more about her situation, what she needs, how to support her directly, and photos, only with her consent."
     }
   ],
