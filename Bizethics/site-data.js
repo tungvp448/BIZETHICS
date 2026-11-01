@@ -248,13 +248,39 @@ var SITE = {
         { p: `Recognition without resources is empty; resources without recognition do not change the norm.`,
           mark: ["Recognition without resources is empty; resources without recognition do not change the norm."] }
       ],
+      // Danh sách tài liệu tham khảo. `cite` = cách trích dẫn xuất hiện trong bài (cả bản tiếng Việt);
+      // web tự thêm số nhỏ sau mỗi trích dẫn đó, bấm vào sẽ nhảy xuống đúng tài liệu.
       sources: [
-        { text: "ILO (2018)", url: "https://www.ilo.org/resource/news/ilo-calls-urgent-action-prevent-looming-global-care-crisis" },
-        { text: "ILO (2024)", url: "https://www.ilo.org/resource/news/unpaid-care-work-prevents-708-million-women-participating-labour-market" },
-        { text: "VietnamPlus (8/10/2026)", url: "https://www.vietnamplus.vn/dau-tu-vao-kinh-te-cham-soc-dong-luc-nang-quyen-nang-kinh-te-cho-phu-nu-post1140729.vnp" },
-        { text: "Tuổi Trẻ (20/5/2023)", url: "https://tuoitre.vn/1-3-nu-gioi-o-viet-nam-khong-co-thoi-gian-giai-tri-trong-ngay-20230520101446874.htm" },
-        { text: "World Bank, Vietnam Time Use Survey 2022", url: "https://microdata.worldbank.org/catalog/5844/related-materials" },
-        { text: "TNU Journal of Science and Technology (2024)", url: "https://jst.tnu.edu.vn/jst/article/download/10431/pdf" }
+        { text: "ILO (2018)", url: "https://www.ilo.org/resource/news/ilo-calls-urgent-action-prevent-looming-global-care-crisis", cite: ["ILO, 2018"] },
+        { text: "ILO (2024)", url: "https://www.ilo.org/resource/news/unpaid-care-work-prevents-708-million-women-participating-labour-market", cite: ["ILO, 2024"] },
+        { text: "VietnamPlus (8/10/2026)", url: "https://www.vietnamplus.vn/dau-tu-vao-kinh-te-cham-soc-dong-luc-nang-quyen-nang-kinh-te-cho-phu-nu-post1140729.vnp",
+          cite: ["UN Women and Ministry of Home Affairs workshop, 8 Oct 2026", "presented at the workshop", "hội thảo của UN Women và Bộ Nội vụ, 8/10/2026", "trình bày tại hội thảo"] },
+        { text: "Tuổi Trẻ (20/5/2023)", url: "https://tuoitre.vn/1-3-nu-gioi-o-viet-nam-khong-co-thoi-gian-giai-tri-trong-ngay-20230520101446874.htm",
+          cite: ["World Bank with GSO, 2022; 6,000 respondents", "Ngân hàng Thế giới cùng Tổng cục Thống kê, 2022; 6.000 người trả lời"] },
+        { text: "World Bank, Vietnam Time Use Survey 2022", url: "https://microdata.worldbank.org/catalog/5844/related-materials",
+          cite: ["World Bank with GSO, 2022; 6,000 respondents", "Ngân hàng Thế giới cùng Tổng cục Thống kê, 2022; 6.000 người trả lời"] },
+        { text: "Do et al. (2024). Mô hình bệnh tật và kết quả điều trị tại khoa Nhi Bệnh viện K – cơ sở Tân Triều. TNU Journal of Science and Technology", url: "https://jst.tnu.edu.vn/jst/article/view/10431",
+          cite: ["Do et al., 2024", "Do và cộng sự, 2024"] },
+        { text: "Kearney, Salley & Muriel (2015). Standards of Psychosocial Care for Parents of Children With Cancer. Pediatric Blood & Cancer", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5066591/",
+          cite: ["Kearney et al., 2015", "Kearney và cộng sự, 2015"] },
+        { text: "PRNewswire (2023). Peanut and Tommee Tippee survey of 2,000 UK mothers", url: "https://prnewswire.co.uk/news-releases/new-study-from-peanut-and-tommee-tippee-finds-95-of-mothers-experience-guilt-and-62-face-loss-of-identity-301784913.html",
+          cite: ["PRNewswire, 2023"] },
+        { text: "PANDA (2025). Matrescence and the transformation of parenthood", url: "https://panda.org.au/articles/matrescence-and-the-transformation-of-parenthood",
+          cite: ["PANDA in 2025", "PANDA năm 2025"] },
+        { text: "VNA / VietnamPlus (2022). Vice President visits child cancer patients in Hanoi", url: "https://en.vietnamplus.vn/vice-president-visits-child-cancer-patients-in-hanoi-post229462.vnp",
+          cite: ["VNA, 2022", "TTXVN, 2022"] },
+        { text: "Joshi et al. (2025). Psychological distress and coping strategies among caregivers of children with cancer. ecancermedicalscience", url: "https://ecancer.org/en/journal/article/1872-psychological-distress-and-coping-strategies-among-caregivers-of-children-with-cancer-a-cross-sectional-study",
+          cite: ["Joshi et al., 2025", "Joshi và cộng sự, 2025"] },
+        { text: "Psicología y Salud (2014). Carga, ansiedad y depresión en cuidadores primarios informales de niños con cáncer, 24(1), 45–53", url: "https://psicologiaysalud.uv.mx/index.php/psicysalud/article/download/719/1267",
+          cite: ["Psicología y Salud, 2014"] },
+        { text: "Porter & Kramer (2006). Strategy and Society: The Link Between Competitive Advantage and Corporate Social Responsibility. Harvard Business Review",
+          cite: ["Porter & Kramer, 2006"] },
+        { text: "Porter & Kramer (2011). Creating Shared Value. Harvard Business Review",
+          cite: ["Porter & Kramer, 2011"] },
+        { text: "Freeman (1984). Strategic Management: A Stakeholder Approach. Pitman",
+          cite: ["Freeman, 1984"] },
+        { text: "Patagonia. Why Should Employers Care About Families?", url: "https://www.patagonia.ca/stories/culture/community/why-should-employers-care-about-families/story-30845.html",
+          cite: ["company-reported", "số liệu do công ty công bố"] }
       ]
     },
     {
@@ -369,8 +395,8 @@ var SITE = {
         { quote: "Because at the end of the day, we do not simply want to tell stories about women. We want to create a space where women can tell their own stories, where their voices are heard, and where society can finally begin to understand what they have been going through.", by: "Thảo Linh" }
       ],
       sources: [
-        { text: "VnEconomy (2026). Hiện trạng giáo dục Việt Nam: một góc nhìn kinh tế học", url: "https://vneconomy.vn/hien-trang-giao-duc-viet-nam-mot-goc-nhin-kinh-te-hoc.htm" },
-        { text: "Nguyen Lien (2023). Việt Nam vẫn còn trên 734.000 người chưa đạt chuẩn biết chữ mức độ 1. Đại biểu Nhân dân", url: "http://daibieunhandan.vn/viet-nam-van-con-tren-734-000-nguoi-chua-dat-chuan-biet-chu-muc-do-1-10324848.html" },
+        { text: "VnEconomy (2026). Hiện trạng giáo dục Việt Nam: một góc nhìn kinh tế học", url: "https://vneconomy.vn/hien-trang-giao-duc-viet-nam-mot-goc-nhin-kinh-te-hoc.htm", cite: ["VnEconomy, 2026"] },
+        { text: "Nguyen Lien (2023). Việt Nam vẫn còn trên 734.000 người chưa đạt chuẩn biết chữ mức độ 1. Đại biểu Nhân dân", url: "http://daibieunhandan.vn/viet-nam-van-con-tren-734-000-nguoi-chua-dat-chuan-biet-chu-muc-do-1-10324848.html", cite: ["Nguyen Lien, 2023", "Nguyễn Liên, 2023"] },
         { text: "Illustration photos from Unsplash, free to use under the Unsplash License: MI PHAM, Tra Nguyen, Nam Hoang, Jon Sailer", url: "https://unsplash.com/license" }
       ]
     },

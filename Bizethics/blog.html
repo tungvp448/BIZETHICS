@@ -146,11 +146,6 @@
     document.addEventListener("click", function (e) { if (!nav.contains(e.target)) setOpen(false); });
   }
 
-  function source(s) {
-    if (typeof s === "string") return '<li>' + esc(s) + '</li>';
-    return '<li>' + esc(s.text) + (s.url ? ': <a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.url) + '</a>' : "") + '</li>';
-  }
-
   function minutes(p) {
     var words = p.body.reduce(function (n, b) {
       var t = typeof b === "string" ? b : (b.p || b.quote || b.text || "");
@@ -179,13 +174,15 @@
           : '<div class="listen empty"><span>🎧 Voice reading coming soon</span></div>') : "") +
         (post.image ? '<figure class="hero-img' + (post.imageTall ? " tall" : "") + '"><img src="' + esc(post.image) + '" alt="' + esc(post.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (post.caption ? '<figcaption>' + esc(post.caption) + '</figcaption>' : "") + '</figure>' : "") +
         '<div class="prose">' + body(rest, post.sources && post.sources.length > 0) + '</div>' +
-        (post.sources && post.sources.length ? '<div class="sources" id="s-references"><h2>References</h2><ul>' + post.sources.map(source).join("") + '</ul></div>' : "") +
+        (post.sources && post.sources.length ? '<div class="sources" id="s-references"><h2>References</h2><ol>' + Site.refList(post.sources) + '</ol></div>' : "") +
         '<div data-subscribe="article"></div>' +
       '</article>' +
       '<section class="wrap" style="padding-top: 24px;"><h2>More from the Journal</h2><div class="journal">' +
         others.slice(0, 3).map(function (p) { return Site.journalCard(p, false); }).join("") +
       '</div></section>';
     startOutline();
+    // Small reference numbers, added after the page is translated (if Vietnamese is on)
+    document.addEventListener("DOMContentLoaded", function () { Site.refMarks(box.querySelector(".prose"), post.sources || []); });
     // Play: swap the cover picture for YouTube's player
     box.addEventListener("click", function (e) {
       var b = e.target.closest("[data-yt]");

@@ -83,6 +83,46 @@ var Site = (function () {
     return (c.email ? 'Please email us at <a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a> or message us on ' : "Please message us on ") + links + ".";
   }
 
+  // Reference numbers: after each in-text citation listed in a source's `cite` (e.g. "ILO, 2018"), add a small
+  // number that jumps to that source in the reference list (#ref-1, #ref-2 …). Works on the translated page too,
+  // so `cite` can also hold the Vietnamese form of a citation.
+  function refMarks(root, sources) {
+    var keys = [];
+    sources.forEach(function (s, i) {
+      (s.cite || []).forEach(function (k) {
+        var found = keys.filter(function (x) { return x.k === k; })[0];
+        if (found) found.n.push(i + 1); else keys.push({ k: k, n: [i + 1] });
+      });
+    });
+    if (!keys.length || !root) return;
+    keys.sort(function (a, b) { return b.k.length - a.k.length; });
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), nodes = [], t;
+    while ((t = walker.nextNode())) if (!t.parentNode.closest("sup, a, .sources")) nodes.push(t);
+    nodes.forEach(function (node) {
+      // a paragraph can cite several sources: mark the earliest citation, then keep looking in the rest of the text
+      while (node) {
+        var best = null;
+        keys.forEach(function (x) {
+          var at = node.nodeValue.indexOf(x.k);
+          if (at >= 0 && (!best || at < best.at)) best = { at: at, x: x };
+        });
+        if (!best) break;
+        var after = node.splitText(best.at + best.x.k.length), sup = document.createElement("sup");
+        sup.className = "fn";
+        sup.innerHTML = best.x.n.map(function (n) { return '<a href="#ref-' + n + '" aria-label="Reference ' + n + '">' + n + '</a>'; }).join(",");
+        after.parentNode.insertBefore(sup, after);
+        node = after;
+      }
+    });
+  }
+
+  // The reference list itself: numbered, each item with an id the small numbers link to
+  function refList(sources) {
+    return sources.map(function (s, i) {
+      return '<li id="ref-' + (i + 1) + '">' + esc(s.text) + (s.url ? ': <a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.url) + '</a>' : "") + '</li>';
+    }).join("");
+  }
+
   // A YouTube video's id, from any youtu.be / watch / embed link
   function youtubeId(url) { return ((url || "").match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/) || [])[1] || ""; }
 
@@ -201,5 +241,5 @@ var Site = (function () {
     }
   });
 
-  return { fmt: fmt, money: money, countUp: countUp, hearts: hearts, timeAgo: timeAgo, longDate: longDate, esc: esc, send: send, reachUs: reachUs, youtubeId: youtubeId, journalCard: journalCard, authors: authors, sortedPosts: sortedPosts };
+  return { fmt: fmt, money: money, countUp: countUp, hearts: hearts, timeAgo: timeAgo, longDate: longDate, esc: esc, send: send, reachUs: reachUs, youtubeId: youtubeId, refMarks: refMarks, refList: refList, journalCard: journalCard, authors: authors, sortedPosts: sortedPosts };
 })();

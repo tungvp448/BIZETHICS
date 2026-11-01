@@ -97,6 +97,7 @@
       <div class="card"><b>Two in three mothers felt they had lost part of themselves</b>In a survey of 2,000 British mothers, two-thirds said they felt they have lost part of their identity.<cite>PRNewswire, 2023</cite></div>
       <div class="card"><b>“Mẹ nuôi con biển hồ lai láng, con nuôi mẹ kể tháng kể ngày”</b>A mother raises her child with an ocean-like abundance; the child raises the mother counting months and counting days. A custom formed through generations, in which receiving care back is only an option for the child.<cite>Vietnamese proverb</cite></div>
     </div>
+    <div class="sources" id="s-references"><h2>References</h2><ol data-refs></ol></div>
 
     <h3 style="font-size: 1.5rem; margin: 36px 0 12px;">From our wall so far</h3>
     <div class="kpis" id="wallStats"></div>
@@ -248,5 +249,15 @@
 <script src="faces.js"></script>
 <script src="thank-you.js"></script>
 <script src="letter.js"></script>
+<script>
+// Reference list for the research cards; the small numbers link each citation to it
+(function () {
+  var refs = [
+    { text: "PRNewswire (2023). Peanut and Tommee Tippee survey of 2,000 UK mothers", url: "https://prnewswire.co.uk/news-releases/new-study-from-peanut-and-tommee-tippee-finds-95-of-mothers-experience-guilt-and-62-face-loss-of-identity-301784913.html", cite: ["PRNewswire, 2023"] }
+  ];
+  document.querySelector("[data-refs]").innerHTML = Site.refList(refs);
+  document.addEventListener("DOMContentLoaded", function () { Site.refMarks(document.querySelector(".research"), refs); });
+})();
+</script>
 </body>
 </html>

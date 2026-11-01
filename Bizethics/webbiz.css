@@ -807,3 +807,11 @@ html.i18n-wait body { visibility: hidden; }
 /* Word counter under the letter box */
 .word-count { display: block; text-align: right; font-size: .8rem; font-weight: 700; opacity: .65; margin-top: 4px; }
 .word-count.over { color: #c62828; opacity: 1; }
+
+/* Small reference numbers after citations, linking to the reference list */
+sup.fn { font-size: .68em; line-height: 0; margin-left: 1px; }
+sup.fn a { color: var(--rose); font-weight: 800; text-decoration: none; padding: 0 1px; }
+sup.fn a:hover { text-decoration: underline; }
+.sources ol { margin: 6px 0 0 22px; }
+.sources li:target { background: var(--petal); border-radius: 8px; }
+.story .sources, .research .sources { margin-top: 28px; font-size: .88rem; }
