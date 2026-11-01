@@ -833,3 +833,7 @@ sup.fn a:hover { text-decoration: underline; }
 .builder textarea, .letter .dear, .letter .body, .letter .from { font-family: "Dancing Script", cursive; font-weight: 600; }
 .builder textarea { font-size: 1.5rem; line-height: 1.4; }
 .letter .body { font-size: 1.4rem; }
+
+/* Donate: money received but not yet passed on to the charity */
+.pending-note { margin: -8px 0 20px; padding: 14px 20px; background: #fff7b8; border-radius: 20px; color: var(--berry); font-weight: 700; line-height: 1.5; max-width: none; }
+.pending-note::before { content: "⏳ "; }

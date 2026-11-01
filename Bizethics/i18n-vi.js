@@ -356,6 +356,8 @@
     [`Coming soon`, `Sắp có`],
     [`Contributed to the local volunteer group (fresh meals and essential supplies for hospital families)`, `Đóng góp cho nhóm thiện nguyện địa phương (bữa ăn tươi và nhu yếu phẩm cho các gia đình trong bệnh viện)`],
     [`View proof ↗`, `Xem bằng chứng ↗`],
+    [`Donation through the website (bank transfer)`, `Tiền ủng hộ qua website (chuyển khoản)`],
+    [`We have received 1,465,000 VND in new donations on 1 November. This money has not been transferred yet. We will announce it here as soon as we transfer it to the charity.`, `Ngày 1/11, chúng mình đã nhận thêm 1,465,000 VND tiền ủng hộ. Số tiền này chưa được chuyển đi. Chúng mình sẽ thông báo tại đây ngay khi chuyển số tiền này cho tổ chức thiện nguyện.`],
     [`Flowers for mothers near K Hospital Tan Trieu`, `Hoa tặng những người mẹ gần Bệnh viện K Tân Triều`],
     [`Gift packages for the children`, `Những phần quà cho các em`],
     [`Children at K Hospital Tan Trieu after receiving gift packages from the local volunteer group we support. Swipe to see more, and tap a photo to enlarge it.`, `Các em nhỏ ở Bệnh viện K Tân Triều sau khi nhận quà từ nhóm thiện nguyện địa phương mà chúng mình hỗ trợ. Vuốt để xem thêm, chạm vào ảnh để phóng to.`],
@@ -409,6 +411,7 @@
     [/^([\d,]+) VND can give (.+)$/, function (_, a, t) { return a + " VND có thể mang đến " + (GIVES[t] || t); }],
     [/^You’ve sent (\d+) hugs?$/, "Bạn đã gửi $1 cái ôm"],
     [/^Read (.+)’s letter$/, "Đọc thư của $1"],
+    [/^View proof (\d+) ↗$/, "Xem bằng chứng $1 ↗"],
     [/^With love, (.+)$/, "Thương yêu, $1"]
   );
   var REACH = `<a href="https://www.tiktok.com/@dearm0m___" target="_blank" rel="noopener">TikTok</a>, <a href="https://www.instagram.com/dearm0m___/" target="_blank" rel="noopener">Instagram</a>, <a href="https://www.threads.com/@dearm0m___" target="_blank" rel="noopener">Threads</a>.`;

@@ -496,6 +496,20 @@ var SITE = {
     { date: "17/10/2026", text: "Contributions from team members", type: "in", amount: 2600000, proof: "" },
     { date: "15/10/2026", text: "Contributed to the local volunteer group (fresh meals and essential supplies for hospital families)", type: "out", amount: 2000000, proof: "images/proof-transfer-2m.jpg" },
     { date: "17/10/2026", text: "Flowers for mothers near K Hospital Tan Trieu", type: "out", amount: 600000, proof: "" },
-    { date: "01/11/2026", text: "Donations received through the website (bank transfers)", type: "in", amount: 1465005, proof: ["images/proof-bank-1.jpg", "images/proof-bank-2.jpg"] }
-  ]
+    // Tiền mọi người donate thêm ngày 1/11, theo sao kê tài khoản của Quang Khánh: 8 giao dịch, tổng 1,465,000
+    // (số dư 1,465,005 có 5 đồng sẵn trong tài khoản từ trước, không phải tiền donate).
+    // Ảnh 1: dòng giao dịch đó. Ảnh 2: cả màn hình sao kê.
+    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 500000, proof: ["images/donation-2026-11-01-1.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 50000, proof: ["images/donation-2026-11-01-2.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 36000, proof: ["images/donation-2026-11-01-3.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 300000, proof: ["images/donation-2026-11-01-4.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 19000, proof: ["images/donation-2026-11-01-5.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 10000, proof: ["images/donation-2026-11-01-6.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 50000, proof: ["images/donation-2026-11-01-7.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 500000, proof: ["images/donation-2026-11-01-8.jpg", "images/statement-2026-11-01-b.jpg"] }
+  ],
+
+  // Thông báo về tiền chưa chuyển đi (hiện ở trang Donate, dưới ô Remaining).
+  // Chuyển xong thì thêm một dòng "out" ở trên, rồi để pendingNote: "" để ẩn đi.
+  pendingNote: "We have received 1,465,000 VND in new donations on 1 November. This money has not been transferred yet. We will announce it here as soon as we transfer it to the charity."
 };

@@ -78,6 +78,7 @@
       <div class="out"><span>Total spent</span><b id="totalOut">0</b></div>
       <div><span>Remaining</span><b id="balance">0</b></div>
     </div>
+    <p class="pending-note" id="pendingNote" hidden></p>
 
     <div class="promise">
       <h3>Our promise to every donor</h3>
@@ -303,6 +304,11 @@
   document.getElementById("totalIn").textContent = fmt(m.totalIn);
   document.getElementById("totalOut").textContent = fmt(m.totalOut);
   document.getElementById("balance").textContent = fmt(m.totalIn - m.totalOut);
+  if (SITE.pendingNote) {
+    var note = document.getElementById("pendingNote");
+    note.textContent = SITE.pendingNote;
+    note.hidden = false;
+  }
   document.getElementById("goalText").textContent = fmt(m.totalIn) + " of " + fmt(SITE.goal) + " VND raised (" + Math.round(m.pct) + "%)";
   document.getElementById("track").setAttribute("aria-valuenow", Math.round(pct));
   setTimeout(function () { document.getElementById("bar").style.width = pct + "%"; }, 300);
