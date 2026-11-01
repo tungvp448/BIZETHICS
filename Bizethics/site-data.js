@@ -415,7 +415,10 @@ var SITE = {
       caption: "Our team with the women we met on 17 October.",
       draft: false,
       body: [
-        { quote: "Words are not enough to describe the gratitude this world owes every mother and the womanhood that comes with it. Carrying a life for 9 months and nurturing kids to become a responsible adult is a priceless job, a paycheck of a lifetime. It’s not simple, even just deciding if you want to be a mother or not is not an easy feat. I have great respect for women who love their children and who became a mother until their death bed. For the women not only in this lifetime but also for the women who paved the way and gave birth to amazing people, THANK YOU! Women will always have a special place in my heart, especially mothers. I value you, I appreciate you, and being a woman is the greatest thing!", by: "Raine, “To My Beloved and Respected Women”" }
+        { quote: "Words are not enough to describe the gratitude this world owes every mother and the womanhood that comes with it. Carrying a life for 9 months and nurturing kids to become a responsible adult is a priceless job, a paycheck of a lifetime. It’s not simple, even just deciding if you want to be a mother or not is not an easy feat. I have great respect for women who love their children and who became a mother until their death bed. For the women not only in this lifetime but also for the women who paved the way and gave birth to amazing people, THANK YOU! Women will always have a special place in my heart, especially mothers. I value you, I appreciate you, and being a woman is the greatest thing!", by: "Raine, “To My Beloved and Respected Women”" },
+        // Poster của Raine cho chiến dịch
+        { image: "images/poster-see-the-mother.jpg", tall: true, caption: "Raine’s poster: See the mother behind the care." },
+        { image: "images/poster-show-her.jpg", tall: true, caption: "Raine’s poster: Don’t just thank her, show her. One small act of care today." }
       ],
       sources: []
     }
