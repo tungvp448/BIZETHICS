@@ -651,6 +651,8 @@
   add([
     [`🎧 Voice reading coming soon`, `🎧 Bản đọc sắp ra mắt`],
     [`🎧 Listen to this report`, `🎧 Nghe bài này`],
+    [`🎧 Listen to Thao Linh’s view`, `🎧 Nghe góc nhìn của Thảo Linh`],
+    [`Read by Thảo Linh (CBM)`, `Thảo Linh (CBM) đọc`],
     [`Read for us by Phạm Thảo Nguyên (CBM). Thank you!`, `Bạn Phạm Thảo Nguyên (CBM) đã đọc bài này cho chúng mình. Cảm ơn bạn!`],
     [`The crowd near Bệnh Viện K Tân Triều, 17 October 2026.`, `Dòng người gần Bệnh viện K Tân Triều, ngày 17/10/2026.`],
     [`Raine’s View as a person from Phillipino.`, `Góc nhìn của Raine, một người đến từ Philippines.`],

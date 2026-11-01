@@ -298,7 +298,6 @@ var SITE = {
       date: "2026-10-17",
       image: "images/day-crowd-overpass.jpg",
       caption: "The crowd near Bệnh Viện K Tân Triều, 17 October 2026.",
-      audio: "",
       draft: false,
       // Các đoạn văn dưới đây giữ NGUYÊN VĂN bài viết của Raine và Thảo Linh. Chỉ thêm tô sáng (mark), không sửa chữ.
       body: [
@@ -321,6 +320,7 @@ var SITE = {
 
         { person: "Thảo Linh", role: "Project lead, video, research & website support", title: "Thao Linh’s View",
           quote: "How can we make their voices be heard?" },
+        { listen: "audio/real-reporting-thao-linh.mp3", title: "Listen to Thao Linh’s view", by: "Thảo Linh (CBM)" },
         { p: `As I was the one who talked to the program organizers, who were two women running this program, I learned that they came here around four to five times a week because they genuinely wanted to volunteer and help these people. I was connected to them through my mom, who had also once suffered from cancer. Because of her own experience, she wanted to spread love to people who were going through the same condition as her.`,
           mark: ["four to five times a week"] },
         { p: `Their story really touched me. These two women conducted a program where they gave out food and connected mothers who had sick children in the hospital wards. When I talked to them, they told me that the reason they did all of this was purely out of love. They wanted to create and spread love to people who were suffering. Even though they were poor themselves, they still wanted to do this. One of the women was even a street vendor, selling things on the street. Their loved ones had also suffered from cancer, and that was why they wanted to help other people going through the same thing.`,

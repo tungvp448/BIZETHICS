@@ -65,6 +65,7 @@
   function block(b) {
     if (typeof b === "string") return '<p>' + esc(b) + '</p>';
     if (b.p) return '<p>' + marked(b.p, b.mark) + '</p>';
+    if (b.listen) return '<div class="listen"><div class="listen-head"><span>🎧 ' + esc(b.title || "Listen to this part") + '</span>' + (b.by ? '<small>Read by ' + esc(b.by) + '</small>' : "") + '</div><audio controls preload="metadata" src="' + esc(b.listen) + '"></audio></div>';
     if (b.person) return '<div class="person"><span class="avatar" aria-hidden="true">' + esc(b.person.charAt(0)) + '</span>' +
       '<div><h2>' + esc(b.title || b.person) + '</h2><span class="role">' + esc(b.person) + ' · ' + esc(b.role || "") + '</span>' +
       (b.quote ? '<p class="sum-quote">“' + esc(b.quote) + '”</p>' : "") + '</div></div>';
@@ -182,12 +183,15 @@
       '</div></section>';
     startOutline();
     // While the voice reading plays, the player stays at the top of the screen so people can listen as they read
-    var player = box.querySelector("#listen");
-    if (player) {
-      var au = player.querySelector("audio");
-      au.addEventListener("play", function () { player.classList.add("playing"); });
+    box.querySelectorAll(".listen audio").forEach(function (au) {
+      var player = au.closest(".listen");
+      au.addEventListener("play", function () {
+        // only one reading at a time
+        box.querySelectorAll(".listen audio").forEach(function (other) { if (other !== au) other.pause(); });
+        player.classList.add("playing");
+      });
       au.addEventListener("pause", function () { player.classList.remove("playing"); });
-    }
+    });
     // Small reference numbers, added after the page is translated (if Vietnamese is on)
     document.addEventListener("DOMContentLoaded", function () { Site.refMarks(box.querySelector(".prose"), post.sources || []); });
     // Play: swap the cover picture for YouTube's player
