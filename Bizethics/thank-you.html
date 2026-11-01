@@ -104,12 +104,16 @@
 
     <div class="ours" style="margin-top: 24px;">
       <b style="font-family: var(--display); font-size: 1.25rem; color: var(--rose);">Our findings</b><span class="draft-tag">Draft</span>
-      <p>We are asking the people who write two questions, before and after:</p>
+
+      <p>In Vietnam, women spend about 15.5 hours a week on unpaid care work, almost double the 8.75 hours men spend <cite>UN Women &amp; MoHA, 2026</cite>. Across the world, women do more than three-quarters of all unpaid care hours <cite>ILO, 2018</cite>.</p>
+
+      <p>Does writing to your mom change how you see that work? Everyone who writes a letter answers two questions, before and after:</p>
       <ul>
         <li>Did you know your mother’s care work is unpaid labour?</li>
         <li>When did you last thank her, or take over one of her tasks?</li>
       </ul>
-      <p style="margin-top: 10px;">Results and the comments that show a shift in how people see their mothers will be added here.</p>
+
+      <p style="margin-top: 10px;">We will add the results here, together with the comments that show a shift in how people see their mothers.</p>
     </div>
   </div>
 </section>
@@ -253,7 +257,9 @@
 // Reference list for the research cards; the small numbers link each citation to it
 (function () {
   var refs = [
-    { text: "PRNewswire (2023). Peanut and Tommee Tippee survey of 2,000 UK mothers", url: "https://prnewswire.co.uk/news-releases/new-study-from-peanut-and-tommee-tippee-finds-95-of-mothers-experience-guilt-and-62-face-loss-of-identity-301784913.html", cite: ["PRNewswire, 2023"] }
+    { text: "PRNewswire (2023). Peanut and Tommee Tippee survey of 2,000 UK mothers", url: "https://prnewswire.co.uk/news-releases/new-study-from-peanut-and-tommee-tippee-finds-95-of-mothers-experience-guilt-and-62-face-loss-of-identity-301784913.html", cite: ["PRNewswire, 2023"] },
+    { text: "ILO (2018). Care work and care jobs for the future of decent work", url: "https://www.ilo.org/resource/news/ilo-calls-urgent-action-prevent-looming-global-care-crisis", cite: ["ILO, 2018"] },
+    { text: "VietnamPlus (2026, 8 October). Investing in the care economy: a driver of women’s economic empowerment. Report on the workshop by Vietnam’s Ministry of Home Affairs, UN Women and the Australian Embassy", url: "https://www.vietnamplus.vn/dau-tu-vao-kinh-te-cham-soc-dong-luc-nang-quyen-nang-kinh-te-cho-phu-nu-post1140729.vnp", cite: ["UN Women & MoHA, 2026"] }
   ];
   document.querySelector("[data-refs]").innerHTML = Site.refList(refs);
   document.addEventListener("DOMContentLoaded", function () { Site.refMarks(document.querySelector(".research"), refs); });
