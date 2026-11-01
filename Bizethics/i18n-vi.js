@@ -730,7 +730,10 @@
     [`of Vietnam’s total state budget goes to education and training, equivalent to 4.5–5.5% of GDP`, `tổng ngân sách nhà nước Việt Nam dành cho giáo dục và đào tạo, tương đương 4,5–5,5% GDP`],
     [`VND 580 trillion`, `580 nghìn tỷ đồng`],
     [`proposed for education development programs from 2026 to 2035`, `được đề xuất cho các chương trình phát triển giáo dục giai đoạn 2026–2035`],
-    [`One teacher can support thousands of lives. Photo: Tra Nguyen on Unsplash.`, `Một giáo viên có thể nâng đỡ hàng nghìn cuộc đời. Ảnh: Tra Nguyen trên Unsplash.`],
+    [`A young mother and her baby in the evening sun. Photo: Helena Lopes on Unsplash.`, `Một người mẹ trẻ và con trong nắng chiều. Ảnh: Helena Lopes trên Unsplash.`],
+    [`A mother with her two little ones. Photo: Streetwindy on Unsplash.`, `Một người mẹ cùng hai con nhỏ. Ảnh: Streetwindy trên Unsplash.`],
+    [`Laughing together. Photo: Beth Macdonald on Unsplash.`, `Cùng nhau cười. Ảnh: Beth Macdonald trên Unsplash.`],
+    [`A grown daughter and her mother, side by side. Photo: cal gao on Unsplash.`, `Cô con gái đã lớn bên cạnh mẹ. Ảnh: cal gao trên Unsplash.`],
     [`What should come next`, `Điều nên đến tiếp theo`],
     [`And perhaps that is the biggest lesson we have learned from this experience. For now, we believe that we should continue providing these meals until more comprehensive changes can take place to support these women in a more sustainable way. For example, <mark>creating employment opportunities, or even hiring these women through short-term contracts and providing them with proper wages</mark>, could help them avoid being overwhelmed by their responsibilities while still having a stable source of income to support their families.`,
      `Và có lẽ đó là bài học lớn nhất chúng mình rút ra từ trải nghiệm này. Hiện tại, chúng mình tin rằng nên tiếp tục những bữa ăn này cho đến khi có những thay đổi toàn diện hơn để hỗ trợ những người phụ nữ ấy một cách bền vững hơn. Chẳng hạn, <mark>tạo cơ hội việc làm, hay thậm chí thuê chính những người phụ nữ ấy qua hợp đồng ngắn hạn và trả cho họ mức lương xứng đáng</mark>, có thể giúp họ không bị quá tải bởi trách nhiệm mà vẫn có nguồn thu nhập ổn định để lo cho gia đình.`],
@@ -759,8 +762,8 @@
      `Xa hơn, chúng mình hy vọng mở rộng sáng kiến này thành một điều lớn hơn nhiều: một nền tảng đứng cùng phụ nữ, lên tiếng cho họ, và cho họ cơ hội tự nói về mình qua chính câu chuyện của họ. Không chỉ là câu chuyện của những người mẹ ở Bệnh viện K, mà là câu chuyện của phụ nữ ở mọi hoàn cảnh, trên khắp Việt Nam và rồi trên khắp thế giới.`],
     [`Because at the end of the day, we do not simply want to tell stories about women. We want to create a space where women can tell their own stories, where their voices are heard, and where society can finally begin to understand what they have been going through.`,
      `Bởi vì suy cho cùng, chúng mình không chỉ muốn kể chuyện về phụ nữ. Chúng mình muốn tạo ra một không gian nơi phụ nữ có thể kể câu chuyện của chính mình, nơi tiếng nói của họ được lắng nghe, và nơi xã hội cuối cùng có thể bắt đầu hiểu những gì họ đã và đang trải qua.`],
-    [`Illustration photos from Unsplash, free to use under the Unsplash License: MI PHAM, Tra Nguyen, Nam Hoang, Jon Sailer: <a href="https://unsplash.com/license" target="_blank" rel="noopener">https://unsplash.com/license</a>`,
-     `Ảnh minh hoạ từ Unsplash, dùng miễn phí theo Giấy phép Unsplash: MI PHAM, Tra Nguyen, Nam Hoang, Jon Sailer: <a href="https://unsplash.com/license" target="_blank" rel="noopener">https://unsplash.com/license</a>`]
+    [`Illustration photos from Unsplash, free to use under the Unsplash License: Helena Lopes, Streetwindy, Beth Macdonald, cal gao: <a href="https://unsplash.com/license" target="_blank" rel="noopener">https://unsplash.com/license</a>`,
+     `Ảnh minh hoạ từ Unsplash, dùng miễn phí theo Giấy phép Unsplash: Helena Lopes, Streetwindy, Beth Macdonald, cal gao: <a href="https://unsplash.com/license" target="_blank" rel="noopener">https://unsplash.com/license</a>`]
   ]);
 
   // ===== Journal: Thank you, from the five of us; and the two drafts (bản dịch của nhóm) =====
