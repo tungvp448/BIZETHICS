@@ -205,7 +205,8 @@
           <button type="button">I’m proud of you because…</button>
         </div>
         <label>Your letter
-          <textarea id="fText" maxlength="600" placeholder="Dear Mom, …" required></textarea>
+          <textarea id="fText" maxlength="600" placeholder="Dear Mom, …" required aria-describedby="fCount"></textarea>
+          <small class="word-count" id="fCount" aria-live="polite">0 / 80 words</small>
         </label>
         <label>Your name <small>shown under your face on the wall</small>
           <input type="text" id="fName" maxlength="24" autocomplete="given-name" required>

@@ -182,6 +182,17 @@
     t.focus();
   });
 
+  // A letter can be up to MAX_WORDS words (the 600-character cap still applies underneath)
+  var MAX_WORDS = 80;
+  function words(s) { return s.trim() ? s.trim().split(/\s+/).length : 0; }
+  function showCount() {
+    var n = words($("fText").value), c = $("fCount");
+    c.textContent = n + " / " + MAX_WORDS + " words";
+    c.classList.toggle("over", n > MAX_WORDS);
+  }
+  $("fText").addEventListener("input", showCount);
+  $("prompts").addEventListener("click", showCount);
+
   function wantsToSend() { return $("letterForm").elements.sendToMom.value === "yes"; }
   $("fSend").addEventListener("change", function () {
     $("momRow").hidden = !wantsToSend();
@@ -201,6 +212,7 @@
     var text = $("fText").value.trim(), name = $("fName").value.trim();
     var email = $("fEmail"), mom = $("fMom"), send = wantsToSend();
     if (!text) return fail($("fText"), "Write a few words to your mom first.");
+    if (words(text) > MAX_WORDS) return fail($("fText"), "Please keep your letter to " + MAX_WORDS + " words or fewer.");
     if (!name) return fail($("fName"), "Add your name so she knows it’s from you.");
     if (email.value && !email.checkValidity()) return fail(email, "That email doesn’t look right.");
     if (send && (!mom.value || !mom.checkValidity())) return fail(mom, "Add your mom’s email so we can send it to her.");
@@ -215,6 +227,7 @@
       letters.unshift(saved);
       builderDlg.close();
       $("letterForm").reset();
+      showCount();
       $("momRow").hidden = true;
       face = Faces.random();
       render(saved.id);

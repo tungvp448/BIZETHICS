@@ -232,7 +232,8 @@
     [/^(Skin|Hair colour|Hair|Eyes|Nose|Mouth)$/, function (_, p) { return PARTS[p]; }],
     [/^(Skin|Hair colour) (\d+)$/, function (_, p, n) { return PARTS[p] + " " + n; }],
     [/^(Hair|Eyes|Nose|Mouth) (\w+)$/, function (_, p, o) { return PARTS[p] + ": " + (OPTS[o] || o); }],
-    [/^(\d+) letters? on the wall$/, "$1 lá thư trên tường"]
+    [/^(\d+) letters? on the wall$/, "$1 lá thư trên tường"],
+    [/^(\d+) \/ (\d+) words$/, "$1 / $2 chữ"]
   );
   add([
     [`Say thank you · Care for the Carers`, `Nói lời cảm ơn · Care for the Carers`],
@@ -415,6 +416,7 @@
     [`Want to add your name and photo, or choose a password? <a href="account.html">Open your personal settings →</a>`, `Bạn muốn thêm tên và ảnh, hoặc đặt mật khẩu? <a href="account.html">Mở cài đặt cá nhân →</a>`],
     [`Add your own face and letter`, `Thêm khuôn mặt và lá thư của bạn`],
     [`Write a few words to your mom first.`, `Hãy viết vài lời cho mẹ trước đã.`],
+    [`Please keep your letter to 80 words or fewer.`, `Lá thư của bạn chỉ nên dài tối đa 80 chữ.`],
     [`Add your name so she knows it’s from you.`, `Thêm tên để mẹ biết thư là của bạn.`],
     [`That email doesn’t look right.`, `Email này có vẻ chưa đúng.`],
     [`Add your mom’s email so we can send it to her.`, `Thêm email của mẹ để chúng mình gửi thư cho mẹ.`],
