@@ -358,6 +358,8 @@
     [`Amount (VND)`, `Số tiền (VND)`],
     [`Proof`, `Bằng chứng`],
     [`Contributions from team members`, `Đóng góp của các thành viên trong nhóm`],
+    [`Initial Fund Raising for the Project`, `Gây quỹ ban đầu cho dự án`],
+    [`Donation from an anonymous donor`, `Ủng hộ từ một người giấu tên`],
     [`Coming soon`, `Sắp có`],
     [`Contributed to the local volunteer group (fresh meals and essential supplies for hospital families)`, `Đóng góp cho nhóm thiện nguyện địa phương (bữa ăn tươi và nhu yếu phẩm cho các gia đình trong bệnh viện)`],
     [`View proof ↗`, `Xem bằng chứng ↗`],
@@ -417,6 +419,7 @@
     [/^You’ve sent (\d+) hugs?$/, "Bạn đã gửi $1 cái ôm"],
     [/^Read (.+)’s letter$/, "Đọc thư của $1"],
     [/^View proof (\d+) ↗$/, "Xem bằng chứng $1 ↗"],
+    [/^Donation from (.+)$/, "Ủng hộ từ $1"],
     [/^With love, (.+)$/, "Thương yêu, $1"]
   );
   var REACH = `<a href="https://www.tiktok.com/@dearm0m___" target="_blank" rel="noopener">TikTok</a>, <a href="https://www.instagram.com/dearm0m___/" target="_blank" rel="noopener">Instagram</a>, <a href="https://www.threads.com/@dearm0m___" target="_blank" rel="noopener">Threads</a>.`;

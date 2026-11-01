@@ -493,20 +493,22 @@ var SITE = {
 
   // type: "in" = tiền nhận, "out" = tiền chi. proof: ảnh bằng chứng (ví dụ "images/proof-1.jpg", hoặc nhiều ảnh: ["a.jpg", "b.jpg"]), để trống nếu chưa có.
   entries: [
-    { date: "17/10/2026", text: "Contributions from team members", type: "in", amount: 2600000, proof: "" },
+    { date: "17/10/2026", text: "Initial Fund Raising for the Project", type: "in", amount: 2600000, proof: "" },
     { date: "15/10/2026", text: "Contributed to the local volunteer group (fresh meals and essential supplies for hospital families)", type: "out", amount: 2000000, proof: "images/proof-transfer-2m.jpg" },
     { date: "17/10/2026", text: "Flowers for mothers near K Hospital Tan Trieu", type: "out", amount: 600000, proof: "" },
     // Tiền mọi người donate thêm ngày 1/11, theo sao kê tài khoản của Quang Khánh: 8 giao dịch, tổng 1,465,000
     // (số dư 1,465,005 có 5 đồng sẵn trong tài khoản từ trước, không phải tiền donate).
-    // Ảnh 1: dòng giao dịch đó. Ảnh 2: cả màn hình sao kê.
-    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 500000, proof: ["images/donation-2026-11-01-1.jpg", "images/statement-2026-11-01-a.jpg"] },
-    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 50000, proof: ["images/donation-2026-11-01-2.jpg", "images/statement-2026-11-01-a.jpg"] },
-    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 36000, proof: ["images/donation-2026-11-01-3.jpg", "images/statement-2026-11-01-a.jpg"] },
-    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 300000, proof: ["images/donation-2026-11-01-4.jpg", "images/statement-2026-11-01-a.jpg"] },
-    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 19000, proof: ["images/donation-2026-11-01-5.jpg", "images/statement-2026-11-01-a.jpg"] },
-    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 10000, proof: ["images/donation-2026-11-01-6.jpg", "images/statement-2026-11-01-a.jpg"] },
-    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 50000, proof: ["images/donation-2026-11-01-7.jpg", "images/statement-2026-11-01-a.jpg"] },
-    { date: "01/11/2026", text: "Donation through the website (bank transfer)", type: "in", amount: 500000, proof: ["images/donation-2026-11-01-8.jpg", "images/statement-2026-11-01-b.jpg"] }
+    // Tên người ủng hộ lấy đúng như trên biên lai ngân hàng (không dấu). Giao dịch không có tên thì ghi "an anonymous donor".
+    // Ảnh 1: biên lai chi tiết giao dịch (đã che số điện thoại, số tài khoản của người gửi). Ảnh 2: cả màn hình sao kê.
+    // Khoản 10,000 chưa có biên lai chi tiết, nên ảnh 1 là dòng giao dịch cắt từ sao kê.
+    { date: "01/11/2026", text: "Donation from Duong Huy Hoang", type: "in", amount: 500000, proof: ["images/receipt-2026-11-01-1.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation from Dang Tuan Hung", type: "in", amount: 50000, proof: ["images/receipt-2026-11-01-2.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation from an anonymous donor", type: "in", amount: 36000, proof: ["images/receipt-2026-11-01-3.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation from an anonymous donor", type: "in", amount: 300000, proof: ["images/receipt-2026-11-01-4.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation from an anonymous donor", type: "in", amount: 19000, proof: ["images/receipt-2026-11-01-5.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation from an anonymous donor", type: "in", amount: 10000, proof: ["images/donation-2026-11-01-6.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation from Nguyen Quang", type: "in", amount: 50000, proof: ["images/receipt-2026-11-01-7.jpg", "images/statement-2026-11-01-a.jpg"] },
+    { date: "01/11/2026", text: "Donation from Truong Thi My Hien", type: "in", amount: 500000, proof: ["images/receipt-2026-11-01-8.jpg", "images/statement-2026-11-01-b.jpg"] }
   ],
 
   // Thông báo về tiền chưa chuyển đi (hiện ở trang Donate, dưới ô Remaining).
