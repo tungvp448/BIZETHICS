@@ -133,6 +133,8 @@
     [`Contributed to the local volunteer group (VND)`, `Đóng góp cho nhóm thiện nguyện địa phương (VND)`],
     [`fresh meals and essential supplies for hospital families`, `bữa ăn tươi và nhu yếu phẩm cho các gia đình trong bệnh viện`],
     [`Spent on flowers (VND)`, `Chi cho hoa (VND)`],
+    [`Donations received from the public (VND)`, `Tiền ủng hộ nhận được từ mọi người (VND)`],
+    [`on 1 November, to be passed on to the charity`, `ngày 1/11, sẽ được chuyển cho tổ chức thiện nguyện`],
     [`for mothers near the hospital`, `tặng những người mẹ gần bệnh viện`],
     [`Meal portions distributed on 17 Oct`, `Suất ăn đã phát ngày 17/10`],
     [`with the local volunteer group`, `cùng nhóm thiện nguyện địa phương`],

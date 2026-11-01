@@ -74,7 +74,7 @@ var SITE = {
   // Track B: hỗ trợ ở viện K Tân Triều ngày 17/10 (theo Executive Summary của nhóm)
   hospitalStats: [
     { label: "Contributed to the local volunteer group (VND)", value: 2000000, sub: "fresh meals and essential supplies for hospital families" },
-    { label: "Spent on flowers (VND)", value: 600000, sub: "for mothers near the hospital" },
+    { label: "Donations received from the public (VND)", value: 1465000, sub: "on 1 November, to be passed on to the charity" },
     { label: "Meal portions distributed on 17 Oct", text: "~500", sub: "with the local volunteer group" },
     { label: "Mothers who may have received support", text: "50–100", sub: "our estimate, not formally counted or verified" }
   ],
