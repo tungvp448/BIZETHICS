@@ -837,3 +837,17 @@ sup.fn a:hover { text-decoration: underline; }
 /* Donate: money received but not yet passed on to the charity */
 .pending-note { margin: -8px 0 20px; padding: 14px 20px; background: #fff7b8; border-radius: 20px; color: var(--berry); font-weight: 700; line-height: 1.5; max-width: none; }
 .pending-note::before { content: "⏳ "; }
+
+/* Journal: a letter with small pictures beside it (Raine's posters next to Raine's letter) */
+.quote-aside { display: grid; grid-template-columns: minmax(0, 1fr) 170px; gap: 18px; align-items: start; margin: 1.8em 0; }
+.quote-aside blockquote { margin: 0; }
+.aside-pics { display: grid; gap: 12px; }
+.aside-pics figure { margin: 0; }
+.aside-pics img { width: 100%; border-radius: 14px; display: block; cursor: zoom-in; box-shadow: 0 4px 14px rgba(90,24,50,.12); }
+.aside-pics figcaption { font-size: .78rem; line-height: 1.35; margin-top: 5px; opacity: .75; }
+@media (max-width: 640px) {
+  .quote-aside { grid-template-columns: 1fr; }
+  .aside-pics { grid-template-columns: 1fr 1fr; }
+}
+/* letters with several paragraphs */
+.prose blockquote p + p { margin-top: .7em; }
