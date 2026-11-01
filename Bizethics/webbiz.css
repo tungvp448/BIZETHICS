@@ -828,3 +828,8 @@ sup.fn a:hover { text-decoration: underline; }
 .listen-head small { font-weight: 600; font-size: .82rem; opacity: .75; }
 .listen.playing { position: sticky; top: 78px; z-index: 15; box-shadow: 0 10px 28px rgba(90,24,50,.18); border: 2px solid var(--petal); }
 @media (max-width: 760px) { .listen.playing { top: 66px; } .listen audio { min-width: 100%; } }
+
+/* Letters people write can be in Vietnamese, and Caveat has no Vietnamese letters, so the letter box and the open letter use Dancing Script */
+.builder textarea, .letter .dear, .letter .body, .letter .from { font-family: "Dancing Script", cursive; font-weight: 600; }
+.builder textarea { font-size: 1.5rem; line-height: 1.4; }
+.letter .body { font-size: 1.4rem; }
