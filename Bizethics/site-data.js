@@ -491,10 +491,11 @@ var SITE = {
     { src: "images/gift-boy-note.jpg", caption: "A meal, milk, bread, an egg, snacks and 100,000 VND" }
   ],
 
-  // type: "in" = tiền nhận, "out" = tiền chi. proof: ảnh bằng chứng (ví dụ "images/proof-1.jpg"), để trống nếu chưa có.
+  // type: "in" = tiền nhận, "out" = tiền chi. proof: ảnh bằng chứng (ví dụ "images/proof-1.jpg", hoặc nhiều ảnh: ["a.jpg", "b.jpg"]), để trống nếu chưa có.
   entries: [
     { date: "17/10/2026", text: "Contributions from team members", type: "in", amount: 2600000, proof: "" },
     { date: "15/10/2026", text: "Contributed to the local volunteer group (fresh meals and essential supplies for hospital families)", type: "out", amount: 2000000, proof: "images/proof-transfer-2m.jpg" },
-    { date: "17/10/2026", text: "Flowers for mothers near K Hospital Tan Trieu", type: "out", amount: 600000, proof: "" }
+    { date: "17/10/2026", text: "Flowers for mothers near K Hospital Tan Trieu", type: "out", amount: 600000, proof: "" },
+    { date: "01/11/2026", text: "Donations received through the website (bank transfers)", type: "in", amount: 1465005, proof: ["images/proof-bank-1.jpg", "images/proof-bank-2.jpg"] }
   ]
 };
