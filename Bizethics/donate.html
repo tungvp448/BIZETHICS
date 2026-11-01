@@ -212,14 +212,19 @@
       tr.appendChild(td);
     });
     var proof = document.createElement("td");
-    if (e.proof) {
-      var a = document.createElement("a");
-      a.className = "proof";
-      a.href = e.proof;
-      a.target = "_blank";
-      a.rel = "noopener";
-      a.textContent = "View proof ↗";
-      proof.appendChild(a);
+    // proof can be one image link, or a list of links (e.g. several bank screenshots)
+    var proofs = Array.isArray(e.proof) ? e.proof : (e.proof ? [e.proof] : []);
+    if (proofs.length) {
+      proofs.forEach(function (src, n) {
+        var a = document.createElement("a");
+        a.className = "proof";
+        a.href = src;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = (proofs.length > 1 ? "View proof " + (n + 1) : "View proof") + " ↗";
+        proof.appendChild(a);
+        if (n < proofs.length - 1) proof.appendChild(document.createElement("br"));
+      });
     } else {
       proof.className = "proof none";
       proof.textContent = "Coming soon";
