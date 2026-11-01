@@ -180,7 +180,11 @@
     [`Our team with the women we met`, `Nhóm chúng mình cùng những người phụ nữ đã gặp`],
     [`Support the mothers at K Hospital`, `Ủng hộ những người mẹ ở Bệnh viện K`],
     [`Every donation goes to the mothers at K Hospital through our partner volunteer group. We list every donation and every expense, with proof.`, `Mọi khoản quyên góp đều đến với những người mẹ ở Bệnh viện K thông qua nhóm thiện nguyện đối tác. Chúng mình liệt kê mọi khoản nhận và mọi khoản chi, kèm bằng chứng.`],
-    [`See our statement`, `Xem sao kê`]
+    [`See our statement`, `Xem sao kê`],
+    [`A mother walking hand in hand with her daughter and her son, with hearts floating up`, `Một người mẹ nắm tay con gái và con trai đi dạo, những trái tim bay lên`],
+    [`Special thanks`, `Lời cảm ơn đặc biệt`],
+    [`Website support`, `Hỗ trợ website`],
+    [`Thank you for supporting the technical aspects of the website. You gave Care for the Carers a home online where every story, report and letter can be seen.`, `Cảm ơn bạn đã hỗ trợ phần kỹ thuật của website. Bạn đã cho Care for the Carers một ngôi nhà trên mạng, nơi mọi câu chuyện, bài viết và lá thư đều được nhìn thấy.`]
   ]);
 
   // ===== Our story =====

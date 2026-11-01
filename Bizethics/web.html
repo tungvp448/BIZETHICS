@@ -37,18 +37,18 @@
 @keyframes artBlink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
 
 /* tim bay lên khi bấm "Send a hug" */
-.hero-art .burst{position:absolute;left:50%;bottom:30%;font-size:22px;color:#d6527e;pointer-events:none;animation:artBurst 1.4s ease-out forwards}
+.hero-art .burst{position:absolute;left:50%;bottom:30%;font-size:22px;color:var(--rose);pointer-events:none;animation:artBurst 1.4s ease-out forwards}
 @keyframes artBurst{0%{transform:translate(-50%,0) scale(.5);opacity:1}100%{transform:translate(calc(-50% + var(--dx)),-170px) scale(1.4);opacity:0}}
 .hero-art.pop .walk,.hero-art.pop .leg,.hero-art.pop .swing{animation-duration:.45s}
 
 
 /* Special thanks */
 .thanks-block{margin-top:28px}
-.thanks-block .thanks-label{margin:0 0 12px;font-weight:700;color:#5a1030}
-.thanks-card{display:flex;align-items:flex-start;gap:14px;max-width:760px;background:#fff;border-radius:28px;padding:16px 24px 16px 16px}
-.thanks-card .av{flex:none;width:44px;height:44px;border-radius:50%;background:#f7d8e3;color:#d6527e;display:grid;place-items:center;font-weight:800;font-size:20px}
-.thanks-card b{display:block;font-size:1.15rem;color:#5a1030}
-.thanks-card .role{display:block;font-size:.92rem;color:#8a4a63;margin:2px 0 6px}
+.thanks-block .thanks-label{margin:0 0 12px;font-weight:700;color:var(--berry)}
+.thanks-card{display:flex;align-items:flex-start;gap:14px;max-width:760px;background:var(--white);border-radius:28px;padding:16px 24px 16px 16px}
+.thanks-card .av{flex:none;width:44px;height:44px;border-radius:50%;background:var(--petal);color:var(--rose);display:grid;place-items:center;font-weight:600;font-size:20px;font-family:var(--display)}
+.thanks-card b{display:block;font-size:1.15rem;color:var(--berry)}
+.thanks-card .role{display:block;font-size:.92rem;color:var(--berry);opacity:.75;margin:2px 0 6px}
 .thanks-card p{margin:0;line-height:1.55}
 
 @media (max-width:820px){
@@ -270,7 +270,7 @@
         <span class="av" aria-hidden="true">T</span>
         <div>
           <b>Tùng Vũ</b>
-          <span class="role">Website support </span>
+          <span class="role">Website support</span>
           <p>Thank you for supporting the technical aspects of the website. You gave Care for the Carers a home online where every story, report and letter can be seen.</p>
         </div>
       </div>

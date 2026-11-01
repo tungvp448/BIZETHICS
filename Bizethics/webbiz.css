@@ -756,3 +756,10 @@ html.i18n-wait body { visibility: hidden; }
 .video.yt button:focus-visible { outline: 4px solid var(--rose); outline-offset: -4px; }
 .video.yt button span { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 20px 14px; color: var(--white); font-weight: 800; background: linear-gradient(transparent, rgba(43,29,22,.75)); }
 .article > .video { margin: 0 0 28px; }
+/* Small phones: brand, EN/VI, profile and Menu all fit inside the 24px gutters */
+@media (max-width: 420px) {
+  nav .wrap { gap: 6px; }
+  nav .brand { font-size: 1.1rem; }
+  .lang-btn { min-width: 34px; height: 32px; padding: 0 8px; }
+  .me { width: 36px; height: 36px; }
+}

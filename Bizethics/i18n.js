@@ -44,11 +44,12 @@ var I18N = (function () {
       }
       return;
     }
-    if (node.nodeType !== 1 || SKIP[node.tagName] || node.hasAttribute("data-no-i18n")) return;
+    if (node.nodeType !== 1 || node.hasAttribute("data-no-i18n")) return;
     ATTRS.forEach(function (a) {
       var val = node.getAttribute(a), t = val && lookup(val);
       if (t != null && t !== val) node.setAttribute(a, t);
     });
+    if (SKIP[node.tagName]) return;
     if (node.children.length && mixed(node)) {
       var t = lookup(node.innerHTML);
       if (t != null) { node.innerHTML = t; return; }
