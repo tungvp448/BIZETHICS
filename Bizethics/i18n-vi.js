@@ -651,6 +651,7 @@
   add([
     [`🎧 Voice reading coming soon`, `🎧 Bản đọc sắp ra mắt`],
     [`🎧 Listen to this report`, `🎧 Nghe bài này`],
+    [`Read for us by Phạm Thảo Nguyên (CBM). Thank you!`, `Bạn Phạm Thảo Nguyên (CBM) đã đọc bài này cho chúng mình. Cảm ơn bạn!`],
     [`The crowd near Bệnh Viện K Tân Triều, 17 October 2026.`, `Dòng người gần Bệnh viện K Tân Triều, ngày 17/10/2026.`],
     [`Raine’s View as a person from Phillipino.`, `Góc nhìn của Raine, một người đến từ Philippines.`],
     [`“A simple thank you to your mother would matter.”`, `“Một lời cảm ơn giản dị dành cho mẹ cũng sẽ có ý nghĩa.”`],

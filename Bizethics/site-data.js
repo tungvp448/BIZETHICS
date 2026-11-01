@@ -138,6 +138,8 @@ var SITE = {
       date: "2026-10-28",
       image: "images/day-team-handing-fruit.jpg",
       caption: "Our team at the food distribution near K Hospital Tan Trieu, 17 October 2026.",
+      audio: "audio/executive-summary.mp3",
+      audioBy: "Phạm Thảo Nguyên (CBM)",
       draft: false,
       body: [
         { p: `Care for the Carers is a social impact project developed by VinUniversity students for the MANA3021 Business Ethics course. It addresses the widespread lack of recognition and support for unpaid caregiving, particularly the work performed by mothers. Although caregiving is essential to family life, it is often treated as an expected responsibility rather than meaningful work deserving recognition, shared responsibility, and fair support. The project therefore aims to address both the everyday attitudes that make care work invisible and the practical needs of caregivers experiencing particularly demanding circumstances.`,

@@ -170,7 +170,7 @@
       '<article class="wrap narrow article">' +
         (lead ? block(lead) : "") +
         ("audio" in post ? (post.audio
-          ? '<div class="listen"><span>🎧 Listen to this report</span><audio controls preload="none" src="' + esc(post.audio) + '"></audio></div>'
+          ? '<div class="listen" id="listen"><div class="listen-head"><span>🎧 Listen to this report</span>' + (post.audioBy ? '<small>Read for us by ' + esc(post.audioBy) + '. Thank you!</small>' : "") + '</div><audio controls preload="metadata" src="' + esc(post.audio) + '"></audio></div>'
           : '<div class="listen empty"><span>🎧 Voice reading coming soon</span></div>') : "") +
         (post.image ? '<figure class="hero-img' + (post.imageTall ? " tall" : "") + '"><img src="' + esc(post.image) + '" alt="' + esc(post.caption || "") + '" data-zoom onerror="this.parentNode.remove()">' + (post.caption ? '<figcaption>' + esc(post.caption) + '</figcaption>' : "") + '</figure>' : "") +
         '<div class="prose">' + body(rest, post.sources && post.sources.length > 0) + '</div>' +
@@ -181,6 +181,13 @@
         others.slice(0, 3).map(function (p) { return Site.journalCard(p, false); }).join("") +
       '</div></section>';
     startOutline();
+    // While the voice reading plays, the player stays at the top of the screen so people can listen as they read
+    var player = box.querySelector("#listen");
+    if (player) {
+      var au = player.querySelector("audio");
+      au.addEventListener("play", function () { player.classList.add("playing"); });
+      au.addEventListener("pause", function () { player.classList.remove("playing"); });
+    }
     // Small reference numbers, added after the page is translated (if Vietnamese is on)
     document.addEventListener("DOMContentLoaded", function () { Site.refMarks(box.querySelector(".prose"), post.sources || []); });
     // Play: swap the cover picture for YouTube's player
