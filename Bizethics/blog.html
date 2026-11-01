@@ -118,6 +118,23 @@
       else { flush(); html += block(b); }
     });
     flush();
+
+    // Thêm 2 khối lời cảm ơn của Quang Khánh và Hà Dương bên dưới danh sách khối nội dung chính
+    var extraQuotes = [
+      {
+        quote: "Thank you for creating this meaningful project and giving us the opportunity to turn our thoughts and intentions into something real. Your guidance has allowed us to step beyond the classroom, connect with people, and make a difference, no matter how small. More than just a project, this has become a valuable journey of learning, empathy, and personal growth. We are truly grateful for your support and for giving us the chance to be part of something so meaningful.",
+        by: "Quang Khánh"
+      },
+      {
+        quote: "Thank you for welcoming us, allowing us to share a small part of your journey, and giving us the opportunity to better understand the lives and struggles of families affected by cancer. Through every conversation and every moment spent together, we learned that behind every hospital room is a story of strength, sacrifice, and unconditional love. Thank you for inspiring us and for making this journey so meaningful. We may have come with the intention of giving, but we left with so much more than we could ever give back.",
+        by: "Hà Dương"
+      }
+    ];
+
+    extraQuotes.forEach(function (q) {
+      html += block(q);
+    });
+
     return html;
   }
 
