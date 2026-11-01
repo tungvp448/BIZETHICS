@@ -61,14 +61,14 @@ var SITE = {
   // Track A: chiến dịch mạng xã hội (chính)
   // Trang chủ hiện nút "Live tracking". Số liệu do nhóm tự đếm và cập nhật tay: sửa các con số bên dưới,
   // rồi đổi socialUpdated thành ngày cập nhật (YYYY-MM-DD) để web hiện "Updated today / 2 days ago".
-  socialUpdated: "2026-10-28",
+  socialUpdated: "2026-11-01",
 
   // Video mới nhất: hiện thành một ô lớn "Watch our newest video" ở Trang chủ và Our story.
   latestVideo: { url: "https://youtu.be/B6fadq2YHpk", title: "A day at K Hospital Tân Triều", text: "Our report from 17 October: the volunteer group, the mothers we met, and what we learned.", post: "real-reporting-at-k-hospital" },
   socialStats: [
-    { label: "Views across TikTok, Instagram and Threads", text: "2,800+", sub: "all three channels together" },
+    { label: "Views across TikTok, Instagram and Threads", text: "5,300+", sub: "all three channels together" },
     { label: "TikTok views", text: "2,000+", sub: "4 posts · nearly 100 interactions" },
-    { label: "Instagram views", text: "~500", sub: "nearly 100 interactions" },
+    { label: "Instagram views", text: "3,000+", sub: "nearly 100 interactions" },
     { label: "Interactions across all three", text: "~220", sub: "TikTok, Instagram and Threads (5 posts on Threads)" }
   ],
   // Track B: hỗ trợ ở viện K Tân Triều ngày 17/10 (theo Executive Summary của nhóm)
@@ -479,8 +479,8 @@ var SITE = {
   ],
 
   // ===== Quyên góp + sao kê =====
-  // Thông tin ngân hàng dưới đây vẫn là DỮ LIỆU MẪU, cần thay bằng tài khoản thật.
-  bank: { name: "Your Bank Name", holder: "NGUYEN VAN A", number: "0123456789" },
+  // Thông tin ngân hàng thật (khớp với donate.html).
+  bank: { name: "Vietcombank", holder: "NGUYEN QUANG KHANH", number: "1035273315" },
   goal: 5000000, // mục tiêu quyên góp (VND)
   // Ảnh trượt (swipe) trong phần sao kê ở trang Donate. Mặt các bé đã được làm mờ. Thêm ảnh: { src: "images/...", caption: "..." }
   giftPhotos: [
